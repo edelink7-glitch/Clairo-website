@@ -5,182 +5,300 @@
   <title>Clairo Studios — Business Card</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* ─── Screen preview ─── */
+    /* ── Screen Preview ── */
     body {
-      background: #1A1A1A;
+      background: #0e0e0e;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      gap: 48px;
-      padding: 72px 48px;
+      gap: 80px;
+      padding: 100px 48px;
+      font-family: 'DM Sans', sans-serif;
     }
 
-    .label {
-      font-family: 'DM Sans', sans-serif;
+    .side-wrap { display: flex; flex-direction: column; align-items: center; }
+
+    .side-label {
       font-size: 9px;
-      letter-spacing: 0.28em;
+      letter-spacing: 0.30em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.2);
-      text-align: center;
-      margin-bottom: 14px;
+      color: rgba(255,255,255,0.16);
+      margin-bottom: 18px;
     }
 
-    .print-note {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 10px;
+    .print-hint {
+      font-size: 9px;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: rgba(224,212,188,0.35);
+      color: rgba(255,255,255,0.12);
+      margin-top: 64px;
       text-align: center;
-      margin-top: 56px;
-      line-height: 2;
+      line-height: 2.4;
     }
 
-    /* ─── Card base ───
-       Screen: 700 × 400px (exactly 2× the 350 × 200pt print size)
-       Print:  3.5in × 2in via @page override
-    */
+    /* ── Card Base: 700 × 400px = 2× the 350 × 200pt print size ── */
     .card {
       width: 700px;
       height: 400px;
       position: relative;
       overflow: hidden;
-      border-radius: 1px;
     }
 
-    /* ─── FRONT ─── */
+    /* ════════════════════════════════════════
+       FRONT
+    ════════════════════════════════════════ */
     .card-front {
       background: #0B0B0B;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.7), 0 4px 16px rgba(0,0,0,0.5);
+      box-shadow:
+        0 0 0 0.5px rgba(255,255,255,0.05),
+        0 32px 80px rgba(0,0,0,0.9),
+        0 8px 24px rgba(0,0,0,0.6);
     }
 
-    .card-front::after {
+    /* Grain texture */
+    .card-front::before {
       content: '';
       position: absolute;
       inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-      opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+      opacity: 0.038;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Ghost display type — depth layer */
+    .ghost-type {
+      position: absolute;
+      bottom: -24px;
+      right: -10px;
+      font-family: 'Pathway Gothic One', sans-serif;
+      font-size: 268px;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.028);
+      line-height: 1;
+      user-select: none;
       pointer-events: none;
       z-index: 1;
     }
 
-    .front-inner {
+    /* Thin left accent edge */
+    .left-accent {
       position: absolute;
-      inset: 0;
-      padding: 48px 56px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      z-index: 2;
-    }
-
-    .logo-lockup {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .logo-lockup img {
-      height: 30px;
-      width: auto;
-    }
-
-    .studio-name {
-      font-family: 'Pathway Gothic One', sans-serif;
-      font-size: 19px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #ffffff;
-    }
-
-    .front-bottom {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-    }
-
-    .tagline {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 8.5px;
-      font-weight: 300;
-      letter-spacing: 0.30em;
-      text-transform: uppercase;
-      color: rgba(224,212,188,0.45);
-    }
-
-    .contact {
-      text-align: right;
-    }
-
-    .contact p {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 8.5px;
-      font-weight: 300;
-      letter-spacing: 0.14em;
-      line-height: 2;
-      color: rgba(255,255,255,0.30);
-    }
-
-    .contact .website {
-      color: rgba(224,212,188,0.65);
-    }
-
-    /* Bone accent bar — bottom edge */
-    .front-rule {
-      position: absolute;
-      bottom: 0;
       left: 0;
-      right: 0;
-      height: 1.5px;
-      background: linear-gradient(to right, transparent 5%, rgba(224,212,188,0.35) 35%, rgba(224,212,188,0.35) 65%, transparent 95%);
+      top: 52px;
+      bottom: 52px;
+      width: 1px;
+      background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(224,212,188,0.30) 25%,
+        rgba(224,212,188,0.30) 75%,
+        transparent 100%
+      );
       z-index: 3;
     }
 
-    /* ─── BACK ─── */
-    .card-back {
-      background: #E0D4BC;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.55), 0 4px 16px rgba(0,0,0,0.3);
+    .front-content {
+      position: absolute;
+      inset: 0;
+      padding: 50px 58px 50px 66px;
+      display: flex;
+      flex-direction: column;
+      z-index: 3;
     }
 
-    .back-inner {
+    /* Logo lockup */
+    .lockup {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+    }
+
+    .lockup img {
+      height: 27px;
+      width: auto;
+      flex-shrink: 0;
+    }
+
+    .lockup-name {
+      font-family: 'Pathway Gothic One', sans-serif;
+      font-size: 17px;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: #ffffff;
+      line-height: 1;
+    }
+
+    .spacer { flex: 1; }
+
+    /* Positioning line */
+    .positioning {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 7.5px;
+      font-weight: 300;
+      letter-spacing: 0.30em;
+      text-transform: uppercase;
+      color: rgba(224,212,188,0.38);
+      margin-bottom: 18px;
+    }
+
+    /* Hairline rule */
+    .rule {
+      height: 0.5px;
+      background: linear-gradient(
+        to right,
+        rgba(224,212,188,0.25) 0%,
+        rgba(224,212,188,0.12) 70%,
+        transparent 100%
+      );
+      margin-bottom: 18px;
+    }
+
+    /* Contact zone */
+    .contact-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .name-block .name {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 8.5px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.72);
+      line-height: 1;
+      margin-bottom: 5px;
+    }
+
+    .name-block .role {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 7px;
+      font-weight: 300;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(224,212,188,0.40);
+      line-height: 1;
+    }
+
+    .contact-details {
+      text-align: right;
+    }
+
+    .contact-details p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 7.5px;
+      font-weight: 300;
+      letter-spacing: 0.10em;
+      color: rgba(255,255,255,0.28);
+      line-height: 2.0;
+    }
+
+    .contact-details .web {
+      color: rgba(224,212,188,0.55);
+    }
+
+    /* ════════════════════════════════════════
+       BACK
+    ════════════════════════════════════════ */
+    .card-back {
+      background: #0B0B0B;
+      box-shadow:
+        0 0 0 0.5px rgba(255,255,255,0.05),
+        0 32px 80px rgba(0,0,0,0.9),
+        0 8px 24px rgba(0,0,0,0.6);
+    }
+
+    .card-back::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+      opacity: 0.038;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Large ghost "C" for back depth */
+    .ghost-back {
+      position: absolute;
+      top: -60px;
+      left: -30px;
+      font-family: 'Pathway Gothic One', sans-serif;
+      font-size: 500px;
+      letter-spacing: -0.05em;
+      color: rgba(255,255,255,0.018);
+      line-height: 1;
+      user-select: none;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .back-content {
       position: absolute;
       inset: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 18px;
+      gap: 16px;
+      z-index: 3;
     }
 
-.back-url {
+    .back-cta {
       font-family: 'DM Sans', sans-serif;
-      font-size: 8px;
+      font-size: 7px;
       font-weight: 400;
-      letter-spacing: 0.26em;
+      letter-spacing: 0.36em;
       text-transform: uppercase;
-      color: rgba(11,11,11,0.38);
+      color: rgba(255,255,255,0.20);
+      margin-bottom: 2px;
     }
 
+    /* QR container with hairline border */
+    .qr-wrap {
+      padding: 10px;
+      border: 0.5px solid rgba(224,212,188,0.18);
+      line-height: 0;
+    }
+
+    .qr-wrap img {
+      display: block;
+      image-rendering: pixelated;
+    }
+
+    .back-url {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 7px;
+      font-weight: 300;
+      letter-spacing: 0.30em;
+      text-transform: uppercase;
+      color: rgba(224,212,188,0.38);
+      margin-top: 2px;
+    }
+
+    /* Logo watermark — bottom-right */
     .back-mark {
       position: absolute;
       bottom: 26px;
-      right: 34px;
-      opacity: 0.18;
+      right: 30px;
+      z-index: 3;
     }
 
     .back-mark img {
-      height: 18px;
+      height: 20px;
       width: auto;
+      opacity: 0.10;
     }
 
-    /* ─── Print ─── */
+    /* ── Print ── */
     @media print {
       * {
         -webkit-print-color-adjust: exact !important;
@@ -192,21 +310,18 @@
         display: block;
         padding: 0;
         margin: 0;
-        min-height: unset;
-        gap: 0;
       }
 
-      .label,
-      .print-note { display: none; }
+      .side-label,
+      .print-hint { display: none; }
 
-      /* Each card wrapper triggers a new 3.5"×2" page */
-      .card-wrapper {
+      .side-wrap {
         page-break-after: always;
         break-after: page;
         display: block;
       }
 
-      .card-wrapper:last-of-type {
+      .side-wrap:last-of-type {
         page-break-after: avoid;
         break-after: avoid;
       }
@@ -223,68 +338,82 @@
         box-shadow: none;
       }
 
-      .front-inner {
-        padding: 0.30in 0.35in;
-      }
-
-      .logo-lockup img   { height: 0.22in; }
-      .studio-name       { font-size: 9.5pt; }
-      .tagline           { font-size: 4.5pt; }
-      .contact p         { font-size: 4.5pt; }
-      .back-url          { font-size: 4pt; }
-      .back-mark img     { height: 0.13in; }
+      .front-content    { padding: 0.29in 0.34in 0.29in 0.38in; }
+      .lockup img       { height: 0.19in; }
+      .lockup-name      { font-size: 8.5pt; }
+      .positioning      { font-size: 3.8pt; letter-spacing: 0.22em; }
+      .name-block .name { font-size: 4.3pt; }
+      .name-block .role { font-size: 3.6pt; }
+      .contact-details p { font-size: 3.8pt; }
+      .ghost-type       { font-size: 1.6in; bottom: -0.14in; right: -0.06in; }
+      .left-accent      { top: 0.30in; bottom: 0.30in; }
+      .back-cta         { font-size: 3.5pt; }
+      .back-url         { font-size: 3.5pt; }
+      .back-mark img    { height: 0.13in; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ── FRONT ── -->
-  <div class="card-wrapper">
-    <p class="label">Front</p>
+  <!-- ══ FRONT ══ -->
+  <div class="side-wrap">
+    <p class="side-label">Front</p>
     <div class="card card-front">
-      <div class="front-inner">
+      <div class="ghost-type">CS</div>
+      <div class="left-accent"></div>
+      <div class="front-content">
 
-        <div class="logo-lockup">
-          <img src="White_Icon.png" alt="Clairo Studios mark" />
-          <span class="studio-name">Clairo Studios</span>
+        <div class="lockup">
+          <img src="White_Icon.png" alt="Clairo Studios" />
+          <span class="lockup-name">Clairo Studios</span>
         </div>
 
-        <div class="front-bottom">
-          <p class="tagline">Real Estate Media</p>
-          <div class="contact">
-            <p>hello@clairo.studio</p>
-            <p class="website">clairo.studio</p>
+        <div class="spacer"></div>
+
+        <p class="positioning">Creative Systems &nbsp;·&nbsp; For Modern Brands</p>
+        <div class="rule"></div>
+
+        <div class="contact-row">
+          <div class="name-block">
+            <p class="name">Edelink Lorjuste</p>
+            <p class="role">Founder</p>
+          </div>
+          <div class="contact-details">
+            <p>edelink@clairo.studio</p>
+            <p class="web">clairo.studio</p>
           </div>
         </div>
 
       </div>
-      <div class="front-rule"></div>
     </div>
   </div>
 
-  <!-- ── BACK ── -->
-  <div class="card-wrapper">
-    <p class="label">Back</p>
+  <!-- ══ BACK ══ -->
+  <div class="side-wrap">
+    <p class="side-label">Back</p>
     <div class="card card-back">
-      <div class="back-inner">
-        <img
-          src="https://api.qrserver.com/v1/create-qr-code/?size=116x116&data=https%3A%2F%2Flinktr.ee%2Fede_link&bgcolor=E0D4BC&color=0B0B0B&margin=0"
-          width="116" height="116" alt="QR code — linktr.ee/ede_link"
-          style="display:block; image-rendering:pixelated;"
-        />
-        <p class="back-url">linktr.ee/ede_link</p>
+      <div class="ghost-back">C</div>
+      <div class="back-content">
+        <p class="back-cta">See Our Work</p>
+        <div class="qr-wrap">
+          <img
+            src="https://api.qrserver.com/v1/create-qr-code/?size=112x112&data=https%3A%2F%2Fclairo.studio&bgcolor=0B0B0B&color=E0D4BC&margin=0"
+            width="112" height="112"
+            alt="QR — clairo.studio"
+          />
+        </div>
+        <p class="back-url">clairo.studio</p>
       </div>
       <div class="back-mark">
-        <img src="Black_Icon.png" alt="" />
+        <img src="White_Icon.png" alt="" />
       </div>
     </div>
   </div>
 
-  <p class="print-note">
-    To print · File → Print → Paper size 3.5 × 2 in · Margins None · Scale 100%<br />
-    Or export to PDF and send to your print shop at 300 DPI
+  <p class="print-hint">
+    File → Print &nbsp;·&nbsp; Paper size 3.5 × 2 in &nbsp;·&nbsp; Margins: None &nbsp;·&nbsp; Scale: 100%<br />
+    Or export to PDF and send to your print shop — specify 300 DPI
   </p>
-
 
 </body>
 </html>
