@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clairo Studios — Brand Guide</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bone:     '#E0D4BC',
+            charcoal: '#1A1A1A',
+            ink:      '#0B0B0B',
+          },
+          fontFamily: {
+            display: ['"Pathway Gothic One"', 'sans-serif'],
+            body:    ['"DM Sans"', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    * { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+    .noise::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: 0.03;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(255,255,255,0.08), transparent);
+    }
+
+    .swatch {
+      aspect-ratio: 1;
+      border-radius: 2px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .type-sample-display {
+      font-family: 'Pathway Gothic One', sans-serif;
+      text-transform: uppercase;
+      line-height: 0.88;
+      letter-spacing: -0.025em;
+    }
+
+    .color-copy {
+      cursor: pointer;
+      user-select: none;
+      transition: opacity 0.2s;
+    }
+    .color-copy:hover { opacity: 0.7; }
+
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(1rem);
+      background: #E0D4BC;
+      color: #0B0B0B;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.6rem 1.4rem;
+      opacity: 0;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      pointer-events: none;
+      z-index: 999;
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .logo-bg-dark  { background: #0B0B0B; }
+    .logo-bg-light { background: #F5F0E8; }
+    .logo-bg-bone  { background: #E0D4BC; }
+  </style>
+</head>
+<body class="bg-ink text-white font-body">
+
+  <div id="toast" class="toast">Copied</div>
+
+  <!-- ── COVER ── -->
+  <section class="noise relative min-h-screen flex flex-col justify-between px-10 md:px-20 pt-16 pb-14 overflow-hidden">
+    <div class="relative z-10 flex items-center gap-4">
+      <img src="White_Icon.png" alt="Clairo Studios mark" class="h-7 w-auto" />
+      <span class="font-display text-[14px] tracking-[0.12em] uppercase text-white">Clairo Studios</span>
+    </div>
+
+    <div class="relative z-10">
+      <p class="font-body text-[10px] tracking-[0.3em] uppercase text-bone/50 mb-10">Brand Identity Guide</p>
+      <h1 class="font-display uppercase leading-[0.88] text-white" style="font-size: clamp(5rem, 14vw, 15rem); letter-spacing: -0.025em;">
+        Brand<br /><span style="color:#E0D4BC;">Guide</span>
+      </h1>
+      <p class="mt-10 font-body text-base text-white/40 max-w-sm leading-[1.7]">
+        A reference for colors, typography, logos, and voice — the complete identity system for Clairo Studios.
+      </p>
+    </div>
+
+    <div class="relative z-10 flex items-center justify-between">
+      <p class="font-body text-[10px] tracking-[0.25em] uppercase text-white/20">Real Estate Media</p>
+      <p class="font-body text-[10px] tracking-[0.25em] uppercase text-white/20">2025</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+
+  <!-- ── BRAND VALUES ── -->
+  <section class="px-10 md:px-20 py-24">
+    <p class="font-body text-[10px] tracking-[0.28em] uppercase text-bone/50 mb-5">01 — Brand Values</p>
+    <h2 class="font-display uppercase text-white mb-16" style="font-size: clamp(2.5rem, 6vw, 6rem); letter-spacing: -0.02em; line-height: 0.9;">
+      What We<br />Stand For
+    </h2>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/[0.06]">
+      <div class="bg-ink p-8">
+        <p class="font-display text-4xl uppercase text-white mb-3">Clear</p>
+        <p class="font-body text-xs text-white/35 leading-[1.7]">No clutter. Every frame, word, and pixel earns its place.</p>
+      </div>
+      <div class="bg-ink p-8">
+        <p class="font-display text-4xl uppercase text-white mb-3">Bold</p>
+        <p class="font-body text-xs text-white/35 leading-[1.7]">Confident decisions, strong visuals, no hedging.</p>
+      </div>
+      <div class="bg-ink p-8">
+        <p class="font-display text-4xl uppercase text-white mb-3">Strategic</p>
+        <p class="font-body text-xs text-white/35 leading-[1.7]">Every creative choice is rooted in a business outcome.</p>
+      </div>
+      <div class="bg-ink p-8">
+        <p class="font-display text-4xl uppercase text-white mb-3">Timeless</p>
+        <p class="font-body text-xs text-white/35 leading-[1.7]">Trend-resistant craft that ages with dignity.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+
+  <!-- ── COLOR PALETTE ── -->
+  <section class="px-10 md:px-20 py-24">
+    <p class="font-body text-[10px] tracking-[0.28em] uppercase text-bone/50 mb-5">02 — Color Palette</p>
+    <h2 class="font-display uppercase text-white mb-16" style="font-size: clamp(2.5rem, 6vw, 6rem); letter-spacing: -0.02em; line-height: 0.9;">
+      Colors
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+      <!-- Ink -->
+      <div>
+        <div class="swatch mb-5" style="background:#0B0B0B; border: 1px solid rgba(255,255,255,0.08); height: 220px;">
+          <div class="absolute bottom-0 left-0 right-0 p-5">
+            <p class="font-display text-2xl uppercase text-white/20">Ink</p>
+          </div>
+        </div>
+        <div class="flex items-start justify-between">
+          <div>
+            <p class="font-display text-xl uppercase text-white mb-1">Ink</p>
+            <p class="font-body text-xs text-white/35 leading-[1.8]">Primary background<br />Near-black base</p>
+          </div>
+          <div class="text-right">
+            <p class="color-copy font-body text-[11px] tracking-[0.12em] text-bone/70 mb-1" onclick="copyText('#0B0B0B')" title="Click to copy">#0B0B0B</p>
+            <p class="color-copy font-body text-[11px] tracking-[0.12em] text-white/30" onclick="copyText('rgb(11, 11, 11)')" title="Click to copy">RGB 11 · 11 · 11</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Charcoal -->
+      <div>
+        <div class="swatch mb-5" style="background:#1A1A1A; height: 220px;">
+          <div class="absolute bottom-0 left-0 right-0 p-5">
+            <p class="font-display text-2xl uppercase text-white/20">Charcoal</p>
+          </div>
+        </div>
+        <div class="flex items-start justify-between">
+          <div>
+            <p class="font-display text-xl uppercase text-white mb-1">Charcoal</p>
+            <p class="font-body text-xs text-white/35 leading-[1.8]">Secondary surface<br />Ticker & card backgrounds</p>
+          </div>
+          <div class="text-right">
+            <p class="color-copy font-body text-[11px] tracking-[0.12em] text-bone/70 mb-1" onclick="copyText('#1A1A1A')" title="Click to copy">#1A1A1A</p>
+            <p class="color-copy font-body text-[11px] tracking-[0.12em] text-white/30" onclick="copyText('rgb(26, 26, 26)')" title="Click to copy">RGB 26 · 26 · 26</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bone -->
+      <div>
+        <div class="swatch mb-5" style="background:#E0D4BC; height: 220px;">
+          <div class="absolute bottom-0 left-0 right-0 p-5">
+            <p class="font-display text-2xl uppercase" style="color:rgba(11,11,11,0.25)">Bone</p>
+          </div>
+        </div>
+        <div class="flex items-start justify-between">
+          <div>
+            <p class="font-display text-xl uppercase text-white mb-1">Bone</p>
+            <p class="font-body text-xs text-white/35 leading-[1.8]">Accent & warm highlight<br />Used for hero text & CTAs</p>
+          </div>
+          <div class="text-right">
+            <p class="color-copy font-body text-[11px] tracking-[0.12em] text-bone/70 mb-1" onclick="copyText('#E0D4BC')" title="Click to copy">#E0D4BC</p>
+            <p class="color-copy font-body text-[11px] tracking-[0.12em] text-white/30" onclick="copyText('rgb(224, 212, 188)')" title="Click to copy">RGB 224 · 212 · 188</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Usage note -->
+    <div class="mt-14 border border-white/[0.07] p-8">
+      <p class="font-body text-[10px] tracking-[0.22em] uppercase text-bone/40 mb-4">Color Usage</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <div class="w-3 h-3 rounded-full mb-3" style="background:#0B0B0B; border: 1px solid rgba(255,255,255,0.15);"></div>
+          <p class="font-body text-xs text-white/60 leading-[1.7]"><span class="text-white">Ink</span> is the page. Use it as the default background for all primary surfaces.</p>
+        </div>
+        <div>
+          <div class="w-3 h-3 rounded-full mb-3" style="background:#1A1A1A;"></div>
+          <p class="font-body text-xs text-white/60 leading-[1.7]"><span class="text-white">Charcoal</span> lifts secondary surfaces off the base — ticker bars, card fills, and dividers.</p>
+        </div>
+        <div>
+          <div class="w-3 h-3 rounded-full mb-3" style="background:#E0D4BC;"></div>
+          <p class="font-body text-xs text-white/60 leading-[1.7]"><span class="text-white">Bone</span> is the single accent. Use sparingly — hero highlights, CTA borders, hover underlines.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+
+  <!-- ── TYPOGRAPHY ── -->
+  <section class="px-10 md:px-20 py-24">
+    <p class="font-body text-[10px] tracking-[0.28em] uppercase text-bone/50 mb-5">03 — Typography</p>
+    <h2 class="font-display uppercase text-white mb-16" style="font-size: clamp(2.5rem, 6vw, 6rem); letter-spacing: -0.02em; line-height: 0.9;">
+      Type<br />System
+    </h2>
+
+    <!-- Display font -->
+    <div class="mb-20">
+      <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
+        <div>
+          <p class="font-body text-[10px] tracking-[0.22em] uppercase text-bone/40 mb-2">Display — Headings & Logo</p>
+          <p class="font-body text-sm text-white/50">Pathway Gothic One</p>
+        </div>
+        <a href="https://fonts.google.com/specimen/Pathway+Gothic+One" target="_blank"
+           class="font-body text-[10px] tracking-[0.18em] uppercase text-white/30 hover:text-bone transition-colors duration-200">
+          Google Fonts ↗
+        </a>
+      </div>
+
+      <div class="border border-white/[0.07] p-10 md:p-14 mb-6">
+        <p class="type-sample-display text-white" style="font-size: clamp(4rem, 11vw, 11rem);">
+          Aa Bb Cc
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/[0.06]">
+        <div class="bg-ink p-8">
+          <p class="font-body text-[10px] tracking-[0.2em] uppercase text-white/25 mb-5">Hero Headline</p>
+          <p class="font-display uppercase text-white leading-[0.88]" style="font-size: clamp(3rem, 7vw, 7rem); letter-spacing: -0.025em;">Properties<br />That Stand<br />Out.</p>
+          <p class="font-body text-[10px] text-white/25 mt-5 tracking-[0.1em]">clamp(4.5rem, 13vw, 13.5rem) · tracking −0.025em · leading 0.88</p>
+        </div>
+        <div class="bg-ink p-8">
+          <p class="font-body text-[10px] tracking-[0.2em] uppercase text-white/25 mb-5">Section Heading</p>
+          <p class="font-display uppercase text-white leading-[0.9]" style="font-size: clamp(2.5rem, 5vw, 5rem); letter-spacing: -0.02em;">Our<br />Services</p>
+          <p class="font-body text-[10px] text-white/25 mt-5 tracking-[0.1em]">clamp(2.8rem, 7vw, 7rem) · tracking −0.02em · leading 0.9</p>
+        </div>
+        <div class="bg-ink p-8">
+          <p class="font-body text-[10px] tracking-[0.2em] uppercase text-white/25 mb-5">Card Heading</p>
+          <p class="font-display text-2xl uppercase tracking-tight text-white">Photography</p>
+          <p class="font-body text-[10px] text-white/25 mt-5 tracking-[0.1em]">text-2xl · tracking-tight · uppercase</p>
+        </div>
+        <div class="bg-ink p-8">
+          <p class="font-body text-[10px] tracking-[0.2em] uppercase text-white/25 mb-5">Logo / Nav Brand</p>
+          <p class="font-display text-[15px] uppercase text-white tracking-[0.12em]">Clairo Studios</p>
+          <p class="font-body text-[10px] text-white/25 mt-5 tracking-[0.1em]">15px · tracking +0.12em · uppercase</p>
+        </div>
+      </div>
+
+      <!-- Full alphabet -->
+      <div class="mt-6 border border-white/[0.07] p-8">
+        <p class="font-body text-[10px] tracking-[0.2em] uppercase text-white/25 mb-4">Full Alphabet</p>
+        <p class="font-display text-2xl md:text-4xl uppercase text-white/60 leading-tight tracking-wide">
+          ABCDEFGHIJKLM<br />NOPQRSTUVWXYZ<br />0123456789
+        </p>
+      </div>
+    </div>
+
+    <!-- Body font -->
+    <div>
+      <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
+        <div>
+          <p class="font-body text-[10px] tracking-[0.22em] uppercase text-bone/40 mb-2">Body — UI & Copy</p>
+          <p class="font-body text-sm text-white/50">DM Sans</p>
+        </div>
+        <a href="https://fonts.google.com/specimen/DM+Sans" target="_blank"
+           class="font-body text-[10px] tracking-[0.18em] uppercase text-white/30 hover:text-bone transition-colors duration-200">
+          Google Fonts ↗
+        </a>
+      </div>
+
+      <div class="border border-white/[0.07] p-10 md:p-14 mb-6">
+        <p class="font-body text-white" style="font-size: clamp(2.5rem, 7vw, 7rem); font-weight: 300; line-height: 1.1;">
+          Aa Bb Cc
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/[0.06]">
+        <div class="bg-ink p-8">
+          <p class="font-body text-[10px] tracking-[0.2em] uppercase text-white/25 mb-5">Body / Paragraph</p>
+          <p class="font-body text-base text-white/45 leading-[1.7] font-light">Clairo Studios helps real estate agents attract buyers with premium photography, cinematic video, and high-converting social media content.</p>
+          <p class="font-body text-[10px] text-white/25 mt-5 tracking-[0.1em]">16px · weight 300 · leading 1.7</p>
+        </div>
+        <div class="bg-ink p-8">
+          <p class="font-body text-[10px] tracking-[0.2em] uppercase text-white/25 mb-5">Label / Nav</p>
+          <p class="font-body text-xs text-white/50 tracking-[0.2em] uppercase">Services · Work · About</p>
+          <p class="font-body text-[10px] text-white/25 mt-5 tracking-[0.1em]">12px · tracking +0.2em · uppercase · weight 400</p>
+        </div>
+        <div class="bg-ink p-8">
+          <p class="font-body text-[10px] tracking-[0.2em] uppercase text-white/25 mb-5">Eyebrow</p>
+          <p class="font-body text-[10px] tracking-[0.3em] uppercase text-bone/60">Real Estate Media</p>
+          <p class="font-body text-[10px] text-white/25 mt-5 tracking-[0.1em]">10px · tracking +0.3em · uppercase · bone/60</p>
+        </div>
+      </div>
+
+      <!-- Weights -->
+      <div class="mt-6 border border-white/[0.07] p-8">
+        <p class="font-body text-[10px] tracking-[0.2em] uppercase text-white/25 mb-6">Weights in Use</p>
+        <div class="flex flex-col gap-5">
+          <div class="flex items-baseline gap-6">
+            <span class="font-body text-[10px] tracking-[0.15em] uppercase text-white/25 w-20 shrink-0">300 Light</span>
+            <span class="font-body text-2xl text-white" style="font-weight:300;">The quick brown fox</span>
+          </div>
+          <div class="flex items-baseline gap-6">
+            <span class="font-body text-[10px] tracking-[0.15em] uppercase text-white/25 w-20 shrink-0">400 Regular</span>
+            <span class="font-body text-2xl text-white" style="font-weight:400;">The quick brown fox</span>
+          </div>
+          <div class="flex items-baseline gap-6">
+            <span class="font-body text-[10px] tracking-[0.15em] uppercase text-white/25 w-20 shrink-0">500 Medium</span>
+            <span class="font-body text-2xl text-white" style="font-weight:500;">The quick brown fox</span>
+          </div>
+          <div class="flex items-baseline gap-6">
+            <span class="font-body text-[10px] tracking-[0.15em] uppercase text-white/25 w-20 shrink-0">300 Italic</span>
+            <span class="font-body text-2xl text-white/60" style="font-weight:300; font-style:italic;">The quick brown fox</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+
+  <!-- ── LOGO ── -->
+  <section class="px-10 md:px-20 py-24">
+    <p class="font-body text-[10px] tracking-[0.28em] uppercase text-bone/50 mb-5">04 — Logo & Mark</p>
+    <h2 class="font-display uppercase text-white mb-16" style="font-size: clamp(2.5rem, 6vw, 6rem); letter-spacing: -0.02em; line-height: 0.9;">
+      Logo
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+
+      <!-- On dark -->
+      <div>
+        <div class="logo-bg-dark flex items-center justify-center p-12 mb-4" style="height:200px; border: 1px solid rgba(255,255,255,0.08);">
+          <img src="White_Icon.png" alt="Clairo Studios white icon" class="h-16 w-auto" />
+        </div>
+        <p class="font-body text-[10px] tracking-[0.2em] uppercase text-white/35">Icon — On Dark</p>
+        <p class="font-body text-[10px] text-white/25 mt-1">White_Icon.png · Use on Ink or Charcoal backgrounds</p>
+      </div>
+
+      <!-- On light -->
+      <div>
+        <div class="logo-bg-bone flex items-center justify-center p-12 mb-4" style="height:200px;">
+          <img src="Black_Icon.png" alt="Clairo Studios black icon" class="h-16 w-auto" />
+        </div>
+        <p class="font-body text-[10px] tracking-[0.2em] uppercase text-white/35">Icon — On Light</p>
+        <p class="font-body text-[10px] text-white/25 mt-1">Black_Icon.png · Use on Bone or white backgrounds</p>
+      </div>
+
+      <!-- Full logo -->
+      <div>
+        <div class="logo-bg-dark flex items-center justify-center p-12 mb-4" style="height:200px; border: 1px solid rgba(255,255,255,0.08);">
+          <img src="Main_Logo.png" alt="Clairo Studios full logo" class="h-20 w-auto object-contain" />
+        </div>
+        <p class="font-body text-[10px] tracking-[0.2em] uppercase text-white/35">Full Wordmark</p>
+        <p class="font-body text-[10px] text-white/25 mt-1">Main_Logo.png · Preferred for all primary usage</p>
+      </div>
+
+    </div>
+
+    <!-- Logo + text lockup in use -->
+    <div class="border border-white/[0.07] p-10">
+      <p class="font-body text-[10px] tracking-[0.2em] uppercase text-white/25 mb-8">Lockup — As Used in Navigation</p>
+      <div class="flex items-center gap-4">
+        <img src="White_Icon.png" alt="Clairo Studios mark" class="h-8 w-auto" />
+        <span class="font-display text-[18px] tracking-[0.12em] uppercase text-white">Clairo Studios</span>
+      </div>
+      <p class="font-body text-[10px] text-white/25 mt-6 tracking-[0.1em]">Icon h-7 · Font: Pathway Gothic One 15px · Tracking +0.12em · Gap: 12px</p>
+    </div>
+
+    <!-- Clear space rule -->
+    <div class="mt-6 border border-white/[0.07] p-8">
+      <p class="font-body text-[10px] tracking-[0.2em] uppercase text-white/25 mb-4">Clear Space Rule</p>
+      <p class="font-body text-sm text-white/40 leading-[1.7] max-w-xl">Always maintain clear space equal to the height of the icon mark on all sides. Never place text, graphics, or other logos within this zone.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+
+  <!-- ── SERVICES ── -->
+  <section class="px-10 md:px-20 py-24">
+    <p class="font-body text-[10px] tracking-[0.28em] uppercase text-bone/50 mb-5">05 — Services</p>
+    <h2 class="font-display uppercase text-white mb-16" style="font-size: clamp(2.5rem, 6vw, 6rem); letter-spacing: -0.02em; line-height: 0.9;">
+      What We<br />Offer
+    </h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/[0.07]">
+      <div class="bg-ink p-8 flex flex-col gap-5">
+        <div class="text-bone/60">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+            <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/>
+            <circle cx="12" cy="13" r="4"/>
+          </svg>
+        </div>
+        <h3 class="font-display text-2xl uppercase text-white tracking-tight">Photography</h3>
+        <p class="font-body text-sm text-white/35 leading-[1.75]">Editorial, commercial, real estate, and brand photography crafted for premium visual storytelling.</p>
+      </div>
+      <div class="bg-ink p-8 flex flex-col gap-5">
+        <div class="text-bone/60">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+            <polygon points="23 7 16 12 23 17 23 7"/>
+            <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+          </svg>
+        </div>
+        <h3 class="font-display text-2xl uppercase text-white tracking-tight">Video Production</h3>
+        <p class="font-body text-sm text-white/35 leading-[1.75]">Cinematic brand films, listing walkthroughs, social reels, and campaign-driven content.</p>
+      </div>
+      <div class="bg-ink p-8 flex flex-col gap-5">
+        <div class="text-bone/60">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+            <path d="M2 17l10 5 10-5"/>
+            <path d="M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <h3 class="font-display text-2xl uppercase text-white tracking-tight">Branding</h3>
+        <p class="font-body text-sm text-white/35 leading-[1.75]">Identity systems, visual direction, and digital presence designed to position your brand with clarity.</p>
+      </div>
+      <div class="bg-ink p-8 flex flex-col gap-5">
+        <div class="text-bone/60">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+          </svg>
+        </div>
+        <h3 class="font-display text-2xl uppercase text-white tracking-tight">Content & Growth</h3>
+        <p class="font-body text-sm text-white/35 leading-[1.75]">Strategic content, paid creative, and growth systems built to attract attention and drive measurable results.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+
+  <!-- ── VOICE & TONE ── -->
+  <section class="px-10 md:px-20 py-24">
+    <p class="font-body text-[10px] tracking-[0.28em] uppercase text-bone/50 mb-5">06 — Voice & Tone</p>
+    <h2 class="font-display uppercase text-white mb-16" style="font-size: clamp(2.5rem, 6vw, 6rem); letter-spacing: -0.02em; line-height: 0.9;">
+      How We<br />Sound
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/[0.06] mb-10">
+      <div class="bg-ink p-10">
+        <p class="font-body text-[10px] tracking-[0.2em] uppercase text-bone/40 mb-6">We Are</p>
+        <ul class="flex flex-col gap-4">
+          <li class="flex items-start gap-3"><span class="text-bone/50 mt-1">—</span><span class="font-body text-sm text-white/60 leading-[1.7]"><span class="text-white">Confident, not arrogant.</span> We know what we do is good. We don't have to say it twice.</span></li>
+          <li class="flex items-start gap-3"><span class="text-bone/50 mt-1">—</span><span class="font-body text-sm text-white/60 leading-[1.7]"><span class="text-white">Direct, not cold.</span> Short sentences. Real words. No filler.</span></li>
+          <li class="flex items-start gap-3"><span class="text-bone/50 mt-1">—</span><span class="font-body text-sm text-white/60 leading-[1.7]"><span class="text-white">Strategic, not salesy.</span> We speak in outcomes and results, not promises.</span></li>
+          <li class="flex items-start gap-3"><span class="text-bone/50 mt-1">—</span><span class="font-body text-sm text-white/60 leading-[1.7]"><span class="text-white">Premium, not pretentious.</span> Elevated without being inaccessible.</span></li>
+        </ul>
+      </div>
+      <div class="bg-ink p-10">
+        <p class="font-body text-[10px] tracking-[0.2em] uppercase text-bone/40 mb-6">We Are Not</p>
+        <ul class="flex flex-col gap-4">
+          <li class="flex items-start gap-3"><span class="text-white/20 mt-1">—</span><span class="font-body text-sm text-white/35 leading-[1.7] line-through">Exciting, innovative, passionate about storytelling</span></li>
+          <li class="flex items-start gap-3"><span class="text-white/20 mt-1">—</span><span class="font-body text-sm text-white/35 leading-[1.7] line-through">We're here to help you reach your goals!</span></li>
+          <li class="flex items-start gap-3"><span class="text-white/20 mt-1">—</span><span class="font-body text-sm text-white/35 leading-[1.7] line-through">Our team of experts leverages cutting-edge solutions</span></li>
+          <li class="flex items-start gap-3"><span class="text-white/20 mt-1">—</span><span class="font-body text-sm text-white/35 leading-[1.7] line-through">🚀✨🎯 emojis in brand copy</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Example lines -->
+    <div class="border border-white/[0.07] p-8">
+      <p class="font-body text-[10px] tracking-[0.2em] uppercase text-white/25 mb-6">Sample Brand Copy</p>
+      <div class="flex flex-col gap-6">
+        <blockquote class="font-display text-3xl md:text-5xl uppercase text-white leading-[0.92]" style="letter-spacing: -0.02em;">"Properties That Stand Out."</blockquote>
+        <blockquote class="font-display text-3xl md:text-5xl uppercase text-white leading-[0.92]" style="letter-spacing: -0.02em;">"Premium Media. Real Results."</blockquote>
+        <blockquote class="font-display text-3xl md:text-5xl uppercase text-white/40 leading-[0.92]" style="letter-spacing: -0.02em;">"We don't decorate — we sell."</blockquote>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+
+  <!-- ── DESIGN SYSTEM ── -->
+  <section class="px-10 md:px-20 py-24">
+    <p class="font-body text-[10px] tracking-[0.28em] uppercase text-bone/50 mb-5">07 — Design System</p>
+    <h2 class="font-display uppercase text-white mb-16" style="font-size: clamp(2.5rem, 6vw, 6rem); letter-spacing: -0.02em; line-height: 0.9;">
+      Design<br />Tokens
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <!-- Shadows -->
+      <div class="border border-white/[0.07] p-8">
+        <p class="font-body text-[10px] tracking-[0.2em] uppercase text-white/25 mb-6">Elevation / Shadows</p>
+        <div class="flex flex-col gap-6">
+          <div class="bg-charcoal p-6 rounded-sm" style="box-shadow: 0 2px 4px rgba(0,0,0,0.6), 0 10px 28px rgba(0,0,0,0.5), 0 28px 60px rgba(0,0,0,0.4);">
+            <p class="font-body text-xs text-white/50">Elevated card — used on hover</p>
+          </div>
+          <div class="bg-charcoal p-6 rounded-sm" style="box-shadow: 0 4px 32px rgba(224,212,188,0.18), 0 1px 0 rgba(255,255,255,0.1) inset;">
+            <p class="font-body text-xs text-white/50">Button — Bone glow on dark</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Spacing -->
+      <div class="border border-white/[0.07] p-8">
+        <p class="font-body text-[10px] tracking-[0.2em] uppercase text-white/25 mb-6">Key Spacing</p>
+        <div class="flex flex-col gap-4">
+          <div class="flex items-center gap-4">
+            <div class="bg-bone/20 h-5" style="width:80px;"></div>
+            <p class="font-body text-[11px] text-white/40 tracking-[0.1em]">px-20 — Section padding (desktop)</p>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="bg-bone/20 h-5" style="width:56px;"></div>
+            <p class="font-body text-[11px] text-white/40 tracking-[0.1em]">px-14 — Section padding (tablet)</p>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="bg-bone/20 h-5" style="width:32px;"></div>
+            <p class="font-body text-[11px] text-white/40 tracking-[0.1em]">px-8 — Section padding (mobile)</p>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="bg-bone/20 h-5" style="width:112px;"></div>
+            <p class="font-body text-[11px] text-white/40 tracking-[0.1em]">py-28 — Section vertical rhythm</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Borders & dividers -->
+      <div class="border border-white/[0.07] p-8">
+        <p class="font-body text-[10px] tracking-[0.2em] uppercase text-white/25 mb-6">Borders & Dividers</p>
+        <div class="flex flex-col gap-5">
+          <div>
+            <div style="height:1px; background: linear-gradient(to right, transparent, rgba(255,255,255,0.08), transparent);" class="mb-2"></div>
+            <p class="font-body text-[11px] text-white/35">Section divider — gradient white/8%</p>
+          </div>
+          <div>
+            <div style="height:1px; background: rgba(255,255,255,0.07);" class="mb-2"></div>
+            <p class="font-body text-[11px] text-white/35">Card border — white/7%</p>
+          </div>
+          <div>
+            <div style="height:1px; background: rgba(224,212,188,0.3);" class="mb-2"></div>
+            <p class="font-body text-[11px] text-white/35">CTA border — bone/30%</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Motion -->
+      <div class="border border-white/[0.07] p-8">
+        <p class="font-body text-[10px] tracking-[0.2em] uppercase text-white/25 mb-6">Motion & Easing</p>
+        <div class="flex flex-col gap-4">
+          <div>
+            <p class="font-body text-xs text-white mb-1">Primary easing</p>
+            <p class="font-body text-[11px] text-bone/50 tracking-[0.08em]">cubic-bezier(0.25, 0.46, 0.45, 0.94)</p>
+          </div>
+          <div>
+            <p class="font-body text-xs text-white mb-1">Hover transitions</p>
+            <p class="font-body text-[11px] text-bone/50 tracking-[0.08em]">0.2s – 0.35s · Only transform & opacity</p>
+          </div>
+          <div>
+            <p class="font-body text-xs text-white mb-1">Never use</p>
+            <p class="font-body text-[11px] text-white/25 tracking-[0.08em] line-through">transition-all</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+
+  <!-- ── FOOTER ── -->
+  <footer class="px-10 md:px-20 py-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+    <div class="flex items-center gap-3">
+      <img src="White_Icon.png" alt="Clairo Studios" class="h-6 w-auto opacity-60" />
+      <span class="font-display text-[13px] tracking-[0.12em] uppercase text-white/40">Clairo Studios</span>
+    </div>
+    <p class="font-body text-[10px] tracking-[0.2em] uppercase text-white/20">Brand Identity Guide · 2025</p>
+    <p class="font-body text-[10px] tracking-[0.2em] uppercase text-white/20">Internal Use Only</p>
+  </footer>
+
+  <script>
+    function copyText(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        const t = document.getElementById('toast');
+        t.textContent = 'Copied ' + text;
+        t.classList.add('show');
+        setTimeout(() => t.classList.remove('show'), 1800);
+      });
+    }
+  </script>
+</body>
+</html>
