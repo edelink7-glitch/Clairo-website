@@ -50,6 +50,7 @@
     .work-item:hover img { transform: scale(1.05); }
     .work-item-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(11,11,11,0.82) 0%, transparent 55%); opacity: 0; transition: opacity 0.35s ease; display: flex; align-items: flex-end; padding: 1.25rem; z-index: 2; }
     .work-item:hover .work-item-overlay { opacity: 1; }
+    .work-item-overlay.always-on { opacity: 1; }
     .industry-card { transition: border-color 0.3s ease, background 0.3s ease; }
     .industry-card:hover { border-color: rgba(224,212,188,0.25) !important; background: rgba(26,26,26,0.8); }
   </style>
@@ -246,13 +247,15 @@
       <!-- James & Lise — Video -->
       <a href="work.html" class="work-item aspect-[4/3] reveal">
         <img src="portfolio/DSC04979.jpg" alt="James &amp; Lise — Wedding Film" loading="lazy" />
-        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:42px;height:42px;border:1.5px solid rgba(224,212,188,0.30);border-radius:50%;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:3;">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><polygon points="3,1 11,6 3,11" fill="rgba(224,212,188,0.45)"/></svg>
-        </div>
-        <div class="work-item-overlay">
-          <div>
-            <span class="font-display text-xs tracking-[0.22em] uppercase text-white/80 block">James &amp; Lise</span>
-            <span class="font-body text-[9px] tracking-[0.18em] uppercase text-bone/50">Weddings</span>
+        <div class="work-item-overlay always-on">
+          <div class="flex items-center gap-3">
+            <div style="width:34px;height:34px;border:1px solid rgba(224,212,188,0.50);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><polygon points="2,1 9,5 2,9" fill="#E0D4BC"/></svg>
+            </div>
+            <div>
+              <span class="font-display text-xs tracking-[0.22em] uppercase text-white block">James &amp; Lise</span>
+              <span class="font-body text-[9px] tracking-[0.18em] uppercase text-bone/55">Weddings · Film</span>
+            </div>
           </div>
         </div>
       </a>
@@ -260,13 +263,15 @@
       <!-- Finissant 2024 — Video -->
       <a href="work.html" class="work-item aspect-[4/3] reveal" style="transition-delay:0.06s">
         <img src="portfolio/DSC05264.jpg" alt="Finissant 2024 — Event Film" loading="lazy" />
-        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:42px;height:42px;border:1.5px solid rgba(224,212,188,0.30);border-radius:50%;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:3;">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><polygon points="3,1 11,6 3,11" fill="rgba(224,212,188,0.45)"/></svg>
-        </div>
-        <div class="work-item-overlay">
-          <div>
-            <span class="font-display text-xs tracking-[0.22em] uppercase text-white/80 block">Finissant 2024</span>
-            <span class="font-body text-[9px] tracking-[0.18em] uppercase text-bone/50">Events</span>
+        <div class="work-item-overlay always-on">
+          <div class="flex items-center gap-3">
+            <div style="width:34px;height:34px;border:1px solid rgba(224,212,188,0.50);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><polygon points="2,1 9,5 2,9" fill="#E0D4BC"/></svg>
+            </div>
+            <div>
+              <span class="font-display text-xs tracking-[0.22em] uppercase text-white block">Finissant 2024</span>
+              <span class="font-body text-[9px] tracking-[0.18em] uppercase text-bone/55">Events · Film</span>
+            </div>
           </div>
         </div>
       </a>
@@ -274,13 +279,15 @@
       <!-- Meet & Link — Video -->
       <a href="work.html" class="work-item aspect-[4/3] reveal" style="transition-delay:0.12s">
         <img src="portfolio/DSC05484.jpg" alt="Meet &amp; Link — Event Film" loading="lazy" />
-        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:42px;height:42px;border:1.5px solid rgba(224,212,188,0.30);border-radius:50%;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:3;">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><polygon points="3,1 11,6 3,11" fill="rgba(224,212,188,0.45)"/></svg>
-        </div>
-        <div class="work-item-overlay">
-          <div>
-            <span class="font-display text-xs tracking-[0.22em] uppercase text-white/80 block">Meet &amp; Link</span>
-            <span class="font-body text-[9px] tracking-[0.18em] uppercase text-bone/50">Events</span>
+        <div class="work-item-overlay always-on">
+          <div class="flex items-center gap-3">
+            <div style="width:34px;height:34px;border:1px solid rgba(224,212,188,0.50);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><polygon points="2,1 9,5 2,9" fill="#E0D4BC"/></svg>
+            </div>
+            <div>
+              <span class="font-display text-xs tracking-[0.22em] uppercase text-white block">Meet &amp; Link</span>
+              <span class="font-body text-[9px] tracking-[0.18em] uppercase text-bone/55">Events · Film</span>
+            </div>
           </div>
         </div>
       </a>
@@ -288,13 +295,15 @@
       <!-- Jawad 01 — Video / Reel -->
       <a href="work.html" class="work-item aspect-[4/3] reveal" style="transition-delay:0.06s">
         <img src="portfolio/DSC05790.jpg" alt="Jawad 01 — Short Form" loading="lazy" />
-        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:42px;height:42px;border:1.5px solid rgba(224,212,188,0.30);border-radius:50%;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:3;">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><polygon points="3,1 11,6 3,11" fill="rgba(224,212,188,0.45)"/></svg>
-        </div>
-        <div class="work-item-overlay">
-          <div>
-            <span class="font-display text-xs tracking-[0.22em] uppercase text-white/80 block">Jawad 01</span>
-            <span class="font-body text-[9px] tracking-[0.18em] uppercase text-bone/50">Reels · Short Form</span>
+        <div class="work-item-overlay always-on">
+          <div class="flex items-center gap-3">
+            <div style="width:34px;height:34px;border:1px solid rgba(224,212,188,0.50);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><polygon points="2,1 9,5 2,9" fill="#E0D4BC"/></svg>
+            </div>
+            <div>
+              <span class="font-display text-xs tracking-[0.22em] uppercase text-white block">Jawad 01</span>
+              <span class="font-body text-[9px] tracking-[0.18em] uppercase text-bone/55">Reels · Short Form</span>
+            </div>
           </div>
         </div>
       </a>

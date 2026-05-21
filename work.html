@@ -93,6 +93,16 @@
     #vm-ratio video { object-fit: contain; background: #0a0a0a; }
     #vm-placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
     #vm-placeholder p { font-family: 'DM Sans', sans-serif; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.22); text-align: center; }
+
+    /* Featured video section */
+    .fv-card { position: relative; overflow: hidden; cursor: pointer; aspect-ratio: 16/9; background: #0d0d0d; }
+    .fv-card .fv-poster { display: block; width: 100%; height: 100%; object-fit: cover; opacity: 0.55; transition: opacity 0.5s ease; }
+    .fv-card:hover .fv-poster { opacity: 0.80; }
+    .fv-card .fv-play { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 68px; height: 68px; border: 1.5px solid rgba(224,212,188,0.50); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: border-color 0.3s, transform 0.3s; }
+    .fv-card:hover .fv-play { border-color: rgba(224,212,188,0.95); transform: translate(-50%, -50%) scale(1.10); }
+    .fv-card .fv-label { position: absolute; bottom: 0; left: 0; right: 0; padding: 22px 22px 20px; background: linear-gradient(to top, rgba(11,11,11,0.90) 0%, transparent 100%); }
+    .fv-card .fv-title { font-family: 'Pathway Gothic One', sans-serif; font-size: 16px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.90); display: block; margin-bottom: 3px; }
+    .fv-card .fv-cat { font-family: 'DM Sans', sans-serif; font-size: 8.5px; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(224,212,188,0.55); }
   </style>
 </head>
 <body class="bg-ink text-white font-body">
@@ -130,65 +140,79 @@
   <header class="pt-36 pb-16 px-8 md:px-14 lg:px-20 reveal">
     <p class="font-body text-[10px] tracking-[0.32em] uppercase text-bone/50 mb-3">Portfolio</p>
     <h1 class="font-display text-[clamp(3rem,7vw,6.5rem)] leading-[0.92] tracking-[0.02em] uppercase text-white mb-5">Our Work</h1>
-    <p class="font-body text-sm text-white/40 font-light max-w-lg leading-relaxed">A selection of creative production across commercial, brand, real estate, and event work.</p>
+    <p class="font-body text-sm text-white/40 font-light max-w-lg leading-relaxed">Event films, wedding videos, brand content, reels, and campaign photography — creative production for brands that move.</p>
   </header>
 
-  <!-- FILTER BAR -->
-  <div class="filter-bar px-4 md:px-8 py-3">
-    <div class="flex items-center gap-1 overflow-x-auto" style="scrollbar-width:none;">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="weddings">Weddings</button>
-      <button class="filter-btn" data-filter="events">Events</button>
-      <button class="filter-btn" data-filter="commercial">Commercial</button>
-      <button class="filter-btn" data-filter="brand-content">Brand Content</button>
-      <button class="filter-btn" data-filter="short-form">Reels / Short Form</button>
-      <a href="real-estate.html" class="filter-btn" style="text-decoration:none;">Real Estate &#8594;</a>
+  <!-- VIDEO PROJECTS — always visible, never filtered -->
+  <section class="px-4 md:px-8 lg:px-14 pb-14">
+    <div class="px-2 md:px-6 mb-8">
+      <p class="font-body text-[10px] tracking-[0.32em] uppercase text-bone/50 mb-2">Films &amp; Reels</p>
+      <h2 class="font-display text-[clamp(1.8rem,3vw,2.8rem)] leading-[0.92] tracking-[0.02em] uppercase text-white">Video Production</h2>
     </div>
-  </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2" id="video-grid">
 
-  <!-- PORTFOLIO GRID -->
-  <main class="px-4 md:px-6 pt-4 pb-20">
-    <div class="masonry-grid" id="portfolio-grid">
-
-      <!-- ── VIDEO WORK ── -->
-      <!-- James & Lise — Weddings / Proposals -->
-      <!-- EMBED: Upload to Vimeo or YouTube, then replace data-embed with the embed URL -->
-      <!-- Vimeo example:  data-embed="https://player.vimeo.com/video/YOUR_ID?autoplay=1" -->
-      <!-- YouTube example: data-embed="https://www.youtube.com/embed/YOUR_ID?autoplay=1" -->
-      <div class="video-card" data-category="weddings" data-type="video" data-title="James &amp; Lise" data-subtitle="Weddings · Proposals" data-embed="videos/james-lise.mp4">
-        <img class="vc-poster" src="portfolio/DSC04979.jpg" alt="James &amp; Lise" loading="lazy" />
-        <div class="vc-overlay">
-          <div class="vc-play"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><polygon points="5,3 15,9 5,15" fill="#E0D4BC"/></svg></div>
-          <div><p class="vc-title">James &amp; Lise</p><p class="vc-cat">Weddings · Proposals</p></div>
+      <div class="fv-card" data-category="weddings" data-type="video" data-title="James &amp; Lise" data-subtitle="Weddings · Proposals" data-embed="videos/james-lise.mp4">
+        <img class="fv-poster" src="portfolio/DSC04979.jpg" alt="James &amp; Lise" />
+        <div class="fv-play"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><polygon points="7,3 21,12 7,21" fill="#E0D4BC"/></svg></div>
+        <div class="fv-label">
+          <span class="fv-title">James &amp; Lise</span>
+          <span class="fv-cat">Weddings · Proposals</span>
         </div>
       </div>
 
-      <!-- Finissant 2024 — Events -->
-      <div class="video-card" data-category="events" data-type="video" data-title="Finissant 2024" data-subtitle="Events" data-embed="videos/finissant.mp4">
-        <img class="vc-poster" src="portfolio/DSC05264.jpg" alt="Finissant 2024" loading="lazy" />
-        <div class="vc-overlay">
-          <div class="vc-play"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><polygon points="5,3 15,9 5,15" fill="#E0D4BC"/></svg></div>
-          <div><p class="vc-title">Finissant 2024</p><p class="vc-cat">Events</p></div>
+      <div class="fv-card" data-category="events" data-type="video" data-title="Finissant 2024" data-subtitle="Events" data-embed="videos/finissant.mp4">
+        <img class="fv-poster" src="portfolio/DSC05264.jpg" alt="Finissant 2024" />
+        <div class="fv-play"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><polygon points="7,3 21,12 7,21" fill="#E0D4BC"/></svg></div>
+        <div class="fv-label">
+          <span class="fv-title">Finissant 2024</span>
+          <span class="fv-cat">Events</span>
         </div>
       </div>
 
-      <!-- Meet &amp; Link — Events -->
-      <div class="video-card" data-category="events" data-type="video" data-title="Meet &amp; Link" data-subtitle="Events · Networking" data-embed="videos/meet-and-link.mp4">
-        <img class="vc-poster" src="portfolio/DSC05484.jpg" alt="Meet &amp; Link" loading="lazy" />
-        <div class="vc-overlay">
-          <div class="vc-play"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><polygon points="5,3 15,9 5,15" fill="#E0D4BC"/></svg></div>
-          <div><p class="vc-title">Meet &amp; Link</p><p class="vc-cat">Events · Networking</p></div>
+      <div class="fv-card" data-category="events" data-type="video" data-title="Meet &amp; Link" data-subtitle="Events · Networking" data-embed="videos/meet-and-link.mp4">
+        <img class="fv-poster" src="portfolio/DSC05484.jpg" alt="Meet &amp; Link" />
+        <div class="fv-play"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><polygon points="7,3 21,12 7,21" fill="#E0D4BC"/></svg></div>
+        <div class="fv-label">
+          <span class="fv-title">Meet &amp; Link</span>
+          <span class="fv-cat">Events · Networking</span>
         </div>
       </div>
 
-      <!-- Jawad 01 — Reels / Short Form -->
-      <div class="video-card" data-category="short-form" data-type="video" data-title="Jawad 01" data-subtitle="Reels · Short Form" data-embed="videos/jawad.mp4" data-portrait="true">
-        <img class="vc-poster" src="portfolio/house/A-15.jpg" alt="Jawad 01" loading="lazy" />
-        <div class="vc-overlay">
-          <div class="vc-play"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><polygon points="5,3 15,9 5,15" fill="#E0D4BC"/></svg></div>
-          <div><p class="vc-title">Jawad 01</p><p class="vc-cat">Reels · Short Form</p></div>
+      <div class="fv-card" data-category="short-form" data-type="video" data-title="Jawad 01" data-subtitle="Reels · Short Form" data-embed="videos/jawad.mp4" data-portrait="true">
+        <img class="fv-poster" src="portfolio/DSC05790.jpg" alt="Jawad 01" />
+        <div class="fv-play"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><polygon points="7,3 21,12 7,21" fill="#E0D4BC"/></svg></div>
+        <div class="fv-label">
+          <span class="fv-title">Jawad 01</span>
+          <span class="fv-cat">Reels · Short Form</span>
         </div>
       </div>
+
+    </div>
+  </section>
+
+  <div class="divider mx-4 md:mx-8 lg:mx-14"></div>
+
+  <!-- PHOTOGRAPHY & CAMPAIGN CONTENT -->
+  <section>
+    <div class="px-8 md:px-14 lg:px-20 pt-14 pb-6">
+      <p class="font-body text-[10px] tracking-[0.32em] uppercase text-bone/50 mb-2">Stills &amp; Campaigns</p>
+      <h2 class="font-display text-[clamp(1.4rem,2.5vw,2.2rem)] leading-[0.92] tracking-[0.02em] uppercase text-white">Photography</h2>
+    </div>
+
+    <!-- FILTER BAR (photography only) -->
+    <div class="filter-bar px-4 md:px-8 py-3">
+      <div class="flex items-center gap-1 overflow-x-auto" style="scrollbar-width:none;">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="events">Events</button>
+        <button class="filter-btn" data-filter="commercial">Commercial</button>
+        <button class="filter-btn" data-filter="brand-content">Brand Content</button>
+        <button class="filter-btn" data-filter="short-form">Short Form</button>
+        <a href="real-estate.html" class="filter-btn" style="text-decoration:none;">Real Estate &#8594;</a>
+      </div>
+    </div>
+
+    <main class="px-4 md:px-6 pt-4 pb-12">
+      <div class="masonry-grid" id="portfolio-grid">
 
       <!-- COMMERCIAL (20 images) -->
       <div class="masonry-item" data-category="commercial" data-src="portfolio/DSC04799.jpg" data-label="Commercial">
@@ -390,8 +414,10 @@
         <div class="masonry-item-overlay"><span class="font-display text-[10px] tracking-[0.22em] uppercase text-white/60">Short Form</span></div>
       </div>
 
-    </div>
-  </main>
+      </div>
+    </main>
+  </section>
+
 
   <!-- REAL ESTATE CTA -->
   <section class="px-8 md:px-14 lg:px-20 py-16 reveal">
@@ -472,10 +498,9 @@
       });
     }
 
-    // ── Filter (handles both photo masonry-items and video-cards) ──
+    // ── Filter (photography section only — video section always shown) ──
     const filterBtns  = document.querySelectorAll('.filter-btn');
     const photoItems  = document.querySelectorAll('.masonry-item');
-    const videoCards  = document.querySelectorAll('.video-card');
 
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
@@ -484,9 +509,6 @@
         const f = btn.dataset.filter;
         photoItems.forEach(item => {
           item.classList.toggle('hidden', f !== 'all' && item.dataset.category !== f);
-        });
-        videoCards.forEach(card => {
-          card.classList.toggle('hidden', f !== 'all' && card.dataset.category !== f);
         });
         buildLightboxItems();
       });
@@ -581,7 +603,7 @@
       document.body.style.overflow = '';
     }
 
-    videoCards.forEach(card => {
+    document.querySelectorAll('.fv-card').forEach(card => {
       card.addEventListener('click', () => openVideoModal(card));
     });
 
