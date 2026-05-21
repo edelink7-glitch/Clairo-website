@@ -39,11 +39,6 @@
     .ticker-track:hover { animation-play-state: paused; }
     @keyframes scrollFade { 0%, 100% { opacity: 0.15; transform: translateY(0); } 50% { opacity: 0.5; transform: translateY(4px); } }
     .scroll-line { animation: scrollFade 2.2s ease-in-out infinite; }
-    .hero-slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transition: opacity 1.8s ease-in-out; }
-    .hero-slide.active { opacity: 1; animation: kenBurns 10s ease-in-out forwards; }
-    .hero-slide.kb-alt.active { animation: kenBurnsAlt 10s ease-in-out forwards; }
-    @keyframes kenBurns { from { transform: scale(1.0); } to { transform: scale(1.08) translate(-1%,-0.5%); } }
-    @keyframes kenBurnsAlt { from { transform: scale(1.08) translate(-1%,0); } to { transform: scale(1.0) translate(0.5%,-0.5%); } }
     .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(11,11,11,0.88) 0%, rgba(11,11,11,0.65) 38%, rgba(11,11,11,0.22) 65%, rgba(11,11,11,0.10) 100%), linear-gradient(to bottom, rgba(11,11,11,0.45) 0%, transparent 22%, transparent 78%, rgba(11,11,11,0.55) 100%); pointer-events: none; z-index: 1; }
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s ease, transform 0.75s ease; }
     .reveal.visible { opacity: 1; transform: none; }
@@ -92,16 +87,12 @@
 
   <!-- HERO -->
   <section class="relative h-screen min-h-[640px] overflow-hidden noise">
-    <div id="hero-slides">
-      <div class="hero-slide active" style="background-image: url('portfolio/DSC04799.jpg');"></div>
-      <div class="hero-slide kb-alt" style="background-image: url('portfolio/DSC04979.jpg');"></div>
-      <div class="hero-slide" style="background-image: url('portfolio/house/A-7.jpg');"></div>
-      <div class="hero-slide kb-alt" style="background-image: url('portfolio/DSC05264.jpg');"></div>
-      <div class="hero-slide" style="background-image: url('portfolio/DSC05484.jpg');"></div>
-      <div class="hero-slide kb-alt" style="background-image: url('portfolio/house/A-25.jpg');"></div>
-      <div class="hero-slide" style="background-image: url('portfolio/DSC05790.jpg');"></div>
-      <div class="hero-slide kb-alt" style="background-image: url('portfolio/house/A-40.jpg');"></div>
-    </div>
+    <video id="hero-video" autoplay muted loop playsinline
+      class="absolute inset-0 w-full h-full object-cover"
+      poster="portfolio/DSC05049.jpg"
+      style="z-index:0;">
+      <source id="hero-src" src="videos/hero-desktop.mp4" type="video/mp4" />
+    </video>
     <div class="hero-overlay"></div>
     <div class="relative z-10 h-full flex flex-col justify-end pb-20 md:pb-28 px-8 md:px-14 lg:px-20">
       <div class="max-w-3xl">
@@ -119,7 +110,6 @@
         </div>
       </div>
     </div>
-    <div class="absolute bottom-9 left-8 md:left-14 lg:left-20 z-10 flex gap-2" id="slide-dots"></div>
     <div class="absolute bottom-10 right-10 md:right-20 z-10 flex flex-col items-center gap-2">
       <div class="scroll-line w-px h-10 bg-gradient-to-b from-transparent to-white opacity-40"></div>
     </div>
@@ -419,46 +409,15 @@
       });
     }
 
-    // Hero slideshow
-    const slides = document.querySelectorAll('.hero-slide');
-    const dotsContainer = document.getElementById('slide-dots');
-    let current = 0;
-    let slideTimer;
-
-    slides.forEach((_, i) => {
-      const dot = document.createElement('button');
-      dot.setAttribute('aria-label', 'Slide ' + (i + 1));
-      dot.addEventListener('click', () => goToSlide(i));
-      dotsContainer.appendChild(dot);
-    });
-
-    function updateDots() {
-      const dots = dotsContainer.querySelectorAll('button');
-      dots.forEach((d, i) => {
-        if (i === current) {
-          d.style.cssText = 'width:16px;height:3px;border-radius:2px;background:rgba(224,212,188,0.7);border:none;cursor:pointer;transition:all 0.3s;';
-        } else {
-          d.style.cssText = 'width:4px;height:3px;border-radius:2px;background:rgba(255,255,255,0.25);border:none;cursor:pointer;transition:all 0.3s;';
-        }
-      });
-    }
-
-    function goToSlide(n) {
-      slides[current].classList.remove('active');
-      current = n;
-      slides[current].classList.add('active');
-      updateDots();
-      clearInterval(slideTimer);
-      slideTimer = setInterval(nextSlide, 6000);
-    }
-
-    function nextSlide() {
-      const next = (current + 1) % slides.length;
-      goToSlide(next);
-    }
-
-    updateDots();
-    slideTimer = setInterval(nextSlide, 6000);
+    // Hero video — swap to mobile source on small screens
+    (function() {
+      const vid = document.getElementById('hero-video');
+      const src = document.getElementById('hero-src');
+      if (vid && src && window.innerWidth < 768) {
+        src.src = 'videos/hero-mobile.mp4';
+        vid.load();
+      }
+    })();
 
     // Scroll reveal
     const revealEls = document.querySelectorAll('.reveal');
