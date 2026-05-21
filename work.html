@@ -85,9 +85,12 @@
     #vm-close { position: absolute; top: 1.5rem; right: 2rem; background: none; border: none; color: rgba(255,255,255,0.45); cursor: pointer; font-size: 2rem; line-height: 1; transition: color 0.2s; }
     #vm-close:hover { color: white; }
     #vm-title { font-family: 'Pathway Gothic One', sans-serif; font-size: 13px; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(224,212,188,0.6); margin-bottom: 14px; }
-    #vm-body { width: min(90vw, 960px); }
-    #vm-ratio { position: relative; padding-top: 56.25%; background: #0a0a0a; border: 1px solid rgba(255,255,255,0.07); }
-    #vm-ratio iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+    #vm-body { width: min(90vw, 960px); transition: width 0.2s ease; }
+    #vm-body.portrait { width: min(90vw, 420px); }
+    #vm-ratio { position: relative; padding-top: 56.25%; background: #0a0a0a; border: 1px solid rgba(255,255,255,0.07); transition: padding-top 0.2s ease; }
+    #vm-body.portrait #vm-ratio { padding-top: 177.78%; }
+    #vm-ratio iframe, #vm-ratio video { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+    #vm-ratio video { object-fit: contain; background: #0a0a0a; }
     #vm-placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
     #vm-placeholder p { font-family: 'DM Sans', sans-serif; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.22); text-align: center; }
   </style>
@@ -152,7 +155,7 @@
       <!-- EMBED: Upload to Vimeo or YouTube, then replace data-embed with the embed URL -->
       <!-- Vimeo example:  data-embed="https://player.vimeo.com/video/YOUR_ID?autoplay=1" -->
       <!-- YouTube example: data-embed="https://www.youtube.com/embed/YOUR_ID?autoplay=1" -->
-      <div class="video-card" data-category="weddings" data-type="video" data-title="James &amp; Lise" data-subtitle="Weddings · Proposals" data-embed="">
+      <div class="video-card" data-category="weddings" data-type="video" data-title="James &amp; Lise" data-subtitle="Weddings · Proposals" data-embed="videos/james-lise.mp4">
         <img class="vc-poster" src="portfolio/DSC04979.jpg" alt="James &amp; Lise" loading="lazy" />
         <div class="vc-overlay">
           <div class="vc-play"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><polygon points="5,3 15,9 5,15" fill="#E0D4BC"/></svg></div>
@@ -161,7 +164,7 @@
       </div>
 
       <!-- Finissant 2024 — Events -->
-      <div class="video-card" data-category="events" data-type="video" data-title="Finissant 2024" data-subtitle="Events" data-embed="">
+      <div class="video-card" data-category="events" data-type="video" data-title="Finissant 2024" data-subtitle="Events" data-embed="videos/finissant.mp4">
         <img class="vc-poster" src="portfolio/DSC05264.jpg" alt="Finissant 2024" loading="lazy" />
         <div class="vc-overlay">
           <div class="vc-play"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><polygon points="5,3 15,9 5,15" fill="#E0D4BC"/></svg></div>
@@ -170,7 +173,7 @@
       </div>
 
       <!-- Meet &amp; Link — Events -->
-      <div class="video-card" data-category="events" data-type="video" data-title="Meet &amp; Link" data-subtitle="Events · Networking" data-embed="">
+      <div class="video-card" data-category="events" data-type="video" data-title="Meet &amp; Link" data-subtitle="Events · Networking" data-embed="videos/meet-and-link.mp4">
         <img class="vc-poster" src="portfolio/DSC05484.jpg" alt="Meet &amp; Link" loading="lazy" />
         <div class="vc-overlay">
           <div class="vc-play"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><polygon points="5,3 15,9 5,15" fill="#E0D4BC"/></svg></div>
@@ -179,7 +182,7 @@
       </div>
 
       <!-- Jawad 01 — Reels / Short Form -->
-      <div class="video-card" data-category="short-form" data-type="video" data-title="Jawad 01" data-subtitle="Reels · Short Form" data-embed="">
+      <div class="video-card" data-category="short-form" data-type="video" data-title="Jawad 01" data-subtitle="Reels · Short Form" data-embed="videos/jawad.mp4" data-portrait="true">
         <img class="vc-poster" src="portfolio/house/A-15.jpg" alt="Jawad 01" loading="lazy" />
         <div class="vc-overlay">
           <div class="vc-play"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><polygon points="5,3 15,9 5,15" fill="#E0D4BC"/></svg></div>
@@ -586,9 +589,8 @@
     <div id="vm-body">
       <p id="vm-title"></p>
       <div id="vm-ratio">
-        <!-- embed src is set by JS when a video-card is clicked -->
-        <!-- To activate: upload video to YouTube or Vimeo and add the embed URL to the matching video-card's data-embed attribute -->
-        <iframe id="vm-iframe" src="" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        <iframe id="vm-iframe" src="" frameborder="0" allow="autoplay; fullscreen" allowfullscreen style="display:none;"></iframe>
+        <video id="vm-video" src="" controls playsinline style="display:none;"></video>
         <div id="vm-placeholder">
           <svg width="40" height="40" viewBox="0 0 40 40" fill="none" style="margin-bottom:8px;opacity:0.2"><circle cx="20" cy="20" r="19" stroke="#E0D4BC" stroke-width="1.5"/><polygon points="15,11 31,20 15,29" fill="#E0D4BC"/></svg>
           <p>Video coming soon</p>
@@ -707,20 +709,36 @@
 
     // ── Video Modal ──
     const vm        = document.getElementById('video-modal');
+    const vmBody    = document.getElementById('vm-body');
     const vmIframe  = document.getElementById('vm-iframe');
+    const vmVideo   = document.getElementById('vm-video');
     const vmTitle   = document.getElementById('vm-title');
     const vmPH      = document.getElementById('vm-placeholder');
 
     function openVideoModal(card) {
-      const embed = card.dataset.embed;
+      const embed     = card.dataset.embed;
+      const isPortrait = card.dataset.portrait === 'true';
       vmTitle.textContent = card.dataset.title + '  ·  ' + card.dataset.subtitle;
+      vmBody.classList.toggle('portrait', isPortrait);
+
       if (embed) {
-        vmIframe.src = embed;
-        vmIframe.style.display = 'block';
-        vmPH.style.display = 'none';
+        const isLocal = !embed.startsWith('http');
+        if (isLocal) {
+          vmVideo.src = embed;
+          vmVideo.style.display = 'block';
+          vmIframe.style.display = 'none';
+          vmPH.style.display = 'none';
+          vmVideo.play().catch(() => {});
+        } else {
+          vmIframe.src = embed;
+          vmIframe.style.display = 'block';
+          vmVideo.style.display = 'none';
+          vmPH.style.display = 'none';
+        }
       } else {
         vmIframe.src = '';
         vmIframe.style.display = 'none';
+        vmVideo.style.display = 'none';
         vmPH.style.display = 'flex';
       }
       vm.classList.add('open');
@@ -728,7 +746,10 @@
     }
     function closeVideoModal() {
       vm.classList.remove('open');
+      vmBody.classList.remove('portrait');
       vmIframe.src = '';
+      vmVideo.pause();
+      vmVideo.src = '';
       document.body.style.overflow = '';
     }
 
