@@ -1,954 +1,479 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="bg-ink">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Clairo Studios — Marketing Agency</title>
+  <title>Clairo Studios — Creative Production &amp; Marketing Agency, Montreal</title>
+  <meta name="description" content="Clairo Studios is a premium creative production and marketing agency in Montreal. Brand films, commercial photography, real estate media, and short form content for brands that demand more." />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
-
+  <link href="https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet" />
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          colors: {
-            bone:     '#E0D4BC',
-            charcoal: '#1A1A1A',
-            ink:      '#0B0B0B',
-          },
-          fontFamily: {
-            display: ['"Pathway Gothic One"', 'sans-serif'],
-            body:    ['"DM Sans"', 'sans-serif'],
-          },
+          colors: { bone: '#E0D4BC', charcoal: '#1A1A1A', ink: '#0B0B0B' },
+          fontFamily: { display: ['"Pathway Gothic One"', 'sans-serif'], body: ['"DM Sans"', 'sans-serif'] }
         }
       }
     }
   </script>
-
   <style>
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     * { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-
-    /* ─── Noise texture ─── */
-    .noise::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-      opacity: 0.03;
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    /* ─── Divider ─── */
-    .divider {
-      height: 1px;
-      background: linear-gradient(to right, transparent, rgba(255,255,255,0.08), transparent);
-    }
-
-    /* ─── Nav link underline ─── */
+    .noise::after { content: ''; position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); opacity: 0.03; pointer-events: none; z-index: 1; }
+    .divider { height: 1px; background: linear-gradient(to right, transparent, rgba(255,255,255,0.08), transparent); }
     .nav-link { position: relative; }
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: -3px; left: 0;
-      width: 0; height: 1px;
-      background: #E0D4BC;
-      transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
+    .nav-link::after { content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 1px; background: #E0D4BC; transition: width 0.3s cubic-bezier(0.25,0.46,0.45,0.94); }
     .nav-link:hover::after { width: 100%; }
-
-    /* ─── Button ripple / hover ─── */
     .btn { position: relative; overflow: hidden; }
-    .btn::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: rgba(255,255,255,0.07);
-      opacity: 0;
-      transition: opacity 0.22s ease;
-    }
+    .btn::before { content: ''; position: absolute; inset: 0; background: rgba(255,255,255,0.07); opacity: 0; transition: opacity 0.22s ease; }
     .btn:hover::before { opacity: 1; }
     .btn:active { transform: scale(0.975); }
-
-    /* ─── Service card hover ─── */
-    .service-card {
-      transition:
-        transform  0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-        box-shadow 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-    .service-card:hover {
-      transform: translateY(-5px);
-      box-shadow:
-        0 2px 4px   rgba(0,0,0,0.6),
-        0 10px 28px rgba(0,0,0,0.5),
-        0 28px 60px rgba(0,0,0,0.4),
-        inset 0 1px 0 rgba(255,255,255,0.06);
-    }
-
-    /* ─── Ticker animation ─── */
-    @keyframes ticker {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
-    .ticker-track { animation: ticker 22s linear infinite; }
+    .service-card { transition: transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.35s; }
+    .service-card:hover { transform: translateY(-5px); box-shadow: 0 2px 4px rgba(0,0,0,0.6), 0 10px 28px rgba(0,0,0,0.5), 0 28px 60px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06); }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .ticker-track { animation: ticker 28s linear infinite; }
     .ticker-track:hover { animation-play-state: paused; }
-
-    /* ─── Scroll indicator ─── */
-    @keyframes scrollFade {
-      0%, 100% { opacity: 0.15; transform: scaleY(1) translateY(0); }
-      50%       { opacity: 0.5;  transform: scaleY(0.65) translateY(4px); }
-    }
+    @keyframes scrollFade { 0%, 100% { opacity: 0.15; transform: translateY(0); } 50% { opacity: 0.5; transform: translateY(4px); } }
     .scroll-line { animation: scrollFade 2.2s ease-in-out infinite; }
-
-    /* ─── Hero Slideshow ─── */
-    .hero-slide {
-      position: absolute; inset: 0;
-      background-size: cover;
-      background-position: center;
-      opacity: 0;
-      transition: opacity 1.8s ease-in-out;
-      will-change: opacity, transform;
-    }
-    .hero-slide.active {
-      opacity: 1;
-      animation: kenBurns 10s ease-in-out forwards;
-    }
-    .hero-slide.kb-alt.active {
-      animation: kenBurnsAlt 10s ease-in-out forwards;
-    }
-    @keyframes kenBurns {
-      from { transform: scale(1.0) translate(0, 0); }
-      to   { transform: scale(1.08) translate(-1%, -0.5%); }
-    }
-    @keyframes kenBurnsAlt {
-      from { transform: scale(1.08) translate(-1%, 0); }
-      to   { transform: scale(1.0)  translate(0.5%, -0.5%); }
-    }
-
-    /* ─── Hero overlay gradient ─── */
-    .hero-overlay {
-      position: absolute; inset: 0;
-      background:
-        linear-gradient(to right,
-          rgba(11,11,11,0.88) 0%,
-          rgba(11,11,11,0.65) 38%,
-          rgba(11,11,11,0.22) 65%,
-          rgba(11,11,11,0.10) 100%),
-        linear-gradient(to bottom,
-          rgba(11,11,11,0.45) 0%,
-          transparent 22%,
-          transparent 78%,
-          rgba(11,11,11,0.55) 100%);
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    /* ─── Masonry photo grid ─── */
-    .photo-masonry {
-      column-count: 3;
-      column-gap: 5px;
-    }
-    @media (max-width: 900px)  { .photo-masonry { column-count: 2; } }
-    @media (max-width: 480px)  { .photo-masonry { column-count: 1; } }
-
-    .photo-brick {
-      break-inside: avoid;
-      margin-bottom: 5px;
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-      display: block;
-    }
-    .photo-brick img {
-      display: block; width: 100%; height: auto;
-      transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-    .photo-brick:hover img { transform: scale(1.04); }
-
-    /* ─── Lightbox ─── */
-    .lb-overlay {
-      position: fixed; inset: 0; z-index: 2000;
-      background: rgba(0,0,0,0.97);
-      display: flex; align-items: center; justify-content: center;
-      opacity: 0; pointer-events: none;
-      transition: opacity 0.3s ease;
-    }
-    .lb-overlay.open { opacity: 1; pointer-events: all; }
-    #lb-img {
-      max-height: 90vh; max-width: 90vw;
-      object-fit: contain;
-      transition: opacity 0.18s ease;
-    }
-    .lb-btn {
-      position: absolute; top: 50%; transform: translateY(-50%);
-      background: none; border: none; color: rgba(255,255,255,0.4);
-      font-size: 3rem; cursor: pointer; padding: 1.2rem 1.8rem;
-      transition: color 0.2s; line-height: 1; user-select: none;
-    }
-    .lb-btn:hover { color: rgba(255,255,255,0.9); }
-    #lb-prev { left: 0; }
-    #lb-next { right: 0; }
-    #lb-close {
-      position: absolute; top: 1.2rem; right: 1.8rem;
-      background: none; border: none; color: rgba(255,255,255,0.35);
-      font-size: 1.5rem; cursor: pointer; padding: 0.5rem;
-      transition: color 0.2s; line-height: 1;
-    }
-    #lb-close:hover { color: white; }
-    #lb-counter {
-      position: absolute; bottom: 1.8rem; left: 50%; transform: translateX(-50%);
-      font-family: 'DM Sans', sans-serif; font-size: 10px;
-      letter-spacing: 0.25em; text-transform: uppercase;
-      color: rgba(255,255,255,0.28); white-space: nowrap;
-    }
+    .hero-slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transition: opacity 1.8s ease-in-out; }
+    .hero-slide.active { opacity: 1; animation: kenBurns 10s ease-in-out forwards; }
+    .hero-slide.kb-alt.active { animation: kenBurnsAlt 10s ease-in-out forwards; }
+    @keyframes kenBurns { from { transform: scale(1.0); } to { transform: scale(1.08) translate(-1%,-0.5%); } }
+    @keyframes kenBurnsAlt { from { transform: scale(1.08) translate(-1%,0); } to { transform: scale(1.0) translate(0.5%,-0.5%); } }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(11,11,11,0.88) 0%, rgba(11,11,11,0.65) 38%, rgba(11,11,11,0.22) 65%, rgba(11,11,11,0.10) 100%), linear-gradient(to bottom, rgba(11,11,11,0.45) 0%, transparent 22%, transparent 78%, rgba(11,11,11,0.55) 100%); pointer-events: none; z-index: 1; }
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    #mobile-menu { transition: opacity 0.2s, transform 0.2s; }
+    #mobile-menu.closed { opacity: 0; pointer-events: none; transform: translateY(-8px); }
+    #mobile-menu.open { opacity: 1; pointer-events: all; transform: translateY(0); }
+    .work-item { position: relative; overflow: hidden; cursor: pointer; display: block; }
+    .work-item img { transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94); display: block; width: 100%; height: 100%; object-fit: cover; }
+    .work-item:hover img { transform: scale(1.05); }
+    .work-item-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(11,11,11,0.82) 0%, transparent 55%); opacity: 0; transition: opacity 0.35s ease; display: flex; align-items: flex-end; padding: 1.25rem; z-index: 2; }
+    .work-item:hover .work-item-overlay { opacity: 1; }
+    .industry-card { transition: border-color 0.3s ease, background 0.3s ease; }
+    .industry-card:hover { border-color: rgba(224,212,188,0.25) !important; background: rgba(26,26,26,0.8); }
   </style>
 </head>
-
 <body class="bg-ink text-white font-body">
 
-  <!-- ══════════════════════════════════════════════
-       NAVIGATION
-  ══════════════════════════════════════════════ -->
-  <nav class="fixed top-0 left-0 right-0 z-50"
-       style="background: linear-gradient(to bottom, rgba(11,11,11,0.92) 0%, rgba(11,11,11,0) 100%);
-              backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);">
+  <!-- NAV -->
+  <nav class="fixed top-0 left-0 right-0 z-50" style="background: linear-gradient(to bottom, rgba(11,11,11,0.95) 0%, rgba(11,11,11,0) 100%); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);">
     <div class="flex items-center justify-between px-8 md:px-14 lg:px-20 py-6">
-
-      <!-- Logo -->
-      <a href="#" class="flex items-center gap-3 group focus:outline-none focus-visible:ring-1 focus-visible:ring-bone/40 rounded">
-        <img src="White_Icon.png" alt="Clairo Studios mark" class="h-7 w-auto" />
-        <span class="font-display text-[15px] tracking-[0.12em] uppercase text-white hidden sm:block"
-              style="letter-spacing: 0.1em;">Clairo Studios</span>
+      <a href="index.html" class="flex items-center gap-3 group">
+        <img src="White_Icon.png" alt="Clairo Studios" class="h-7 w-auto" />
+        <span class="font-display text-[15px] tracking-[0.10em] uppercase text-white hidden sm:block">Clairo Studios</span>
       </a>
-
-      <!-- Desktop links -->
       <ul class="hidden md:flex items-center gap-10">
-        <li>
-          <a href="#services"
-             class="nav-link font-body text-xs tracking-[0.2em] uppercase text-white/50 hover:text-white transition-colors duration-200">
-            Services
-          </a>
-        </li>
-        <li>
-          <a href="#work"
-             class="nav-link font-body text-xs tracking-[0.2em] uppercase text-white/50 hover:text-white transition-colors duration-200">
-            Work
-          </a>
-        </li>
-        <li>
-          <a href="#about"
-             class="nav-link font-body text-xs tracking-[0.2em] uppercase text-white/50 hover:text-white transition-colors duration-200">
-            About
-          </a>
-        </li>
-        <li>
-          <a href="https://calendly.com/edelink7/15min" target="_blank" rel="noopener noreferrer"
-             class="btn inline-flex items-center gap-2 px-5 py-2 border border-bone/30 text-bone text-xs tracking-[0.18em] uppercase rounded-sm hover:border-bone/70 transition-colors duration-300
-                    focus:outline-none focus-visible:ring-2 focus-visible:ring-bone/50">
-            Contact
-          </a>
-        </li>
+        <li><a href="work.html" class="nav-link font-body text-xs tracking-[0.2em] uppercase text-white/50 hover:text-white transition-colors duration-200">Work</a></li>
+        <li><a href="services.html" class="nav-link font-body text-xs tracking-[0.2em] uppercase text-white/50 hover:text-white transition-colors duration-200">Services</a></li>
+        <li><a href="real-estate.html" class="nav-link font-body text-xs tracking-[0.2em] uppercase text-white/50 hover:text-white transition-colors duration-200">Real Estate</a></li>
+        <li><a href="about.html" class="nav-link font-body text-xs tracking-[0.2em] uppercase text-white/50 hover:text-white transition-colors duration-200">About</a></li>
+        <li><a href="https://calendly.com/edelink7/15min" target="_blank" class="btn inline-flex items-center gap-2 px-5 py-2 border border-bone/30 text-bone text-xs tracking-[0.18em] uppercase hover:border-bone/70 transition-colors duration-300">Book a Call</a></li>
       </ul>
-
-      <!-- Mobile hamburger -->
-      <button class="md:hidden text-white/50 hover:text-white transition-colors duration-200 focus:outline-none focus-visible:ring-1 focus-visible:ring-bone/40 rounded p-1"
-              aria-label="Open menu">
-        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.4">
-          <line x1="2" y1="6"  x2="20" y2="6"  stroke-linecap="round"/>
-          <line x1="2" y1="11" x2="20" y2="11" stroke-linecap="round"/>
-          <line x1="2" y1="16" x2="14" y2="16" stroke-linecap="round"/>
-        </svg>
+      <button id="menu-toggle" class="md:hidden text-white/50 hover:text-white transition-colors p-1" aria-label="Open menu">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.4"><line x1="2" y1="6" x2="20" y2="6" stroke-linecap="round"/><line x1="2" y1="11" x2="20" y2="11" stroke-linecap="round"/><line x1="2" y1="16" x2="14" y2="16" stroke-linecap="round"/></svg>
       </button>
-
+    </div>
+    <div id="mobile-menu" class="closed md:hidden absolute top-full left-0 right-0 bg-ink border-t border-white/[0.07] px-8 py-6">
+      <ul class="flex flex-col gap-5">
+        <li><a href="work.html" class="font-body text-sm tracking-[0.2em] uppercase text-white/60 hover:text-white transition-colors">Work</a></li>
+        <li><a href="services.html" class="font-body text-sm tracking-[0.2em] uppercase text-white/60 hover:text-white transition-colors">Services</a></li>
+        <li><a href="real-estate.html" class="font-body text-sm tracking-[0.2em] uppercase text-white/60 hover:text-white transition-colors">Real Estate</a></li>
+        <li><a href="about.html" class="font-body text-sm tracking-[0.2em] uppercase text-white/60 hover:text-white transition-colors">About</a></li>
+        <li><a href="https://calendly.com/edelink7/15min" target="_blank" class="font-body text-sm tracking-[0.2em] uppercase text-bone/70">Book a Call &#8594;</a></li>
+      </ul>
     </div>
   </nav>
 
-
-  <!-- ══════════════════════════════════════════════
-       HERO — full-screen photo slideshow
-  ══════════════════════════════════════════════ -->
-  <section class="noise relative min-h-screen flex flex-col justify-center overflow-hidden px-8 md:px-14 lg:px-20 pt-28 pb-20">
-
-    <!-- Slideshow layers — A-7 featured first, then a spread across the set -->
-    <div class="hero-slide"         style="background-image: url('portfolio/house/A-7.jpg');"></div>
-    <div class="hero-slide kb-alt"  style="background-image: url('portfolio/house/A-1.jpg');"></div>
-    <div class="hero-slide"         style="background-image: url('portfolio/house/A-5.jpg');"></div>
-    <div class="hero-slide kb-alt"  style="background-image: url('portfolio/house/A-10.jpg');"></div>
-    <div class="hero-slide"         style="background-image: url('portfolio/house/A-15.jpg');"></div>
-    <div class="hero-slide kb-alt"  style="background-image: url('portfolio/house/A-20.jpg');"></div>
-    <div class="hero-slide"         style="background-image: url('portfolio/house/A-25.jpg');"></div>
-    <div class="hero-slide kb-alt"  style="background-image: url('portfolio/house/A-30.jpg');"></div>
-    <div class="hero-slide"         style="background-image: url('portfolio/house/A-35.jpg');"></div>
-    <div class="hero-slide kb-alt"  style="background-image: url('portfolio/house/A-40.jpg');"></div>
-    <div class="hero-slide"         style="background-image: url('portfolio/house/A-45.jpg');"></div>
-    <div class="hero-slide kb-alt"  style="background-image: url('portfolio/house/A-47.jpg');"></div>
-
-    <!-- Gradient overlay for text legibility -->
+  <!-- HERO -->
+  <section class="relative h-screen min-h-[640px] overflow-hidden noise">
+    <div id="hero-slides">
+      <div class="hero-slide active" style="background-image: url('portfolio/DSC04799.jpg');"></div>
+      <div class="hero-slide kb-alt" style="background-image: url('portfolio/DSC04979.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('portfolio/house/A-7.jpg');"></div>
+      <div class="hero-slide kb-alt" style="background-image: url('portfolio/DSC05264.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('portfolio/DSC05484.jpg');"></div>
+      <div class="hero-slide kb-alt" style="background-image: url('portfolio/house/A-25.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('portfolio/DSC05790.jpg');"></div>
+      <div class="hero-slide kb-alt" style="background-image: url('portfolio/house/A-40.jpg');"></div>
+    </div>
     <div class="hero-overlay"></div>
-
-    <!-- Content -->
-    <div class="relative z-10 max-w-6xl" style="z-index: 2;">
-
-      <!-- Eyebrow -->
-      <p class="font-body text-[10px] tracking-[0.3em] uppercase text-bone/60 mb-8">
-        Real Estate Media
-      </p>
-
-      <!-- Main headline -->
-      <h1 class="font-display uppercase leading-[0.88] text-white"
-          style="font-size: clamp(4.5rem, 13vw, 13.5rem); letter-spacing: -0.025em;">
-        Properties<br />
-        <span style="color: #E0D4BC;">That Stand</span><br />
-        Out.
-      </h1>
-
-      <!-- Sub copy -->
-      <p class="mt-10 font-body text-base md:text-lg text-white/45 max-w-md leading-[1.7]">
-        Clairo Studios helps real estate agents attract buyers with premium photography, cinematic video, and high-converting social media content.
-      </p>
-
-      <!-- CTAs -->
-      <div class="mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-5">
-        <a href="#work"
-           class="btn inline-flex items-center gap-3 px-8 py-4 bg-white text-ink text-xs font-medium tracking-[0.2em] uppercase
-                  focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
-           style="box-shadow: 0 4px 32px rgba(224,212,188,0.18), 0 1px 0 rgba(255,255,255,0.1) inset;">
-          View Our Work
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
-            <path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-        <a href="https://calendly.com/edelink7/15min" target="_blank" rel="noopener noreferrer"
-           class="inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-white/40 hover:text-white/80
-                  transition-colors duration-300 focus:outline-none focus-visible:ring-1 focus-visible:ring-bone/40">
-          Start a project
-          <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
-            <path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
+    <div class="relative z-10 h-full flex flex-col justify-end pb-20 md:pb-28 px-8 md:px-14 lg:px-20">
+      <div class="max-w-3xl">
+        <p class="font-body text-[10px] tracking-[0.32em] uppercase text-bone/60 mb-5">Montreal &middot; Creative Production Studio</p>
+        <h1 class="font-display text-[clamp(3rem,8vw,7.5rem)] leading-[0.92] tracking-[0.02em] uppercase text-white mb-6">Creative That<br/>Moves Business.</h1>
+        <p class="font-body text-sm md:text-base text-white/55 font-light leading-relaxed max-w-lg mb-10">Clairo Studios helps businesses, brands, and real estate professionals stand out through strategic creative production, premium content, and marketing-focused media.</p>
+        <div class="flex flex-wrap items-center gap-4">
+          <a href="work.html" class="btn inline-flex items-center gap-2.5 px-7 py-3.5 bg-bone text-ink font-body text-xs tracking-[0.2em] uppercase font-medium hover:bg-white transition-colors duration-300">
+            View Our Work
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 7h10M7 2l5 5-5 5"/></svg>
+          </a>
+          <a href="https://calendly.com/edelink7/15min" target="_blank" class="btn inline-flex items-center gap-2.5 px-7 py-3.5 border border-white/25 text-white font-body text-xs tracking-[0.2em] uppercase hover:border-white/60 transition-colors duration-300">
+            Book a Call
+          </a>
+        </div>
       </div>
     </div>
-
-    <!-- Scroll indicator -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 select-none" style="z-index: 2;" aria-hidden="true">
-      <span class="font-body text-[9px] tracking-[0.25em] uppercase text-white/25">Scroll</span>
-      <div class="scroll-line w-px h-10 bg-gradient-to-b from-white/40 to-transparent"></div>
+    <div class="absolute bottom-9 left-8 md:left-14 lg:left-20 z-10 flex gap-2" id="slide-dots"></div>
+    <div class="absolute bottom-10 right-10 md:right-20 z-10 flex flex-col items-center gap-2">
+      <div class="scroll-line w-px h-10 bg-gradient-to-b from-transparent to-white opacity-40"></div>
     </div>
-
   </section>
 
-
-  <!-- ══════════════════════════════════════════════
-       BRAND ESSENCE TICKER
-  ══════════════════════════════════════════════ -->
-  <div class="divider"></div>
-
-  <div class="py-[14px] bg-charcoal overflow-hidden">
-    <div class="ticker-track flex gap-12 whitespace-nowrap w-max">
-      <span class="font-display text-[11px] tracking-[0.28em] uppercase text-white/25">Clear</span>
-      <span class="text-bone/40 text-xs select-none">·</span>
-      <span class="font-display text-[11px] tracking-[0.28em] uppercase text-white/25">Pure</span>
-      <span class="text-bone/40 text-xs select-none">·</span>
-      <span class="font-display text-[11px] tracking-[0.28em] uppercase text-white/25">Focused</span>
-      <span class="text-bone/40 text-xs select-none">·</span>
-      <span class="font-display text-[11px] tracking-[0.28em] uppercase text-white/25">Strategic</span>
-      <span class="text-bone/40 text-xs select-none">·</span>
-      <span class="font-display text-[11px] tracking-[0.28em] uppercase text-white/25">Bold</span>
-      <span class="text-bone/40 text-xs select-none">·</span>
-      <span class="font-display text-[11px] tracking-[0.28em] uppercase text-white/25">Confident</span>
-      <span class="text-bone/40 text-xs select-none">·</span>
-      <span class="font-display text-[11px] tracking-[0.28em] uppercase text-white/25">Timeless</span>
-      <span class="text-bone/40 text-xs select-none">·</span>
-      <!-- duplicate -->
-      <span class="font-display text-[11px] tracking-[0.28em] uppercase text-white/25">Clear</span>
-      <span class="text-bone/40 text-xs select-none">·</span>
-      <span class="font-display text-[11px] tracking-[0.28em] uppercase text-white/25">Pure</span>
-      <span class="text-bone/40 text-xs select-none">·</span>
-      <span class="font-display text-[11px] tracking-[0.28em] uppercase text-white/25">Focused</span>
-      <span class="text-bone/40 text-xs select-none">·</span>
-      <span class="font-display text-[11px] tracking-[0.28em] uppercase text-white/25">Strategic</span>
-      <span class="text-bone/40 text-xs select-none">·</span>
-      <span class="font-display text-[11px] tracking-[0.28em] uppercase text-white/25">Bold</span>
-      <span class="text-bone/40 text-xs select-none">·</span>
-      <span class="font-display text-[11px] tracking-[0.28em] uppercase text-white/25">Confident</span>
-      <span class="text-bone/40 text-xs select-none">·</span>
-      <span class="font-display text-[11px] tracking-[0.28em] uppercase text-white/25">Timeless</span>
-      <span class="text-bone/40 text-xs select-none">·</span>
+  <!-- TICKER -->
+  <section class="py-5 border-y border-white/[0.07] overflow-hidden">
+    <div class="ticker-track flex items-center whitespace-nowrap select-none">
+      <span class="font-display text-xs tracking-[0.28em] uppercase text-white/18 px-8">Premium</span><span class="text-bone/25 text-xs">·</span>
+      <span class="font-display text-xs tracking-[0.28em] uppercase text-white/18 px-8">Strategic</span><span class="text-bone/25 text-xs">·</span>
+      <span class="font-display text-xs tracking-[0.28em] uppercase text-white/18 px-8">Creative</span><span class="text-bone/25 text-xs">·</span>
+      <span class="font-display text-xs tracking-[0.28em] uppercase text-white/18 px-8">Production</span><span class="text-bone/25 text-xs">·</span>
+      <span class="font-display text-xs tracking-[0.28em] uppercase text-white/18 px-8">Results</span><span class="text-bone/25 text-xs">·</span>
+      <span class="font-display text-xs tracking-[0.28em] uppercase text-white/18 px-8">Bold</span><span class="text-bone/25 text-xs">·</span>
+      <span class="font-display text-xs tracking-[0.28em] uppercase text-white/18 px-8">Content</span><span class="text-bone/25 text-xs">·</span>
+      <span class="font-display text-xs tracking-[0.28em] uppercase text-white/18 px-8">Agency</span><span class="text-bone/25 text-xs">·</span>
+      <span class="font-display text-xs tracking-[0.28em] uppercase text-white/18 px-8">Montreal</span><span class="text-bone/25 text-xs">·</span>
+      <span class="font-display text-xs tracking-[0.28em] uppercase text-white/18 px-8">Cinematic</span><span class="text-bone/25 text-xs">·</span>
+      <span class="font-display text-xs tracking-[0.28em] uppercase text-white/18 px-8">Premium</span><span class="text-bone/25 text-xs">·</span>
+      <span class="font-display text-xs tracking-[0.28em] uppercase text-white/18 px-8">Strategic</span><span class="text-bone/25 text-xs">·</span>
+      <span class="font-display text-xs tracking-[0.28em] uppercase text-white/18 px-8">Creative</span><span class="text-bone/25 text-xs">·</span>
+      <span class="font-display text-xs tracking-[0.28em] uppercase text-white/18 px-8">Production</span><span class="text-bone/25 text-xs">·</span>
+      <span class="font-display text-xs tracking-[0.28em] uppercase text-white/18 px-8">Results</span><span class="text-bone/25 text-xs">·</span>
+      <span class="font-display text-xs tracking-[0.28em] uppercase text-white/18 px-8">Bold</span><span class="text-bone/25 text-xs">·</span>
+      <span class="font-display text-xs tracking-[0.28em] uppercase text-white/18 px-8">Content</span><span class="text-bone/25 text-xs">·</span>
+      <span class="font-display text-xs tracking-[0.28em] uppercase text-white/18 px-8">Agency</span><span class="text-bone/25 text-xs">·</span>
+      <span class="font-display text-xs tracking-[0.28em] uppercase text-white/18 px-8">Montreal</span><span class="text-bone/25 text-xs">·</span>
+      <span class="font-display text-xs tracking-[0.28em] uppercase text-white/18 px-8">Cinematic</span><span class="text-bone/25 text-xs">·</span>
     </div>
-  </div>
+  </section>
 
-  <div class="divider"></div>
-
-
-  <!-- ══════════════════════════════════════════════
-       SERVICES
-  ══════════════════════════════════════════════ -->
-  <section id="services" class="px-8 md:px-14 lg:px-20 py-28">
-
-    <!-- Section header -->
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-      <div>
-        <p class="font-body text-[10px] tracking-[0.28em] uppercase text-bone/60 mb-4">What We Do</p>
-        <h2 class="font-display uppercase leading-none text-white"
-            style="font-size: clamp(2.8rem, 7vw, 7rem); letter-spacing: -0.02em;">
-          Our<br />Services
-        </h2>
+  <!-- SHOWREEL -->
+  <!-- To activate: upload your reel to YouTube or Vimeo, then replace the iframe src below -->
+  <!-- YouTube: https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=0&rel=0 -->
+  <!-- Vimeo:   https://player.vimeo.com/video/YOUR_VIDEO_ID?color=E0D4BC -->
+  <section class="px-8 md:px-14 lg:px-20 py-20 md:py-28 reveal">
+    <div class="mb-10">
+      <p class="font-body text-[10px] tracking-[0.32em] uppercase text-bone/50 mb-3">Our Reel</p>
+      <h2 class="font-display text-[clamp(2rem,5vw,4.5rem)] leading-[0.92] tracking-[0.01em] uppercase text-white">Watch Our Work</h2>
+    </div>
+    <div style="position:relative; padding-top:56.25%; background:#0d0d0d; border:1px solid rgba(255,255,255,0.07);">
+      <!-- REPLACE src="" with your YouTube or Vimeo embed URL once the video is uploaded -->
+      <iframe
+        id="showreel-iframe"
+        src=""
+        style="position:absolute;inset:0;width:100%;height:100%;border:none;display:none;"
+        frameborder="0"
+        allow="autoplay; fullscreen; picture-in-picture"
+        allowfullscreen
+        title="Clairo Studios — Showreel">
+      </iframe>
+      <!-- Placeholder shown until embed src is set -->
+      <div id="showreel-placeholder" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;">
+        <div style="width:64px;height:64px;border:1.5px solid rgba(224,212,188,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><polygon points="7,4 19,11 7,18" fill="rgba(224,212,188,0.5)"/></svg>
+        </div>
+        <div style="text-align:center;">
+          <p class="font-display text-[11px] tracking-[0.28em] uppercase" style="color:rgba(255,255,255,0.25);">Showreel Coming Soon</p>
+          <p class="font-body text-[9px] tracking-[0.18em] uppercase mt-2" style="color:rgba(224,212,188,0.2);">Upload to YouTube or Vimeo and update the embed link</p>
+        </div>
       </div>
-      <a href="https://calendly.com/edelink7/15min" target="_blank" rel="noopener noreferrer"
-         class="hidden md:inline-flex items-center gap-2 text-[10px] tracking-[0.2em] uppercase text-white/35
-                hover:text-white/70 transition-colors duration-300 mb-2 focus:outline-none focus-visible:ring-1 focus-visible:ring-bone/40">
-        Start a project
-        <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
-          <path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+    </div>
+    <div class="mt-8 flex items-center justify-between">
+      <p class="font-body text-xs text-white/25 tracking-wide">Proposals · Events · Real Estate · Brand Content · Reels</p>
+      <a href="work.html" class="font-body text-[10px] tracking-[0.2em] uppercase text-bone/50 hover:text-bone transition-colors duration-200">
+        View Full Portfolio &nbsp;&#8594;
       </a>
     </div>
+  </section>
+  <div class="divider"></div>
 
-    <!-- 4-column grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/[0.07]">
-
-      <!-- Photography -->
-      <article class="service-card bg-ink p-8 md:p-10 flex flex-col gap-7">
-        <div class="text-bone/70">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
-            <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/>
-            <circle cx="12" cy="13" r="4"/>
-          </svg>
-        </div>
-        <div>
-          <h3 class="font-display text-2xl tracking-tight uppercase text-white mb-3">Photography</h3>
-          <p class="font-body text-sm text-white/38 leading-[1.75]">
-            Editorial, commercial, real estate, and brand photography crafted for premium visual storytelling.
-          </p>
-        </div>
-        <div class="mt-auto pt-5 border-t border-white/[0.07]">
-          <a href="mailto:info@clairomedia.com"
-             class="inline-flex items-center gap-2 text-[10px] tracking-[0.2em] uppercase text-bone/45
-                    hover:text-bone transition-colors duration-200 focus:outline-none focus-visible:ring-1 focus-visible:ring-bone/40">
-            Inquire
-            <svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
-        </div>
-      </article>
-
-      <!-- Video -->
-      <article class="service-card bg-ink p-8 md:p-10 flex flex-col gap-7">
-        <div class="text-bone/70">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
-            <polygon points="23 7 16 12 23 17 23 7"/>
-            <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
-          </svg>
-        </div>
-        <div>
-          <h3 class="font-display text-2xl tracking-tight uppercase text-white mb-3">Video Production</h3>
-          <p class="font-body text-sm text-white/38 leading-[1.75]">
-            Cinematic brand films, listing walkthroughs, social reels, and campaign-driven content.
-          </p>
-        </div>
-        <div class="mt-auto pt-5 border-t border-white/[0.07]">
-          <a href="mailto:info@clairomedia.com"
-             class="inline-flex items-center gap-2 text-[10px] tracking-[0.2em] uppercase text-bone/45
-                    hover:text-bone transition-colors duration-200 focus:outline-none focus-visible:ring-1 focus-visible:ring-bone/40">
-            Inquire
-            <svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
-        </div>
-      </article>
-
-      <!-- Branding -->
-      <article class="service-card bg-ink p-8 md:p-10 flex flex-col gap-7">
-        <div class="text-bone/70">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
-            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-            <path d="M2 17l10 5 10-5"/>
-            <path d="M2 12l10 5 10-5"/>
-          </svg>
-        </div>
-        <div>
-          <h3 class="font-display text-2xl tracking-tight uppercase text-white mb-3">Branding</h3>
-          <p class="font-body text-sm text-white/38 leading-[1.75]">
-            Identity systems, visual direction, and digital presence designed to position your brand with clarity.
-          </p>
-        </div>
-        <div class="mt-auto pt-5 border-t border-white/[0.07]">
-          <a href="mailto:info@clairomedia.com"
-             class="inline-flex items-center gap-2 text-[10px] tracking-[0.2em] uppercase text-bone/45
-                    hover:text-bone transition-colors duration-200 focus:outline-none focus-visible:ring-1 focus-visible:ring-bone/40">
-            Inquire
-            <svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
-        </div>
-      </article>
-
-      <!-- Marketing -->
-      <article class="service-card bg-ink p-8 md:p-10 flex flex-col gap-7">
-        <div class="text-bone/70">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
-            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-          </svg>
-        </div>
-        <div>
-          <h3 class="font-display text-2xl tracking-tight uppercase text-white mb-3">Content & Growth</h3>
-          <p class="font-body text-sm text-white/38 leading-[1.75]">
-            Strategic content, paid creative, and growth systems built to attract attention and drive measurable results.
-          </p>
-        </div>
-        <div class="mt-auto pt-5 border-t border-white/[0.07]">
-          <a href="mailto:info@clairomedia.com"
-             class="inline-flex items-center gap-2 text-[10px] tracking-[0.2em] uppercase text-bone/45
-                    hover:text-bone transition-colors duration-200 focus:outline-none focus-visible:ring-1 focus-visible:ring-bone/40">
-            Inquire
-            <svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
-        </div>
-      </article>
-
+  <!-- SERVICES OVERVIEW -->
+  <section class="px-8 md:px-14 lg:px-20 py-24 md:py-32">
+    <div class="mb-14 reveal">
+      <p class="font-body text-[10px] tracking-[0.32em] uppercase text-bone/50 mb-3">What We Do</p>
+      <h2 class="font-display text-[clamp(2.4rem,5vw,4.5rem)] leading-[0.92] tracking-[0.02em] uppercase text-white">Services</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/[0.06]">
+      <div class="service-card bg-charcoal p-8 md:p-10 reveal">
+        <p class="font-display text-[11px] tracking-[0.28em] uppercase text-bone/35 mb-6">01</p>
+        <h3 class="font-display text-2xl tracking-[0.04em] uppercase text-white mb-4">Creative Production</h3>
+        <p class="font-body text-sm text-white/45 font-light leading-relaxed mb-6">Brand films, campaigns, commercial video, photography. Cinematic storytelling built for impact.</p>
+        <a href="services.html" class="font-body text-[10px] tracking-[0.22em] uppercase text-bone/50 hover:text-bone transition-colors duration-200">Learn More &#8594;</a>
+      </div>
+      <div class="service-card bg-charcoal p-8 md:p-10 reveal" style="transition-delay:0.05s">
+        <p class="font-display text-[11px] tracking-[0.28em] uppercase text-bone/35 mb-6">02</p>
+        <h3 class="font-display text-2xl tracking-[0.04em] uppercase text-white mb-4">Brand Content</h3>
+        <p class="font-body text-sm text-white/45 font-light leading-relaxed mb-6">Identity-driven content that communicates who you are across every touchpoint and platform.</p>
+        <a href="services.html" class="font-body text-[10px] tracking-[0.22em] uppercase text-bone/50 hover:text-bone transition-colors duration-200">Learn More &#8594;</a>
+      </div>
+      <div class="service-card bg-charcoal p-8 md:p-10 reveal" style="transition-delay:0.10s">
+        <p class="font-display text-[11px] tracking-[0.28em] uppercase text-bone/35 mb-6">03</p>
+        <h3 class="font-display text-2xl tracking-[0.04em] uppercase text-white mb-4">Short Form Content</h3>
+        <p class="font-body text-sm text-white/45 font-light leading-relaxed mb-6">Reels, platform-native video, and social content engineered for attention and growth.</p>
+        <a href="services.html" class="font-body text-[10px] tracking-[0.22em] uppercase text-bone/50 hover:text-bone transition-colors duration-200">Learn More &#8594;</a>
+      </div>
+      <div class="service-card bg-charcoal p-8 md:p-10 reveal" style="transition-delay:0.15s">
+        <p class="font-display text-[11px] tracking-[0.28em] uppercase text-bone/35 mb-6">04</p>
+        <h3 class="font-display text-2xl tracking-[0.04em] uppercase text-white mb-4">Performance Creative</h3>
+        <p class="font-body text-sm text-white/45 font-light leading-relaxed mb-6">Ad creatives, landing visuals, and paid media assets built to convert.</p>
+        <a href="services.html" class="font-body text-[10px] tracking-[0.22em] uppercase text-bone/50 hover:text-bone transition-colors duration-200">Learn More &#8594;</a>
+      </div>
+      <div class="service-card bg-charcoal p-8 md:p-10 reveal" style="transition-delay:0.20s">
+        <p class="font-display text-[11px] tracking-[0.28em] uppercase text-bone/35 mb-6">05</p>
+        <h3 class="font-display text-2xl tracking-[0.04em] uppercase text-white mb-4">Real Estate Media</h3>
+        <p class="font-body text-sm text-white/45 font-light leading-relaxed mb-6">Premium listing photography, cinematic walkthroughs, and social content for agents and brokers.</p>
+        <a href="real-estate.html" class="font-body text-[10px] tracking-[0.22em] uppercase text-bone/50 hover:text-bone transition-colors duration-200">Learn More &#8594;</a>
+      </div>
+      <div class="service-card bg-charcoal p-8 md:p-10 reveal" style="transition-delay:0.25s">
+        <p class="font-display text-[11px] tracking-[0.28em] uppercase text-bone/35 mb-6">06</p>
+        <h3 class="font-display text-2xl tracking-[0.04em] uppercase text-white mb-4">Event Coverage</h3>
+        <p class="font-body text-sm text-white/45 font-light leading-relaxed mb-6">Corporate events, launches, and moments captured with premium production values.</p>
+        <a href="services.html" class="font-body text-[10px] tracking-[0.22em] uppercase text-bone/50 hover:text-bone transition-colors duration-200">Learn More &#8594;</a>
+      </div>
     </div>
   </section>
 
-  <div class="divider"></div>
+  <div class="divider mx-8 md:mx-14 lg:mx-20"></div>
 
-
-  <!-- ══════════════════════════════════════════════
-       SELECTED WORK — full photo portfolio
-  ══════════════════════════════════════════════ -->
-  <section id="work" class="px-8 md:px-14 lg:px-20 py-28">
-
-    <!-- Section header -->
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+  <!-- FEATURED WORK -->
+  <section class="px-8 md:px-14 lg:px-20 py-24 md:py-32">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 reveal">
       <div>
-        <p class="font-body text-[10px] tracking-[0.28em] uppercase text-bone/60 mb-4">Portfolio</p>
-        <h2 class="font-display uppercase leading-none text-white"
-            style="font-size: clamp(2.8rem, 7vw, 7rem); letter-spacing: -0.02em;">
-          Selected<br />Work
-        </h2>
+        <p class="font-body text-[10px] tracking-[0.32em] uppercase text-bone/50 mb-3">Portfolio</p>
+        <h2 class="font-display text-[clamp(2.4rem,5vw,4.5rem)] leading-[0.92] tracking-[0.02em] uppercase text-white">Selected Work</h2>
+        <p class="font-body text-sm text-white/40 font-light mt-3">A cross-section of what we do.</p>
       </div>
-      <div class="mb-2">
-        <p class="font-body text-[10px] tracking-[0.15em] uppercase text-white/20 mb-1">Client</p>
-        <p class="font-display text-xl uppercase tracking-tight text-white/60">Jawad REALTOR</p>
-        <p class="font-body text-[10px] tracking-[0.15em] uppercase text-bone/35 mt-1">St. Sauveur · Real Estate Photography</p>
-      </div>
-    </div>
-
-    <!-- Masonry photo grid — click any image to open lightbox -->
-    <div class="photo-masonry">
-
-      <div class="photo-brick" onclick="openLightbox(0)">
-        <img src="portfolio/house/A-1.jpg" alt="St. Sauveur" loading="lazy" />
-      </div>
-      <div class="photo-brick" onclick="openLightbox(1)">
-        <img src="portfolio/house/A-2.jpg" alt="St. Sauveur" loading="lazy" />
-      </div>
-      <div class="photo-brick" onclick="openLightbox(2)">
-        <img src="portfolio/house/A-3.jpg" alt="St. Sauveur" loading="lazy" />
-      </div>
-      <div class="photo-brick" onclick="openLightbox(3)">
-        <img src="portfolio/house/A-4.jpg" alt="St. Sauveur" loading="lazy" />
-      </div>
-      <div class="photo-brick" onclick="openLightbox(4)">
-        <img src="portfolio/house/A-5.jpg" alt="St. Sauveur" loading="lazy" />
-      </div>
-      <div class="photo-brick" onclick="openLightbox(5)">
-        <img src="portfolio/house/A-6.jpg" alt="St. Sauveur" loading="lazy" />
-      </div>
-      <div class="photo-brick" onclick="openLightbox(6)">
-        <img src="portfolio/house/A-7.jpg" alt="St. Sauveur" loading="lazy" />
-      </div>
-      <div class="photo-brick" onclick="openLightbox(7)">
-        <img src="portfolio/house/A-8.jpg" alt="St. Sauveur" loading="lazy" />
-      </div>
-      <div class="photo-brick" onclick="openLightbox(8)">
-        <img src="portfolio/house/A-9.jpg" alt="St. Sauveur" loading="lazy" />
-      </div>
-      <div class="photo-brick" onclick="openLightbox(9)">
-        <img src="portfolio/house/A-10.jpg" alt="St. Sauveur" loading="lazy" />
-      </div>
-      <div class="photo-brick" onclick="openLightbox(10)">
-        <img src="portfolio/house/A-11.jpg" alt="St. Sauveur" loading="lazy" />
-      </div>
-      <div class="photo-brick" onclick="openLightbox(11)">
-        <img src="portfolio/house/A-12.jpg" alt="St. Sauveur" loading="lazy" />
-      </div>
-      <div class="photo-brick" onclick="openLightbox(12)">
-        <img src="portfolio/house/A-13.jpg" alt="St. Sauveur" loading="lazy" />
-      </div>
-      <div class="photo-brick" onclick="openLightbox(13)">
-        <img src="portfolio/house/A-14.jpg" alt="St. Sauveur" loading="lazy" />
-      </div>
-      <div class="photo-brick" onclick="openLightbox(14)">
-        <img src="portfolio/house/A-15.jpg" alt="St. Sauveur" loading="lazy" />
-      </div>
-      <div class="photo-brick" onclick="openLightbox(15)">
-        <img src="portfolio/house/A-16.jpg" alt="St. Sauveur" loading="lazy" />
-      </div>
-      <div class="photo-brick" onclick="openLightbox(16)">
-        <img src="portfolio/house/A-17.jpg" alt="St. Sauveur" loading="lazy" />
-      </div>
-      <div class="photo-brick" onclick="openLightbox(17)">
-        <img src="portfolio/house/A-18.jpg" alt="St. Sauveur" loading="lazy" />
-      </div>
-      <div class="photo-brick" onclick="openLightbox(18)">
-        <img src="portfolio/house/A-19.jpg" alt="St. Sauveur" loading="lazy" />
-      </div>
-      <div class="photo-brick" onclick="openLightbox(19)">
-        <img src="portfolio/house/A-20.jpg" alt="St. Sauveur" loading="lazy" />
-      </div>
-      <div class="photo-brick" onclick="openLightbox(20)">
-        <img src="portfolio/house/A-21.jpg" alt="St. Sauveur" loading="lazy" />
-      </div>
-      <div class="photo-brick" onclick="openLightbox(21)">
-        <img src="portfolio/house/A-22.jpg" alt="St. Sauveur" loading="lazy" />
-      </div>
-      <div class="photo-brick" onclick="openLightbox(22)">
-        <img src="portfolio/house/A-23.jpg" alt="St. Sauveur" loading="lazy" />
-      </div>
-      <div class="photo-brick" onclick="openLightbox(23)">
-        <img src="portfolio/house/A-24.jpg" alt="St. Sauveur" loading="lazy" />
-      </div>
-      <div class="photo-brick" onclick="openLightbox(24)">
-        <img src="portfolio/house/A-25.jpg" alt="St. Sauveur" loading="lazy" />
-      </div>
-      <div class="photo-brick" onclick="openLightbox(25)">
-        <img src="portfolio/house/A-26.jpg" alt="St. Sauveur" loading="lazy" />
-      </div>
-      <div class="photo-brick" onclick="openLightbox(26)">
-        <img src="portfolio/house/A-27.jpg" alt="St. Sauveur" loading="lazy" />
-      </div>
-      <div class="photo-brick" onclick="openLightbox(27)">
-        <img src="portfolio/house/A-28.jpg" alt="St. Sauveur" loading="lazy" />
-      </div>
-      <div class="photo-brick" onclick="openLightbox(28)">
-        <img src="portfolio/house/A-29.jpg" alt="St. Sauveur" loading="lazy" />
-      </div>
-      <div class="photo-brick" onclick="openLightbox(29)">
-        <img src="portfolio/house/A-30.jpg" alt="St. Sauveur" loading="lazy" />
-      </div>
-      <div class="photo-brick" onclick="openLightbox(30)">
-        <img src="portfolio/house/A-31.jpg" alt="St. Sauveur" loading="lazy" />
-      </div>
-      <div class="photo-brick" onclick="openLightbox(31)">
-        <img src="portfolio/house/A-32.jpg" alt="St. Sauveur" loading="lazy" />
-      </div>
-      <div class="photo-brick" onclick="openLightbox(32)">
-        <img src="portfolio/house/A-33.jpg" alt="St. Sauveur" loading="lazy" />
-      </div>
-      <div class="photo-brick" onclick="openLightbox(33)">
-        <img src="portfolio/house/A-34.jpg" alt="St. Sauveur" loading="lazy" />
-      </div>
-      <div class="photo-brick" onclick="openLightbox(34)">
-        <img src="portfolio/house/A-35.jpg" alt="St. Sauveur" loading="lazy" />
-      </div>
-      <div class="photo-brick" onclick="openLightbox(35)">
-        <img src="portfolio/house/A-36.jpg" alt="St. Sauveur" loading="lazy" />
-      </div>
-      <div class="photo-brick" onclick="openLightbox(36)">
-        <img src="portfolio/house/A-37.jpg" alt="St. Sauveur" loading="lazy" />
-      </div>
-      <div class="photo-brick" onclick="openLightbox(37)">
-        <img src="portfolio/house/A-38.jpg" alt="St. Sauveur" loading="lazy" />
-      </div>
-      <div class="photo-brick" onclick="openLightbox(38)">
-        <img src="portfolio/house/A-39.jpg" alt="St. Sauveur" loading="lazy" />
-      </div>
-      <div class="photo-brick" onclick="openLightbox(39)">
-        <img src="portfolio/house/A-40.jpg" alt="St. Sauveur" loading="lazy" />
-      </div>
-      <div class="photo-brick" onclick="openLightbox(40)">
-        <img src="portfolio/house/A-41.jpg" alt="St. Sauveur" loading="lazy" />
-      </div>
-      <div class="photo-brick" onclick="openLightbox(41)">
-        <img src="portfolio/house/A-42.jpg" alt="St. Sauveur" loading="lazy" />
-      </div>
-      <div class="photo-brick" onclick="openLightbox(42)">
-        <img src="portfolio/house/A-43.jpg" alt="St. Sauveur" loading="lazy" />
-      </div>
-      <div class="photo-brick" onclick="openLightbox(43)">
-        <img src="portfolio/house/A-44.jpg" alt="St. Sauveur" loading="lazy" />
-      </div>
-      <div class="photo-brick" onclick="openLightbox(44)">
-        <img src="portfolio/house/A-45.jpg" alt="St. Sauveur" loading="lazy" />
-      </div>
-      <div class="photo-brick" onclick="openLightbox(45)">
-        <img src="portfolio/house/A-46.jpg" alt="St. Sauveur" loading="lazy" />
-      </div>
-      <div class="photo-brick" onclick="openLightbox(46)">
-        <img src="portfolio/house/A-47.jpg" alt="St. Sauveur" loading="lazy" />
-      </div>
-
-    </div>
-
-  </section>
-
-  <div class="divider"></div>
-
-
-  <!-- ══════════════════════════════════════════════
-       ABOUT
-  ══════════════════════════════════════════════ -->
-  <section id="about" class="noise relative px-8 md:px-14 lg:px-20 py-28 overflow-hidden">
-
-    <!-- Ghost C — left background -->
-    <div class="absolute left-0 top-1/2 -translate-y-1/2 pointer-events-none select-none"
-         aria-hidden="true"
-         style="width: 55vw; max-width: 700px; transform: translateY(-50%) translateX(-32%); opacity: 0.04;">
-      <img src="White_Icon.png" alt="" class="w-full h-auto" />
-    </div>
-
-    <div class="relative z-10 max-w-5xl">
-      <p class="font-body text-[10px] tracking-[0.28em] uppercase text-bone/60 mb-8">About Us</p>
-
-      <blockquote class="font-display uppercase leading-[1.0] text-white mb-14"
-                  style="font-size: clamp(2.2rem, 5.5vw, 5.5rem); letter-spacing: -0.02em;">
-        "Clarity in vision.<br />
-        Precision in <span style="color: #E0D4BC;">execution.</span>"
-      </blockquote>
-
-      <p class="font-body text-base md:text-lg text-white/45 max-w-2xl leading-[1.75]">
-        Clairo Studios is a full-service marketing agency built on a foundation of strategic clarity and
-        creative execution. We partner with brands that demand more — more precision, more presence,
-        more impact. From visual identity to campaign strategy, we deliver with intention.
-      </p>
-
-      <!-- Four pillars -->
-      <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-6">
-        <div class="flex flex-col gap-2">
-          <span class="font-display text-4xl" style="color: #E0D4BC;">01</span>
-          <span class="font-display text-lg uppercase tracking-tight text-white">Clear</span>
-          <span class="font-body text-xs text-white/30 leading-[1.65]">Transparent strategy. Honest communication.</span>
-        </div>
-        <div class="flex flex-col gap-2">
-          <span class="font-display text-4xl" style="color: #E0D4BC;">02</span>
-          <span class="font-display text-lg uppercase tracking-tight text-white">Pure</span>
-          <span class="font-body text-xs text-white/30 leading-[1.65]">Refined, distilled ideas with no compromise.</span>
-        </div>
-        <div class="flex flex-col gap-2">
-          <span class="font-display text-4xl" style="color: #E0D4BC;">03</span>
-          <span class="font-display text-lg uppercase tracking-tight text-white">Focused</span>
-          <span class="font-body text-xs text-white/30 leading-[1.65]">Every decision serves the primary objective.</span>
-        </div>
-        <div class="flex flex-col gap-2">
-          <span class="font-display text-4xl" style="color: #E0D4BC;">04</span>
-          <span class="font-display text-lg uppercase tracking-tight text-white">Strategic</span>
-          <span class="font-body text-xs text-white/30 leading-[1.65]">Grounded in data, elevated by craft.</span>
-        </div>
-      </div>
-    </div>
-
-  </section>
-
-  <div class="divider"></div>
-
-
-  <!-- ══════════════════════════════════════════════
-       CONTACT CTA
-  ══════════════════════════════════════════════ -->
-  <section id="contact" class="noise relative px-8 md:px-14 lg:px-20 py-36 overflow-hidden"
-           style="background: radial-gradient(ellipse 80% 90% at 50% 55%, rgba(224,212,188,0.048) 0%, transparent 65%), #0B0B0B;">
-
-    <div class="relative z-10 text-center max-w-3xl mx-auto">
-
-      <p class="font-body text-[10px] tracking-[0.3em] uppercase text-bone/60 mb-6">
-        Let's Work Together
-      </p>
-
-      <h2 class="font-display uppercase leading-[0.9] text-white mb-10"
-          style="font-size: clamp(3.5rem, 10vw, 10rem); letter-spacing: -0.025em;">
-        Start a<br /><span style="color: #E0D4BC;">Project</span>
-      </h2>
-
-      <p class="font-body text-sm md:text-base text-white/38 mb-12 leading-[1.75] max-w-sm mx-auto">
-        Ready to build something remarkable? Tell us about your vision — we respond within 24 hours.
-      </p>
-
-      <a href="mailto:info@clairomedia.com"
-         class="btn inline-flex items-center gap-4 px-10 py-5 text-ink text-[10px] font-medium tracking-[0.22em] uppercase
-                focus:outline-none focus-visible:ring-2 focus-visible:ring-bone"
-         style="background: #E0D4BC;
-                box-shadow: 0 4px 40px rgba(224,212,188,0.22), 0 1px 0 rgba(255,255,255,0.15) inset;">
-        info@clairomedia.com
-        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
-          <path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+      <a href="work.html" class="btn inline-flex items-center gap-2.5 px-6 py-3 border border-white/15 text-white/60 font-body text-xs tracking-[0.2em] uppercase hover:border-white/40 hover:text-white transition-colors duration-300 self-start md:self-auto">
+        View Full Portfolio &#8594;
       </a>
-
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
+      <a href="work.html" class="work-item aspect-[4/3] reveal">
+        <img src="portfolio/DSC05049.jpg" alt="Commercial photography" loading="lazy" />
+        <div class="work-item-overlay">
+          <span class="font-display text-xs tracking-[0.22em] uppercase text-white/70">Commercial</span>
+        </div>
+      </a>
+      <a href="work.html" class="work-item aspect-[4/3] reveal" style="transition-delay:0.06s">
+        <img src="portfolio/house/A-7.jpg" alt="Real estate photography" loading="lazy" />
+        <div class="work-item-overlay">
+          <span class="font-display text-xs tracking-[0.22em] uppercase text-white/70">Real Estate</span>
+        </div>
+      </a>
+      <a href="work.html" class="work-item aspect-[4/3] reveal" style="transition-delay:0.12s">
+        <img src="portfolio/DSC05264.jpg" alt="Event photography" loading="lazy" />
+        <div class="work-item-overlay">
+          <span class="font-display text-xs tracking-[0.22em] uppercase text-white/70">Events</span>
+        </div>
+      </a>
+      <a href="work.html" class="work-item aspect-[4/3] reveal" style="transition-delay:0.06s">
+        <img src="portfolio/DSC05484.jpg" alt="Brand content photography" loading="lazy" />
+        <div class="work-item-overlay">
+          <span class="font-display text-xs tracking-[0.22em] uppercase text-white/70">Brand Content</span>
+        </div>
+      </a>
+      <a href="work.html" class="work-item aspect-[4/3] reveal" style="transition-delay:0.12s">
+        <img src="portfolio/house/A-30.jpg" alt="Real estate interior" loading="lazy" />
+        <div class="work-item-overlay">
+          <span class="font-display text-xs tracking-[0.22em] uppercase text-white/70">Real Estate</span>
+        </div>
+      </a>
+      <a href="work.html" class="work-item aspect-[4/3] reveal" style="transition-delay:0.18s">
+        <img src="portfolio/DSC05790.jpg" alt="Short form content" loading="lazy" />
+        <div class="work-item-overlay">
+          <span class="font-display text-xs tracking-[0.22em] uppercase text-white/70">Short Form</span>
+        </div>
+      </a>
     </div>
   </section>
 
+  <div class="divider mx-8 md:mx-14 lg:mx-20"></div>
 
-  <!-- ══════════════════════════════════════════════
-       FOOTER
-  ══════════════════════════════════════════════ -->
+  <!-- WHO WE WORK WITH -->
+  <section class="px-8 md:px-14 lg:px-20 py-24 md:py-32">
+    <div class="mb-14 reveal">
+      <p class="font-body text-[10px] tracking-[0.32em] uppercase text-bone/50 mb-3">Clientele</p>
+      <h2 class="font-display text-[clamp(2.4rem,5vw,4.5rem)] leading-[0.92] tracking-[0.02em] uppercase text-white">Who We Work With</h2>
+    </div>
+    <div class="flex flex-col gap-px">
+      <div class="industry-card border border-white/[0.07] p-7 md:p-9 flex flex-col md:flex-row md:items-center md:justify-between gap-4 reveal">
+        <div class="flex items-center gap-8">
+          <span class="font-display text-[10px] tracking-[0.28em] uppercase text-bone/30 shrink-0">01</span>
+          <h3 class="font-display text-xl md:text-2xl tracking-[0.04em] uppercase text-white">Real Estate</h3>
+        </div>
+        <p class="font-body text-sm text-white/40 font-light md:max-w-sm leading-relaxed pl-12 md:pl-0">Brokers, agents, and developers who need listings that command attention.</p>
+      </div>
+      <div class="industry-card border border-white/[0.07] p-7 md:p-9 flex flex-col md:flex-row md:items-center md:justify-between gap-4 reveal" style="transition-delay:0.05s">
+        <div class="flex items-center gap-8">
+          <span class="font-display text-[10px] tracking-[0.28em] uppercase text-bone/30 shrink-0">02</span>
+          <h3 class="font-display text-xl md:text-2xl tracking-[0.04em] uppercase text-white">Brands</h3>
+        </div>
+        <p class="font-body text-sm text-white/40 font-light md:max-w-sm leading-relaxed pl-12 md:pl-0">Companies building a premium market presence through strategic visual content.</p>
+      </div>
+      <div class="industry-card border border-white/[0.07] p-7 md:p-9 flex flex-col md:flex-row md:items-center md:justify-between gap-4 reveal" style="transition-delay:0.10s">
+        <div class="flex items-center gap-8">
+          <span class="font-display text-[10px] tracking-[0.28em] uppercase text-bone/30 shrink-0">03</span>
+          <h3 class="font-display text-xl md:text-2xl tracking-[0.04em] uppercase text-white">Events</h3>
+        </div>
+        <p class="font-body text-sm text-white/40 font-light md:max-w-sm leading-relaxed pl-12 md:pl-0">Organizers who want every moment captured at the highest level.</p>
+      </div>
+      <div class="industry-card border border-white/[0.07] p-7 md:p-9 flex flex-col md:flex-row md:items-center md:justify-between gap-4 reveal" style="transition-delay:0.15s">
+        <div class="flex items-center gap-8">
+          <span class="font-display text-[10px] tracking-[0.28em] uppercase text-bone/30 shrink-0">04</span>
+          <h3 class="font-display text-xl md:text-2xl tracking-[0.04em] uppercase text-white">Personal Brands</h3>
+        </div>
+        <p class="font-body text-sm text-white/40 font-light md:max-w-sm leading-relaxed pl-12 md:pl-0">Founders and creators building audience and authority through content.</p>
+      </div>
+      <div class="industry-card border border-white/[0.07] p-7 md:p-9 flex flex-col md:flex-row md:items-center md:justify-between gap-4 reveal" style="transition-delay:0.20s">
+        <div class="flex items-center gap-8">
+          <span class="font-display text-[10px] tracking-[0.28em] uppercase text-bone/30 shrink-0">05</span>
+          <h3 class="font-display text-xl md:text-2xl tracking-[0.04em] uppercase text-white">Businesses</h3>
+        </div>
+        <p class="font-body text-sm text-white/40 font-light md:max-w-sm leading-relaxed pl-12 md:pl-0">Companies that need strategic creative to grow and stand out.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider mx-8 md:mx-14 lg:mx-20"></div>
+
+  <!-- PROCESS -->
+  <section class="px-8 md:px-14 lg:px-20 py-24 md:py-32">
+    <div class="mb-14 reveal">
+      <p class="font-body text-[10px] tracking-[0.32em] uppercase text-bone/50 mb-3">How It Works</p>
+      <h2 class="font-display text-[clamp(2.4rem,5vw,4.5rem)] leading-[0.92] tracking-[0.02em] uppercase text-white">Our Process</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/[0.05]">
+      <div class="bg-ink p-8 reveal">
+        <p class="font-display text-[clamp(3rem,6vw,5rem)] leading-none tracking-tight text-white/[0.07] mb-6">01</p>
+        <h3 class="font-display text-xl tracking-[0.05em] uppercase text-white mb-4">Strategy</h3>
+        <p class="font-body text-sm text-white/40 font-light leading-relaxed">We audit your goals, audience, and competitive landscape before a single shot is taken.</p>
+      </div>
+      <div class="bg-ink p-8 reveal" style="transition-delay:0.08s">
+        <p class="font-display text-[clamp(3rem,6vw,5rem)] leading-none tracking-tight text-white/[0.07] mb-6">02</p>
+        <h3 class="font-display text-xl tracking-[0.05em] uppercase text-white mb-4">Production</h3>
+        <p class="font-body text-sm text-white/40 font-light leading-relaxed">Expert crew, premium gear, and precise direction on every shoot.</p>
+      </div>
+      <div class="bg-ink p-8 reveal" style="transition-delay:0.16s">
+        <p class="font-display text-[clamp(3rem,6vw,5rem)] leading-none tracking-tight text-white/[0.07] mb-6">03</p>
+        <h3 class="font-display text-xl tracking-[0.05em] uppercase text-white mb-4">Post Production</h3>
+        <p class="font-body text-sm text-white/40 font-light leading-relaxed">Color, sound, edit, and motion — refined until it's right.</p>
+      </div>
+      <div class="bg-ink p-8 reveal" style="transition-delay:0.24s">
+        <p class="font-display text-[clamp(3rem,6vw,5rem)] leading-none tracking-tight text-white/[0.07] mb-6">04</p>
+        <h3 class="font-display text-xl tracking-[0.05em] uppercase text-white mb-4">Delivery</h3>
+        <p class="font-body text-sm text-white/40 font-light leading-relaxed">Final assets optimized for every channel, platform, and format you need.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA SECTION -->
+  <section class="relative px-8 md:px-14 lg:px-20 py-28 md:py-40 overflow-hidden noise">
+    <div class="absolute inset-0 bg-charcoal"></div>
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse at 60% 50%, rgba(224,212,188,0.04) 0%, transparent 70%);"></div>
+    <div class="relative z-10 max-w-2xl reveal">
+      <p class="font-body text-[10px] tracking-[0.32em] uppercase text-bone/50 mb-5">Ready When You Are</p>
+      <h2 class="font-display text-[clamp(2.2rem,5vw,4.5rem)] leading-[0.92] tracking-[0.02em] uppercase text-white mb-6">Let's Build Something That Stands Out.</h2>
+      <p class="font-body text-sm md:text-base text-white/45 font-light leading-relaxed mb-10">Whether you're launching a brand, marketing a property, or building a content system &mdash; we're ready.</p>
+      <div class="flex flex-wrap items-center gap-5">
+        <a href="https://calendly.com/edelink7/15min" target="_blank" class="btn inline-flex items-center gap-2.5 px-8 py-4 bg-bone text-ink font-body text-xs tracking-[0.2em] uppercase font-medium hover:bg-white transition-colors duration-300">
+          Book a Strategy Call
+        </a>
+        <a href="mailto:edelink@clairo.studio" class="font-body text-xs tracking-[0.2em] uppercase text-white/35 hover:text-white/70 transition-colors duration-200">
+          edelink@clairo.studio
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
   <footer class="px-8 md:px-14 lg:px-20 py-9 border-t border-white/[0.07]">
     <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-
-      <!-- Brand -->
       <div class="flex items-center gap-3">
-        <img src="White_Icon.png" alt="C" class="h-5 w-auto opacity-40" />
+        <img src="White_Icon.png" alt="" class="h-5 w-auto opacity-40" />
         <span class="font-display text-[11px] tracking-[0.14em] uppercase text-white/35">Clairo Studios</span>
       </div>
-
-      <!-- Copyright -->
-      <p class="font-body text-[10px] text-white/22 tracking-wide order-last md:order-none">
-        © 2025 Clairo Studios. All rights reserved.
-      </p>
-
-      <!-- Social -->
-      <nav aria-label="Social links">
+      <p class="font-body text-[10px] text-white/22 tracking-wide order-last md:order-none">&copy; 2025 Clairo Studios. All rights reserved.</p>
+      <nav aria-label="Footer links">
         <ul class="flex items-center gap-8">
-          <li>
-            <a href="#" class="font-body text-[10px] tracking-[0.18em] uppercase text-white/28
-                               hover:text-white/60 transition-colors duration-200
-                               focus:outline-none focus-visible:ring-1 focus-visible:ring-bone/40">
-              Instagram
-            </a>
-          </li>
-          <li>
-            <a href="#" class="font-body text-[10px] tracking-[0.18em] uppercase text-white/28
-                               hover:text-white/60 transition-colors duration-200
-                               focus:outline-none focus-visible:ring-1 focus-visible:ring-bone/40">
-              LinkedIn
-            </a>
-          </li>
-          <li>
-            <a href="#" class="font-body text-[10px] tracking-[0.18em] uppercase text-white/28
-                               hover:text-white/60 transition-colors duration-200
-                               focus:outline-none focus-visible:ring-1 focus-visible:ring-bone/40">
-              Behance
-            </a>
-          </li>
+          <li><a href="work.html" class="font-body text-[10px] tracking-[0.18em] uppercase text-white/28 hover:text-white/60 transition-colors duration-200">Work</a></li>
+          <li><a href="services.html" class="font-body text-[10px] tracking-[0.18em] uppercase text-white/28 hover:text-white/60 transition-colors duration-200">Services</a></li>
+          <li><a href="about.html" class="font-body text-[10px] tracking-[0.18em] uppercase text-white/28 hover:text-white/60 transition-colors duration-200">About</a></li>
+          <li><a href="contact.html" class="font-body text-[10px] tracking-[0.18em] uppercase text-white/28 hover:text-white/60 transition-colors duration-200">Contact</a></li>
         </ul>
       </nav>
-
     </div>
   </footer>
 
-
-  <!-- ══════════════════════════════════════════════
-       LIGHTBOX
-  ══════════════════════════════════════════════ -->
-  <div class="lb-overlay" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
-    <button id="lb-close" onclick="closeLightbox()" aria-label="Close">✕</button>
-    <button class="lb-btn" id="lb-prev" onclick="lbMove(-1)" aria-label="Previous">&#8249;</button>
-    <img id="lb-img" src="" alt="Portfolio photo" />
-    <button class="lb-btn" id="lb-next" onclick="lbMove(1)" aria-label="Next">&#8250;</button>
-    <p id="lb-counter"></p>
-  </div>
-
-
   <script>
-    /* ── Hero Slideshow ── */
-    const heroSlides = document.querySelectorAll('.hero-slide');
-    let heroIndex = 0;
-    heroSlides[0].classList.add('active');
-
-    setInterval(() => {
-      heroSlides[heroIndex].classList.remove('active');
-      heroIndex = (heroIndex + 1) % heroSlides.length;
-      heroSlides[heroIndex].classList.add('active');
-    }, 5000);
-
-    /* ── Lightbox ── */
-    const photos = [
-      'portfolio/house/A-1.jpg',
-      'portfolio/house/A-2.jpg',
-      'portfolio/house/A-3.jpg',
-      'portfolio/house/A-4.jpg',
-      'portfolio/house/A-5.jpg',
-      'portfolio/house/A-6.jpg',
-      'portfolio/house/A-7.jpg',
-      'portfolio/house/A-8.jpg',
-      'portfolio/house/A-9.jpg',
-      'portfolio/house/A-10.jpg',
-      'portfolio/house/A-11.jpg',
-      'portfolio/house/A-12.jpg',
-      'portfolio/house/A-13.jpg',
-      'portfolio/house/A-14.jpg',
-      'portfolio/house/A-15.jpg',
-      'portfolio/house/A-16.jpg',
-      'portfolio/house/A-17.jpg',
-      'portfolio/house/A-18.jpg',
-      'portfolio/house/A-19.jpg',
-      'portfolio/house/A-20.jpg',
-      'portfolio/house/A-21.jpg',
-      'portfolio/house/A-22.jpg',
-      'portfolio/house/A-23.jpg',
-      'portfolio/house/A-24.jpg',
-      'portfolio/house/A-25.jpg',
-      'portfolio/house/A-26.jpg',
-      'portfolio/house/A-27.jpg',
-      'portfolio/house/A-28.jpg',
-      'portfolio/house/A-29.jpg',
-      'portfolio/house/A-30.jpg',
-      'portfolio/house/A-31.jpg',
-      'portfolio/house/A-32.jpg',
-      'portfolio/house/A-33.jpg',
-      'portfolio/house/A-34.jpg',
-      'portfolio/house/A-35.jpg',
-      'portfolio/house/A-36.jpg',
-      'portfolio/house/A-37.jpg',
-      'portfolio/house/A-38.jpg',
-      'portfolio/house/A-39.jpg',
-      'portfolio/house/A-40.jpg',
-      'portfolio/house/A-41.jpg',
-      'portfolio/house/A-42.jpg',
-      'portfolio/house/A-43.jpg',
-      'portfolio/house/A-44.jpg',
-      'portfolio/house/A-45.jpg',
-      'portfolio/house/A-46.jpg',
-      'portfolio/house/A-47.jpg',
-    ];
-
-    let lbIndex = 0;
-    const lbOverlay = document.getElementById('lightbox');
-    const lbImg    = document.getElementById('lb-img');
-    const lbCtr    = document.getElementById('lb-counter');
-
-    function openLightbox(i) {
-      lbIndex = i;
-      lbImg.src = photos[i];
-      lbCtr.textContent = (i + 1) + ' / ' + photos.length;
-      lbOverlay.classList.add('open');
-      document.body.style.overflow = 'hidden';
+    // Mobile menu
+    const toggle = document.getElementById('menu-toggle');
+    const mMenu = document.getElementById('mobile-menu');
+    if (toggle && mMenu) {
+      toggle.addEventListener('click', () => {
+        mMenu.classList.toggle('open');
+        mMenu.classList.toggle('closed');
+      });
     }
 
-    function closeLightbox() {
-      lbOverlay.classList.remove('open');
-      document.body.style.overflow = '';
-      setTimeout(() => { lbImg.src = ''; }, 300);
-    }
+    // Hero slideshow
+    const slides = document.querySelectorAll('.hero-slide');
+    const dotsContainer = document.getElementById('slide-dots');
+    let current = 0;
+    let slideTimer;
 
-    function lbMove(dir) {
-      lbIndex = (lbIndex + dir + photos.length) % photos.length;
-      lbImg.style.opacity = '0';
-      setTimeout(() => {
-        lbImg.src = photos[lbIndex];
-        lbImg.style.opacity = '1';
-        lbCtr.textContent = (lbIndex + 1) + ' / ' + photos.length;
-      }, 180);
-    }
-
-    document.addEventListener('keydown', e => {
-      if (!lbOverlay.classList.contains('open')) return;
-      if (e.key === 'ArrowRight') lbMove(1);
-      if (e.key === 'ArrowLeft')  lbMove(-1);
-      if (e.key === 'Escape')     closeLightbox();
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.setAttribute('aria-label', 'Slide ' + (i + 1));
+      dot.addEventListener('click', () => goToSlide(i));
+      dotsContainer.appendChild(dot);
     });
 
-    lbOverlay.addEventListener('click', e => {
-      if (e.target === lbOverlay) closeLightbox();
-    });
+    function updateDots() {
+      const dots = dotsContainer.querySelectorAll('button');
+      dots.forEach((d, i) => {
+        if (i === current) {
+          d.style.cssText = 'width:16px;height:3px;border-radius:2px;background:rgba(224,212,188,0.7);border:none;cursor:pointer;transition:all 0.3s;';
+        } else {
+          d.style.cssText = 'width:4px;height:3px;border-radius:2px;background:rgba(255,255,255,0.25);border:none;cursor:pointer;transition:all 0.3s;';
+        }
+      });
+    }
+
+    function goToSlide(n) {
+      slides[current].classList.remove('active');
+      current = n;
+      slides[current].classList.add('active');
+      updateDots();
+      clearInterval(slideTimer);
+      slideTimer = setInterval(nextSlide, 6000);
+    }
+
+    function nextSlide() {
+      const next = (current + 1) % slides.length;
+      goToSlide(next);
+    }
+
+    updateDots();
+    slideTimer = setInterval(nextSlide, 6000);
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => revealObs.observe(el));
+
+    // Showreel — activate iframe if embed src is set
+    const srIframe = document.getElementById('showreel-iframe');
+    const srPH     = document.getElementById('showreel-placeholder');
+    if (srIframe && srIframe.src && srIframe.src !== window.location.href) {
+      srIframe.style.display = 'block';
+      if (srPH) srPH.style.display = 'none';
+    }
   </script>
-
 </body>
 </html>

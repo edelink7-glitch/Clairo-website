@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-ink">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services &mdash; Clairo Studios</title>
+  <meta name="description" content="Premium creative production and marketing services from Clairo Studios — brand films, commercial photography, short form content, real estate media, and event coverage in Montreal." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { bone: '#E0D4BC', charcoal: '#1A1A1A', ink: '#0B0B0B' },
+          fontFamily: { display: ['"Pathway Gothic One"', 'sans-serif'], body: ['"DM Sans"', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    * { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    .noise::after { content: ''; position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); opacity: 0.03; pointer-events: none; z-index: 1; }
+    .divider { height: 1px; background: linear-gradient(to right, transparent, rgba(255,255,255,0.08), transparent); }
+    .nav-link { position: relative; }
+    .nav-link::after { content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 1px; background: #E0D4BC; transition: width 0.3s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .nav-link:hover::after { width: 100%; }
+    .btn { position: relative; overflow: hidden; }
+    .btn::before { content: ''; position: absolute; inset: 0; background: rgba(255,255,255,0.07); opacity: 0; transition: opacity 0.22s ease; }
+    .btn:hover::before { opacity: 1; }
+    .btn:active { transform: scale(0.975); }
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    #mobile-menu { transition: opacity 0.2s, transform 0.2s; }
+    #mobile-menu.closed { opacity: 0; pointer-events: none; transform: translateY(-8px); }
+    #mobile-menu.open { opacity: 1; pointer-events: all; transform: translateY(0); }
+    .service-row { border-top: 1px solid rgba(255,255,255,0.07); transition: border-color 0.3s; }
+    .service-row:hover { border-top-color: rgba(224,212,188,0.12); }
+    .deliverable-tag { display: inline-block; font-family: 'DM Sans', sans-serif; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(224,212,188,0.45); border: 1px solid rgba(224,212,188,0.15); padding: 0.3rem 0.75rem; margin: 0.2rem; }
+  </style>
+</head>
+<body class="bg-ink text-white font-body">
+
+  <!-- NAV -->
+  <nav class="fixed top-0 left-0 right-0 z-50" style="background: linear-gradient(to bottom, rgba(11,11,11,0.95) 0%, rgba(11,11,11,0) 100%); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);">
+    <div class="flex items-center justify-between px-8 md:px-14 lg:px-20 py-6">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <img src="White_Icon.png" alt="Clairo Studios" class="h-7 w-auto" />
+        <span class="font-display text-[15px] tracking-[0.10em] uppercase text-white hidden sm:block">Clairo Studios</span>
+      </a>
+      <ul class="hidden md:flex items-center gap-10">
+        <li><a href="work.html" class="nav-link font-body text-xs tracking-[0.2em] uppercase text-white/50 hover:text-white transition-colors duration-200">Work</a></li>
+        <li><a href="services.html" class="nav-link font-body text-xs tracking-[0.2em] uppercase text-white hover:text-white transition-colors duration-200" style="color:white;">Services</a></li>
+        <li><a href="real-estate.html" class="nav-link font-body text-xs tracking-[0.2em] uppercase text-white/50 hover:text-white transition-colors duration-200">Real Estate</a></li>
+        <li><a href="about.html" class="nav-link font-body text-xs tracking-[0.2em] uppercase text-white/50 hover:text-white transition-colors duration-200">About</a></li>
+        <li><a href="https://calendly.com/edelink7/15min" target="_blank" class="btn inline-flex items-center gap-2 px-5 py-2 border border-bone/30 text-bone text-xs tracking-[0.18em] uppercase hover:border-bone/70 transition-colors duration-300">Book a Call</a></li>
+      </ul>
+      <button id="menu-toggle" class="md:hidden text-white/50 hover:text-white transition-colors p-1" aria-label="Open menu">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.4"><line x1="2" y1="6" x2="20" y2="6" stroke-linecap="round"/><line x1="2" y1="11" x2="20" y2="11" stroke-linecap="round"/><line x1="2" y1="16" x2="14" y2="16" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="closed md:hidden absolute top-full left-0 right-0 bg-ink border-t border-white/[0.07] px-8 py-6">
+      <ul class="flex flex-col gap-5">
+        <li><a href="work.html" class="font-body text-sm tracking-[0.2em] uppercase text-white/60 hover:text-white transition-colors">Work</a></li>
+        <li><a href="services.html" class="font-body text-sm tracking-[0.2em] uppercase text-white transition-colors">Services</a></li>
+        <li><a href="real-estate.html" class="font-body text-sm tracking-[0.2em] uppercase text-white/60 hover:text-white transition-colors">Real Estate</a></li>
+        <li><a href="about.html" class="font-body text-sm tracking-[0.2em] uppercase text-white/60 hover:text-white transition-colors">About</a></li>
+        <li><a href="https://calendly.com/edelink7/15min" target="_blank" class="font-body text-sm tracking-[0.2em] uppercase text-bone/70">Book a Call &#8594;</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="pt-36 pb-16 px-8 md:px-14 lg:px-20 reveal">
+    <p class="font-body text-[10px] tracking-[0.32em] uppercase text-bone/50 mb-3">What We Offer</p>
+    <h1 class="font-display text-[clamp(3rem,7vw,6.5rem)] leading-[0.92] tracking-[0.02em] uppercase text-white mb-5">Services</h1>
+    <p class="font-body text-sm text-white/40 font-light max-w-lg leading-relaxed">Premium creative production and marketing for brands that demand more.</p>
+  </header>
+
+  <div class="divider mx-8 md:mx-14 lg:mx-20"></div>
+
+  <!-- SERVICE 01: CREATIVE PRODUCTION -->
+  <section class="service-row px-8 md:px-14 lg:px-20 py-16 md:py-20 reveal">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+      <div class="lg:col-span-1">
+        <p class="font-display text-[11px] tracking-[0.3em] uppercase text-bone/30 pt-1">01</p>
+      </div>
+      <div class="lg:col-span-4">
+        <h2 class="font-display text-[clamp(1.8rem,3.5vw,3rem)] tracking-[0.03em] uppercase text-white leading-[0.95]">Creative<br/>Production</h2>
+      </div>
+      <div class="lg:col-span-7">
+        <p class="font-body text-sm md:text-base text-white/50 font-light leading-relaxed mb-8">From brand films to commercial photography, we produce premium visual content that positions your business for growth. Every frame is intentional, every edit precise. We approach every project with a director's eye and a strategist's mindset — because beautiful content that doesn't serve a purpose is just decoration.</p>
+        <div class="mb-8">
+          <p class="font-body text-[10px] tracking-[0.25em] uppercase text-white/30 mb-3">Deliverables</p>
+          <div class="-m-1">
+            <span class="deliverable-tag">Brand Films</span>
+            <span class="deliverable-tag">Commercial Photography</span>
+            <span class="deliverable-tag">Cinematic Video</span>
+            <span class="deliverable-tag">Campaign Content</span>
+            <span class="deliverable-tag">Product Shoots</span>
+          </div>
+        </div>
+        <a href="https://calendly.com/edelink7/15min" target="_blank" class="btn inline-flex items-center gap-2 px-6 py-3 border border-bone/25 text-bone text-xs tracking-[0.18em] uppercase hover:border-bone/60 transition-colors duration-300">
+          Start a Project &#8594;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE 02: BRAND CONTENT -->
+  <section class="service-row px-8 md:px-14 lg:px-20 py-16 md:py-20 reveal">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+      <div class="lg:col-span-1">
+        <p class="font-display text-[11px] tracking-[0.3em] uppercase text-bone/30 pt-1">02</p>
+      </div>
+      <div class="lg:col-span-4">
+        <h2 class="font-display text-[clamp(1.8rem,3.5vw,3rem)] tracking-[0.03em] uppercase text-white leading-[0.95]">Brand<br/>Content</h2>
+      </div>
+      <div class="lg:col-span-7">
+        <p class="font-body text-sm md:text-base text-white/50 font-light leading-relaxed mb-8">We build content systems rooted in your brand identity &mdash; visual language, messaging, and creative direction that communicates who you are across every touchpoint. Consistency builds recognition. Recognition builds trust. We help you build both through a disciplined, identity-first approach to content creation.</p>
+        <div class="mb-8">
+          <p class="font-body text-[10px] tracking-[0.25em] uppercase text-white/30 mb-3">Deliverables</p>
+          <div class="-m-1">
+            <span class="deliverable-tag">Social Content</span>
+            <span class="deliverable-tag">Brand Photography</span>
+            <span class="deliverable-tag">Campaign Creatives</span>
+            <span class="deliverable-tag">Visual Strategy</span>
+            <span class="deliverable-tag">Content Calendars</span>
+          </div>
+        </div>
+        <a href="https://calendly.com/edelink7/15min" target="_blank" class="btn inline-flex items-center gap-2 px-6 py-3 border border-bone/25 text-bone text-xs tracking-[0.18em] uppercase hover:border-bone/60 transition-colors duration-300">
+          Start a Project &#8594;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE 03: SHORT FORM CONTENT -->
+  <section class="service-row px-8 md:px-14 lg:px-20 py-16 md:py-20 reveal">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+      <div class="lg:col-span-1">
+        <p class="font-display text-[11px] tracking-[0.3em] uppercase text-bone/30 pt-1">03</p>
+      </div>
+      <div class="lg:col-span-4">
+        <h2 class="font-display text-[clamp(1.8rem,3.5vw,3rem)] tracking-[0.03em] uppercase text-white leading-[0.95]">Short Form<br/>Content</h2>
+      </div>
+      <div class="lg:col-span-7">
+        <p class="font-body text-sm md:text-base text-white/50 font-light leading-relaxed mb-8">Platform-native video and reels engineered for attention, retention, and growth. We understand the algorithm and build content that performs. Short form isn't about being cheap or fast &mdash; it's about being precise. We bring production quality to a format that rewards authenticity and punishes mediocrity.</p>
+        <div class="mb-8">
+          <p class="font-body text-[10px] tracking-[0.25em] uppercase text-white/30 mb-3">Deliverables</p>
+          <div class="-m-1">
+            <span class="deliverable-tag">Instagram Reels</span>
+            <span class="deliverable-tag">TikTok Content</span>
+            <span class="deliverable-tag">YouTube Shorts</span>
+            <span class="deliverable-tag">Story Sequences</span>
+            <span class="deliverable-tag">Trend-Led Formats</span>
+          </div>
+        </div>
+        <a href="https://calendly.com/edelink7/15min" target="_blank" class="btn inline-flex items-center gap-2 px-6 py-3 border border-bone/25 text-bone text-xs tracking-[0.18em] uppercase hover:border-bone/60 transition-colors duration-300">
+          Start a Project &#8594;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE 04: PERFORMANCE CREATIVE -->
+  <section class="service-row px-8 md:px-14 lg:px-20 py-16 md:py-20 reveal">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+      <div class="lg:col-span-1">
+        <p class="font-display text-[11px] tracking-[0.3em] uppercase text-bone/30 pt-1">04</p>
+      </div>
+      <div class="lg:col-span-4">
+        <h2 class="font-display text-[clamp(1.8rem,3.5vw,3rem)] tracking-[0.03em] uppercase text-white leading-[0.95]">Performance<br/>Creative</h2>
+      </div>
+      <div class="lg:col-span-7">
+        <p class="font-body text-sm md:text-base text-white/50 font-light leading-relaxed mb-8">Ad creatives, landing visuals, and paid media assets designed to convert. We bridge the gap between premium aesthetics and measurable ROI. The best creative makes you feel something first — then act. We build assets that do both, giving your media buying the fuel it needs to deliver results at scale.</p>
+        <div class="mb-8">
+          <p class="font-body text-[10px] tracking-[0.25em] uppercase text-white/30 mb-3">Deliverables</p>
+          <div class="-m-1">
+            <span class="deliverable-tag">Meta Ads Creative</span>
+            <span class="deliverable-tag">UGC-Style Content</span>
+            <span class="deliverable-tag">A/B Test Variants</span>
+            <span class="deliverable-tag">Retargeting Assets</span>
+            <span class="deliverable-tag">Landing Page Media</span>
+          </div>
+        </div>
+        <a href="https://calendly.com/edelink7/15min" target="_blank" class="btn inline-flex items-center gap-2 px-6 py-3 border border-bone/25 text-bone text-xs tracking-[0.18em] uppercase hover:border-bone/60 transition-colors duration-300">
+          Start a Project &#8594;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE 05: REAL ESTATE MEDIA -->
+  <section class="service-row px-8 md:px-14 lg:px-20 py-16 md:py-20 reveal">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+      <div class="lg:col-span-1">
+        <p class="font-display text-[11px] tracking-[0.3em] uppercase text-bone/30 pt-1">05</p>
+      </div>
+      <div class="lg:col-span-4">
+        <h2 class="font-display text-[clamp(1.8rem,3.5vw,3rem)] tracking-[0.03em] uppercase text-white leading-[0.95]">Real Estate<br/>Media</h2>
+      </div>
+      <div class="lg:col-span-7">
+        <p class="font-body text-sm md:text-base text-white/50 font-light leading-relaxed mb-8">Premium listing photography, cinematic walkthroughs, and social content for real estate professionals who want their properties to stand out in any market. In today's scroll-first world, your listing's first impression is always visual. We make sure that impression is the right one &mdash; premium, compelling, and built to sell.</p>
+        <div class="mb-8">
+          <p class="font-body text-[10px] tracking-[0.25em] uppercase text-white/30 mb-3">Deliverables</p>
+          <div class="-m-1">
+            <span class="deliverable-tag">Listing Photography</span>
+            <span class="deliverable-tag">Cinematic Walkthroughs</span>
+            <span class="deliverable-tag">Drone Footage</span>
+            <span class="deliverable-tag">Social Media Content</span>
+            <span class="deliverable-tag">Virtual Tour Support</span>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-4">
+          <a href="https://calendly.com/edelink7/15min" target="_blank" class="btn inline-flex items-center gap-2 px-6 py-3 border border-bone/25 text-bone text-xs tracking-[0.18em] uppercase hover:border-bone/60 transition-colors duration-300">
+            Start a Project &#8594;
+          </a>
+          <a href="real-estate.html" class="font-body text-xs tracking-[0.18em] uppercase text-white/35 hover:text-white/65 transition-colors duration-200 flex items-center gap-1.5">
+            View Dedicated Real Estate Page &#8594;
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE 06: EVENT COVERAGE -->
+  <section class="service-row px-8 md:px-14 lg:px-20 py-16 md:py-20 reveal">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+      <div class="lg:col-span-1">
+        <p class="font-display text-[11px] tracking-[0.3em] uppercase text-bone/30 pt-1">06</p>
+      </div>
+      <div class="lg:col-span-4">
+        <h2 class="font-display text-[clamp(1.8rem,3.5vw,3rem)] tracking-[0.03em] uppercase text-white leading-[0.95]">Event<br/>Coverage</h2>
+      </div>
+      <div class="lg:col-span-7">
+        <p class="font-body text-sm md:text-base text-white/50 font-light leading-relaxed mb-8">Corporate events, product launches, and brand moments captured with full production values &mdash; photography and video that tells the complete story. Events are fleeting. Great coverage makes them permanent. We document what happened and craft the narrative around why it mattered.</p>
+        <div class="mb-8">
+          <p class="font-body text-[10px] tracking-[0.25em] uppercase text-white/30 mb-3">Deliverables</p>
+          <div class="-m-1">
+            <span class="deliverable-tag">Event Photography</span>
+            <span class="deliverable-tag">Highlight Reels</span>
+            <span class="deliverable-tag">Same-Day Edits</span>
+            <span class="deliverable-tag">Interview Packages</span>
+            <span class="deliverable-tag">Multi-Camera Coverage</span>
+          </div>
+        </div>
+        <a href="https://calendly.com/edelink7/15min" target="_blank" class="btn inline-flex items-center gap-2 px-6 py-3 border border-bone/25 text-bone text-xs tracking-[0.18em] uppercase hover:border-bone/60 transition-colors duration-300">
+          Start a Project &#8594;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider mx-8 md:mx-14 lg:mx-20"></div>
+
+  <!-- PROCESS OVERVIEW -->
+  <section class="px-8 md:px-14 lg:px-20 py-20 md:py-28">
+    <div class="mb-12 reveal">
+      <p class="font-body text-[10px] tracking-[0.32em] uppercase text-bone/50 mb-3">How It Works</p>
+      <h2 class="font-display text-[clamp(2rem,4vw,3.5rem)] leading-[0.92] tracking-[0.02em] uppercase text-white">Our Process</h2>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/[0.05]">
+      <div class="bg-ink p-7 reveal">
+        <p class="font-display text-5xl leading-none text-white/[0.07] mb-5">01</p>
+        <h3 class="font-display text-lg tracking-[0.05em] uppercase text-white mb-3">Strategy</h3>
+        <p class="font-body text-xs text-white/40 font-light leading-relaxed">We audit your goals, audience, and competitive landscape before a single shot is taken.</p>
+      </div>
+      <div class="bg-ink p-7 reveal" style="transition-delay:0.08s">
+        <p class="font-display text-5xl leading-none text-white/[0.07] mb-5">02</p>
+        <h3 class="font-display text-lg tracking-[0.05em] uppercase text-white mb-3">Production</h3>
+        <p class="font-body text-xs text-white/40 font-light leading-relaxed">Expert crew, premium gear, and precise direction on every shoot.</p>
+      </div>
+      <div class="bg-ink p-7 reveal" style="transition-delay:0.16s">
+        <p class="font-display text-5xl leading-none text-white/[0.07] mb-5">03</p>
+        <h3 class="font-display text-lg tracking-[0.05em] uppercase text-white mb-3">Post Production</h3>
+        <p class="font-body text-xs text-white/40 font-light leading-relaxed">Color, sound, edit, and motion &mdash; refined until it's right.</p>
+      </div>
+      <div class="bg-ink p-7 reveal" style="transition-delay:0.24s">
+        <p class="font-display text-5xl leading-none text-white/[0.07] mb-5">04</p>
+        <h3 class="font-display text-lg tracking-[0.05em] uppercase text-white mb-3">Delivery</h3>
+        <p class="font-body text-xs text-white/40 font-light leading-relaxed">Final assets optimized for every channel, platform, and format you need.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA SECTION -->
+  <section class="relative px-8 md:px-14 lg:px-20 py-24 md:py-36 overflow-hidden noise">
+    <div class="absolute inset-0 bg-charcoal"></div>
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse at 65% 50%, rgba(224,212,188,0.03) 0%, transparent 70%);"></div>
+    <div class="relative z-10 max-w-xl reveal">
+      <p class="font-body text-[10px] tracking-[0.32em] uppercase text-bone/50 mb-5">Ready to Begin</p>
+      <h2 class="font-display text-[clamp(2rem,4.5vw,4rem)] leading-[0.92] tracking-[0.02em] uppercase text-white mb-6">Start a Project.</h2>
+      <p class="font-body text-sm text-white/45 font-light leading-relaxed mb-10">Tell us what you're building. We'll scope it, price it, and deliver it at the level your brand deserves.</p>
+      <a href="https://calendly.com/edelink7/15min" target="_blank" class="btn inline-flex items-center gap-2.5 px-8 py-4 bg-bone text-ink font-body text-xs tracking-[0.2em] uppercase font-medium hover:bg-white transition-colors duration-300">
+        Book a Strategy Call
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="px-8 md:px-14 lg:px-20 py-9 border-t border-white/[0.07]">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <img src="White_Icon.png" alt="" class="h-5 w-auto opacity-40" />
+        <span class="font-display text-[11px] tracking-[0.14em] uppercase text-white/35">Clairo Studios</span>
+      </div>
+      <p class="font-body text-[10px] text-white/22 tracking-wide order-last md:order-none">&copy; 2025 Clairo Studios. All rights reserved.</p>
+      <nav aria-label="Footer links">
+        <ul class="flex items-center gap-8">
+          <li><a href="work.html" class="font-body text-[10px] tracking-[0.18em] uppercase text-white/28 hover:text-white/60 transition-colors duration-200">Work</a></li>
+          <li><a href="services.html" class="font-body text-[10px] tracking-[0.18em] uppercase text-white/28 hover:text-white/60 transition-colors duration-200">Services</a></li>
+          <li><a href="about.html" class="font-body text-[10px] tracking-[0.18em] uppercase text-white/28 hover:text-white/60 transition-colors duration-200">About</a></li>
+          <li><a href="contact.html" class="font-body text-[10px] tracking-[0.18em] uppercase text-white/28 hover:text-white/60 transition-colors duration-200">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('menu-toggle');
+    const mMenu = document.getElementById('mobile-menu');
+    if (toggle && mMenu) {
+      toggle.addEventListener('click', () => {
+        mMenu.classList.toggle('open');
+        mMenu.classList.toggle('closed');
+      });
+    }
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => revealObs.observe(el));
+  </script>
+</body>
+</html>
