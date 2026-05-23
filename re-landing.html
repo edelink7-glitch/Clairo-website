@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Premium Real Estate Media — Clairo Studios</title>
+  <meta name="description" content="Professional listing photography, cinematic walkthroughs &amp; social content for real estate agents in Montreal. Book a shoot with Clairo Studios." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { bone: '#E0D4BC', charcoal: '#1A1A1A', ink: '#0B0B0B' },
+          fontFamily: { display: ['"Pathway Gothic One"', 'sans-serif'], body: ['"DM Sans"', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    * { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    body { background: #0B0B0B; color: white; font-family: 'DM Sans', sans-serif; }
+    .noise::after { content: ''; position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); opacity: 0.03; pointer-events: none; z-index: 1; }
+    .divider { height: 1px; background: linear-gradient(to right, transparent, rgba(255,255,255,0.08), transparent); }
+    .btn-primary { display: inline-flex; align-items: center; gap: 10px; background: #E0D4BC; color: #0B0B0B; font-family: 'DM Sans', sans-serif; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 500; padding: 1rem 2rem; text-decoration: none; transition: background 0.2s; }
+    .btn-primary:hover { background: white; }
+    .btn-outline { display: inline-flex; align-items: center; gap: 10px; border: 1px solid rgba(255,255,255,0.25); color: white; font-family: 'DM Sans', sans-serif; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; padding: 1rem 2rem; text-decoration: none; transition: border-color 0.2s; }
+    .btn-outline:hover { border-color: rgba(255,255,255,0.6); }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    /* Hero slideshow */
+    .slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transition: opacity 1.8s ease-in-out; }
+    .slide.active { opacity: 1; animation: kb 12s ease-in-out forwards; }
+    @keyframes kb { from { transform: scale(1); } to { transform: scale(1.07) translate(-1%, -0.5%); } }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(11,11,11,0.5) 0%, rgba(11,11,11,0.2) 40%, rgba(11,11,11,0.7) 80%, rgba(11,11,11,0.95) 100%), linear-gradient(to right, rgba(11,11,11,0.8) 0%, transparent 60%); pointer-events: none; z-index: 1; }
+    /* Feature card */
+    .feature { border-top: 1px solid rgba(255,255,255,0.07); padding: 1.75rem 0; transition: border-color 0.3s; }
+    .feature:hover { border-top-color: rgba(224,212,188,0.2); }
+    /* Photo grid */
+    .photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
+    @media (max-width: 640px) { .photo-grid { grid-template-columns: repeat(2, 1fr); } }
+    .photo-item { position: relative; overflow: hidden; cursor: pointer; aspect-ratio: 4/3; }
+    .photo-item img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .photo-item:hover img { transform: scale(1.05); }
+    /* Lightbox */
+    #lb { position: fixed; inset: 0; z-index: 100; background: rgba(11,11,11,0.97); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+    #lb.open { opacity: 1; pointer-events: all; }
+    #lb img { max-width: 90vw; max-height: 88vh; object-fit: contain; display: block; }
+    #lb-close { position: absolute; top: 1.5rem; right: 2rem; background: none; border: none; color: rgba(255,255,255,0.5); cursor: pointer; font-size: 2rem; line-height: 1; transition: color 0.2s; }
+    #lb-close:hover { color: white; }
+    #lb-prev, #lb-next { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.6); width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s; }
+    #lb-prev:hover, #lb-next:hover { background: rgba(255,255,255,0.14); color: white; }
+    #lb-prev { left: 1.5rem; }
+    #lb-next { right: 1.5rem; }
+    #lb-count { position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%); font-size: 10px; letter-spacing: 0.2em; color: rgba(255,255,255,0.35); }
+    /* Testimonial */
+    .tcard { border: 1px solid rgba(255,255,255,0.07); padding: 1.75rem; transition: border-color 0.3s; }
+    .tcard:hover { border-color: rgba(224,212,188,0.18); }
+    /* Sticky mobile bar */
+    @media (max-width: 767px) {
+      .sticky-bar { display: flex !important; }
+      body { padding-bottom: 72px; }
+    }
+    .sticky-bar { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 60; background: rgba(11,11,11,0.97); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-top: 1px solid rgba(255,255,255,0.09); padding: 1rem 1.5rem; align-items: center; justify-content: space-between; gap: 1rem; }
+    .sticky-bar span { font-size: 11px; letter-spacing: 0.1em; color: rgba(255,255,255,0.4); }
+    .sticky-bar a { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: #0B0B0B; background: #E0D4BC; padding: 0.65rem 1.4rem; white-space: nowrap; text-decoration: none; transition: background 0.2s; flex-shrink: 0; }
+    .sticky-bar a:hover { background: white; }
+    /* Number stat */
+    .stat-num { font-family: 'Pathway Gothic One', sans-serif; font-size: clamp(2.5rem, 8vw, 5rem); line-height: 1; letter-spacing: 0.02em; color: white; }
+  </style>
+</head>
+<body>
+
+  <!-- STICKY MOBILE CTA -->
+  <div class="sticky-bar">
+    <span>Ready to book a shoot?</span>
+    <a href="https://calendly.com/edelink7/15min" target="_blank">Book a Call</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="relative h-screen min-h-[600px] overflow-hidden noise">
+    <div id="slides">
+      <div class="slide active" style="background-image:url('portfolio/house/A-7.jpg');"></div>
+      <div class="slide" style="background-image:url('portfolio/house/A-15.jpg');"></div>
+      <div class="slide" style="background-image:url('portfolio/house/A-25.jpg');"></div>
+      <div class="slide" style="background-image:url('portfolio/house/A-35.jpg');"></div>
+      <div class="slide" style="background-image:url('portfolio/house/A-40.jpg');"></div>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="relative z-10 h-full flex flex-col" style="padding: 0 2rem 4rem;">
+      <!-- Logo top -->
+      <div class="pt-8 flex items-center gap-3">
+        <img src="White_Icon.png" alt="Clairo Studios" style="height:28px;width:auto;opacity:0.85;" />
+        <span style="font-family:'Pathway Gothic One',sans-serif;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.7);">Clairo Studios</span>
+      </div>
+      <!-- Hero text -->
+      <div class="mt-auto max-w-2xl">
+        <p style="font-size:10px;letter-spacing:0.32em;text-transform:uppercase;color:rgba(224,212,188,0.6);margin-bottom:1rem;">Real Estate Media &middot; Montreal</p>
+        <h1 style="font-family:'Pathway Gothic One',sans-serif;font-size:clamp(2.8rem,9vw,7rem);line-height:0.92;letter-spacing:0.02em;text-transform:uppercase;color:white;margin-bottom:1.5rem;">Your Listings Deserve to<br/><span style="color:#E0D4BC;">Stop the Scroll.</span></h1>
+        <p style="font-size:clamp(13px,2vw,16px);color:rgba(255,255,255,0.55);font-weight:300;line-height:1.65;max-width:480px;margin-bottom:2.5rem;">Premium photography, cinematic video &amp; social media content for real estate agents who know that first impressions sell faster — and for more.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:1rem;">
+          <a href="https://calendly.com/edelink7/15min" target="_blank" class="btn-primary">
+            Book a Shoot
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 7h10M7 2l5 5-5 5"/></svg>
+          </a>
+          <a href="#gallery" class="btn-outline">See the Work</a>
+        </div>
+      </div>
+    </div>
+    <!-- Dots -->
+    <div id="dots" style="position:absolute;bottom:2rem;left:2rem;z-index:10;display:flex;gap:6px;"></div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <section style="border-top:1px solid rgba(255,255,255,0.07);border-bottom:1px solid rgba(255,255,255,0.07);padding:1.25rem 2rem;background:#111;">
+    <div style="display:flex;align-items:center;gap:2.5rem;overflow-x:auto;scrollbar-width:none;white-space:nowrap;">
+      <span style="font-size:10px;letter-spacing:0.26em;text-transform:uppercase;color:rgba(255,255,255,0.2);">Trusted by agents across Montreal</span>
+      <span style="color:rgba(255,255,255,0.1);">·</span>
+      <span style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(224,212,188,0.35);">Photography</span>
+      <span style="color:rgba(255,255,255,0.1);">·</span>
+      <span style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(224,212,188,0.35);">Cinematic Video</span>
+      <span style="color:rgba(255,255,255,0.1);">·</span>
+      <span style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(224,212,188,0.35);">Drone &amp; Aerial</span>
+      <span style="color:rgba(255,255,255,0.1);">·</span>
+      <span style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(224,212,188,0.35);">Social Reels</span>
+      <span style="color:rgba(255,255,255,0.1);">·</span>
+      <span style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(224,212,188,0.35);">48h Delivery</span>
+    </div>
+  </section>
+
+  <!-- PROBLEM → SOLUTION -->
+  <section style="padding:5rem 2rem;max-width:1100px;margin:0 auto;" class="reveal">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
+      <div>
+        <p style="font-size:10px;letter-spacing:0.32em;text-transform:uppercase;color:rgba(224,212,188,0.5);margin-bottom:1rem;">The Problem</p>
+        <h2 style="font-family:'Pathway Gothic One',sans-serif;font-size:clamp(2rem,4vw,3.5rem);line-height:0.92;text-transform:uppercase;color:white;margin-bottom:1.5rem;">Buyers Scroll Past Bad Photos in 2 Seconds.</h2>
+        <p style="font-size:14px;color:rgba(255,255,255,0.45);font-weight:300;line-height:1.7;margin-bottom:1rem;">In today's market, buyers scroll through dozens of listings before ever visiting one. If your photos don't stop them, your property doesn't exist — no matter how good it is in person.</p>
+        <p style="font-size:14px;color:rgba(255,255,255,0.35);font-weight:300;line-height:1.7;">Listings with professional media sell up to 32% faster and at higher prices. That's not a marketing claim — that's a market reality.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:3px;background:rgba(255,255,255,0.05);">
+        <div style="background:#111;padding:2rem;">
+          <div class="stat-num">32%</div>
+          <p style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:0.5rem;font-weight:300;">faster sale time with premium media</p>
+        </div>
+        <div style="background:#111;padding:2rem;">
+          <div class="stat-num">3×</div>
+          <p style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:0.5rem;font-weight:300;">more listing views vs. amateur photos</p>
+        </div>
+        <div style="background:#111;padding:2rem;">
+          <div class="stat-num">48h</div>
+          <p style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:0.5rem;font-weight:300;">photo delivery, shoot to final edit</p>
+        </div>
+        <div style="background:#111;padding:2rem;">
+          <div class="stat-num">4K</div>
+          <p style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:0.5rem;font-weight:300;">cinema-grade video quality</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider" style="margin:0 2rem;"></div>
+
+  <!-- SERVICES -->
+  <section style="padding:5rem 2rem;">
+    <p style="font-size:10px;letter-spacing:0.32em;text-transform:uppercase;color:rgba(224,212,188,0.5);margin-bottom:0.75rem;" class="reveal">What I Offer</p>
+    <h2 style="font-family:'Pathway Gothic One',sans-serif;font-size:clamp(2rem,4vw,3.5rem);line-height:0.92;text-transform:uppercase;color:white;margin-bottom:3.5rem;max-width:500px;" class="reveal">Everything Your Listing Needs.</h2>
+
+    <div style="max-width:900px;">
+      <div class="feature reveal">
+        <div style="display:flex;align-items:flex-start;gap:2rem;">
+          <div style="width:40px;height:40px;border:1px solid rgba(224,212,188,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:3px;">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#E0D4BC" stroke-width="1.2" opacity="0.6"><rect x="1.5" y="3" width="15" height="12" rx="1"/><circle cx="6" cy="8.5" r="2"/><path d="M1.5 14l4-4 3 3 3-4 4 5"/></svg>
+          </div>
+          <div style="flex:1;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.6rem;">
+              <h3 style="font-family:'Pathway Gothic One',sans-serif;font-size:1.4rem;letter-spacing:0.04em;text-transform:uppercase;color:white;">Listing Photography</h3>
+              <span style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(224,212,188,0.4);">Most Popular</span>
+            </div>
+            <p style="font-size:13px;color:rgba(255,255,255,0.45);font-weight:300;line-height:1.65;max-width:520px;">Interior &amp; exterior photography crafted to maximize perceived space, light, and premium appeal. Every frame composed with intent. Delivered within 48 hours.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature reveal" style="transition-delay:0.06s;">
+        <div style="display:flex;align-items:flex-start;gap:2rem;">
+          <div style="width:40px;height:40px;border:1px solid rgba(224,212,188,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:3px;">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#E0D4BC" stroke-width="1.2" opacity="0.6"><rect x="1" y="3" width="16" height="12" rx="1"/><polygon points="7,7 13,10 7,13" fill="#E0D4BC" opacity="0.6" stroke="none"/></svg>
+          </div>
+          <div style="flex:1;">
+            <h3 style="font-family:'Pathway Gothic One',sans-serif;font-size:1.4rem;letter-spacing:0.04em;text-transform:uppercase;color:white;margin-bottom:0.6rem;">Cinematic Walkthrough</h3>
+            <p style="font-size:13px;color:rgba(255,255,255,0.45);font-weight:300;line-height:1.65;max-width:520px;">Smooth, graded video tours that place buyers inside the property emotionally before they ever visit. Edited to music, optimized for YouTube &amp; MLS.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature reveal" style="transition-delay:0.12s;">
+        <div style="display:flex;align-items:flex-start;gap:2rem;">
+          <div style="width:40px;height:40px;border:1px solid rgba(224,212,188,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:3px;">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#E0D4BC" stroke-width="1.2" opacity="0.6"><path d="M9 2L9 6M9 12l0 4M2 9h4M12 9h4"/><circle cx="9" cy="9" r="2.5"/></svg>
+          </div>
+          <div style="flex:1;">
+            <h3 style="font-family:'Pathway Gothic One',sans-serif;font-size:1.4rem;letter-spacing:0.04em;text-transform:uppercase;color:white;margin-bottom:0.6rem;">Drone &amp; Aerial</h3>
+            <p style="font-size:13px;color:rgba(255,255,255,0.45);font-weight:300;line-height:1.65;max-width:520px;">Aerial photography &amp; video that puts the property in context — neighbourhood, lot size, and curb appeal from perspectives only a drone can capture.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature reveal" style="transition-delay:0.18s;">
+        <div style="display:flex;align-items:flex-start;gap:2rem;">
+          <div style="width:40px;height:40px;border:1px solid rgba(224,212,188,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:3px;">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#E0D4BC" stroke-width="1.2" opacity="0.6"><rect x="2" y="3" width="14" height="12" rx="2"/><path d="M6 1v4M12 1v4M2 8h14"/></svg>
+          </div>
+          <div style="flex:1;">
+            <h3 style="font-family:'Pathway Gothic One',sans-serif;font-size:1.4rem;letter-spacing:0.04em;text-transform:uppercase;color:white;margin-bottom:0.6rem;">Social Media Reels</h3>
+            <p style="font-size:13px;color:rgba(255,255,255,0.45);font-weight:300;line-height:1.65;max-width:520px;">Instagram &amp; TikTok reels built to drive listing visibility, generate buyer leads, and build your personal brand as an agent — before the open house.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider" style="margin:0 2rem;"></div>
+
+  <!-- GALLERY -->
+  <section id="gallery" style="padding:5rem 0;">
+    <div style="padding:0 2rem;margin-bottom:2.5rem;" class="reveal">
+      <p style="font-size:10px;letter-spacing:0.32em;text-transform:uppercase;color:rgba(224,212,188,0.5);margin-bottom:0.75rem;">Recent Work</p>
+      <h2 style="font-family:'Pathway Gothic One',sans-serif;font-size:clamp(1.8rem,3.5vw,3rem);line-height:0.92;text-transform:uppercase;color:white;">Jawad REALTOR &middot; St. Sauveur</h2>
+    </div>
+    <div class="photo-grid" id="photo-grid" style="padding:0 4px;">
+      <div class="photo-item" data-src="portfolio/house/A-1.jpg"><img src="portfolio/house/A-1.jpg" alt="Real estate St. Sauveur" loading="lazy" /></div>
+      <div class="photo-item" data-src="portfolio/house/A-3.jpg"><img src="portfolio/house/A-3.jpg" alt="Real estate St. Sauveur" loading="lazy" /></div>
+      <div class="photo-item" data-src="portfolio/house/A-7.jpg"><img src="portfolio/house/A-7.jpg" alt="Real estate St. Sauveur" loading="lazy" /></div>
+      <div class="photo-item" data-src="portfolio/house/A-10.jpg"><img src="portfolio/house/A-10.jpg" alt="Real estate St. Sauveur" loading="lazy" /></div>
+      <div class="photo-item" data-src="portfolio/house/A-15.jpg"><img src="portfolio/house/A-15.jpg" alt="Real estate St. Sauveur" loading="lazy" /></div>
+      <div class="photo-item" data-src="portfolio/house/A-20.jpg"><img src="portfolio/house/A-20.jpg" alt="Real estate St. Sauveur" loading="lazy" /></div>
+      <div class="photo-item" data-src="portfolio/house/A-25.jpg"><img src="portfolio/house/A-25.jpg" alt="Real estate St. Sauveur" loading="lazy" /></div>
+      <div class="photo-item" data-src="portfolio/house/A-30.jpg"><img src="portfolio/house/A-30.jpg" alt="Real estate St. Sauveur" loading="lazy" /></div>
+      <div class="photo-item" data-src="portfolio/house/A-35.jpg"><img src="portfolio/house/A-35.jpg" alt="Real estate St. Sauveur" loading="lazy" /></div>
+    </div>
+    <div style="padding:1.5rem 2rem 0;display:flex;justify-content:space-between;align-items:center;">
+      <p style="font-size:10px;color:rgba(255,255,255,0.22);letter-spacing:0.15em;">Click any image to enlarge · 47 photos delivered for this listing</p>
+      <a href="real-estate.html" style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(224,212,188,0.5);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#E0D4BC'" onmouseout="this.style.color='rgba(224,212,188,0.5)'">View Full Gallery &#8594;</a>
+    </div>
+  </section>
+
+  <div class="divider" style="margin:0 2rem;"></div>
+
+  <!-- TESTIMONIALS -->
+  <section style="padding:5rem 2rem;">
+    <p style="font-size:10px;letter-spacing:0.32em;text-transform:uppercase;color:rgba(224,212,188,0.5);margin-bottom:0.75rem;" class="reveal">What Agents Say</p>
+    <h2 style="font-family:'Pathway Gothic One',sans-serif;font-size:clamp(2rem,4vw,3.2rem);line-height:0.92;text-transform:uppercase;color:white;margin-bottom:3rem;" class="reveal">Built for Results.</h2>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:3px;background:rgba(255,255,255,0.04);">
+      <div class="tcard reveal">
+        <div style="display:flex;gap:3px;margin-bottom:1.25rem;">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="#E0D4BC" opacity="0.6"><polygon points="6.5,0.5 8.1,4.6 12.5,4.9 9.3,7.6 10.4,11.9 6.5,9.6 2.6,11.9 3.7,7.6 0.5,4.9 4.9,4.6"/></svg>
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="#E0D4BC" opacity="0.6"><polygon points="6.5,0.5 8.1,4.6 12.5,4.9 9.3,7.6 10.4,11.9 6.5,9.6 2.6,11.9 3.7,7.6 0.5,4.9 4.9,4.6"/></svg>
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="#E0D4BC" opacity="0.6"><polygon points="6.5,0.5 8.1,4.6 12.5,4.9 9.3,7.6 10.4,11.9 6.5,9.6 2.6,11.9 3.7,7.6 0.5,4.9 4.9,4.6"/></svg>
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="#E0D4BC" opacity="0.6"><polygon points="6.5,0.5 8.1,4.6 12.5,4.9 9.3,7.6 10.4,11.9 6.5,9.6 2.6,11.9 3.7,7.6 0.5,4.9 4.9,4.6"/></svg>
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="#E0D4BC" opacity="0.6"><polygon points="6.5,0.5 8.1,4.6 12.5,4.9 9.3,7.6 10.4,11.9 6.5,9.6 2.6,11.9 3.7,7.6 0.5,4.9 4.9,4.6"/></svg>
+        </div>
+        <p style="font-size:13px;color:rgba(255,255,255,0.55);font-weight:300;line-height:1.7;margin-bottom:1.25rem;">"After posting the video, so many people started reaching out — about the property, about me as an agent. It brought me attention I didn't expect. I really loved the result."</p>
+        <div style="border-top:1px solid rgba(255,255,255,0.07);padding-top:1rem;">
+          <p style="font-family:'Pathway Gothic One',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:white;">Jawad</p>
+          <p style="font-size:10px;color:rgba(224,212,188,0.4);margin-top:2px;letter-spacing:0.1em;">REALTOR · St. Sauveur</p>
+        </div>
+      </div>
+
+      <div class="tcard reveal" style="transition-delay:0.08s;">
+        <div style="display:flex;gap:3px;margin-bottom:1.25rem;">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="#E0D4BC" opacity="0.6"><polygon points="6.5,0.5 8.1,4.6 12.5,4.9 9.3,7.6 10.4,11.9 6.5,9.6 2.6,11.9 3.7,7.6 0.5,4.9 4.9,4.6"/></svg>
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="#E0D4BC" opacity="0.6"><polygon points="6.5,0.5 8.1,4.6 12.5,4.9 9.3,7.6 10.4,11.9 6.5,9.6 2.6,11.9 3.7,7.6 0.5,4.9 4.9,4.6"/></svg>
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="#E0D4BC" opacity="0.6"><polygon points="6.5,0.5 8.1,4.6 12.5,4.9 9.3,7.6 10.4,11.9 6.5,9.6 2.6,11.9 3.7,7.6 0.5,4.9 4.9,4.6"/></svg>
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="#E0D4BC" opacity="0.6"><polygon points="6.5,0.5 8.1,4.6 12.5,4.9 9.3,7.6 10.4,11.9 6.5,9.6 2.6,11.9 3.7,7.6 0.5,4.9 4.9,4.6"/></svg>
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="#E0D4BC" opacity="0.6"><polygon points="6.5,0.5 8.1,4.6 12.5,4.9 9.3,7.6 10.4,11.9 6.5,9.6 2.6,11.9 3.7,7.6 0.5,4.9 4.9,4.6"/></svg>
+        </div>
+        <p style="font-size:13px;color:rgba(255,255,255,0.55);font-weight:300;line-height:1.7;margin-bottom:1.25rem;">"Honestly blown away by the result. It was way beyond what I expected — the quality, the edit, everything. It really made the event look world-class."</p>
+        <div style="border-top:1px solid rgba(255,255,255,0.07);padding-top:1rem;">
+          <p style="font-family:'Pathway Gothic One',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:white;">Event Client</p>
+          <p style="font-size:10px;color:rgba(224,212,188,0.4);margin-top:2px;letter-spacing:0.1em;">Event Film</p>
+        </div>
+      </div>
+
+      <div class="tcard reveal" style="transition-delay:0.16s;">
+        <div style="display:flex;gap:3px;margin-bottom:1.25rem;">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="#E0D4BC" opacity="0.6"><polygon points="6.5,0.5 8.1,4.6 12.5,4.9 9.3,7.6 10.4,11.9 6.5,9.6 2.6,11.9 3.7,7.6 0.5,4.9 4.9,4.6"/></svg>
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="#E0D4BC" opacity="0.6"><polygon points="6.5,0.5 8.1,4.6 12.5,4.9 9.3,7.6 10.4,11.9 6.5,9.6 2.6,11.9 3.7,7.6 0.5,4.9 4.9,4.6"/></svg>
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="#E0D4BC" opacity="0.6"><polygon points="6.5,0.5 8.1,4.6 12.5,4.9 9.3,7.6 10.4,11.9 6.5,9.6 2.6,11.9 3.7,7.6 0.5,4.9 4.9,4.6"/></svg>
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="#E0D4BC" opacity="0.6"><polygon points="6.5,0.5 8.1,4.6 12.5,4.9 9.3,7.6 10.4,11.9 6.5,9.6 2.6,11.9 3.7,7.6 0.5,4.9 4.9,4.6"/></svg>
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="#E0D4BC" opacity="0.6"><polygon points="6.5,0.5 8.1,4.6 12.5,4.9 9.3,7.6 10.4,11.9 6.5,9.6 2.6,11.9 3.7,7.6 0.5,4.9 4.9,4.6"/></svg>
+        </div>
+        <p style="font-size:13px;color:rgba(255,255,255,0.55);font-weight:300;line-height:1.7;margin-bottom:1.25rem;">"We were completely moved watching the final film. It captured everything we felt that day — way more than we ever imagined it could be."</p>
+        <div style="border-top:1px solid rgba(255,255,255,0.07);padding-top:1rem;">
+          <p style="font-family:'Pathway Gothic One',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:white;">James &amp; Lise</p>
+          <p style="font-size:10px;color:rgba(224,212,188,0.4);margin-top:2px;letter-spacing:0.1em;">Wedding Film</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider" style="margin:0 2rem;"></div>
+
+  <!-- MAIN CTA -->
+  <section style="position:relative;padding:5rem 2rem;overflow:hidden;" class="noise">
+    <div style="position:absolute;inset:0;background:#1A1A1A;"></div>
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 60% 50%,rgba(224,212,188,0.04) 0%,transparent 70%);"></div>
+    <div style="position:relative;z-index:10;max-width:560px;" class="reveal">
+      <p style="font-size:10px;letter-spacing:0.32em;text-transform:uppercase;color:rgba(224,212,188,0.5);margin-bottom:1.25rem;">Ready to List?</p>
+      <h2 style="font-family:'Pathway Gothic One',sans-serif;font-size:clamp(2.2rem,5vw,4rem);line-height:0.92;text-transform:uppercase;color:white;margin-bottom:1.5rem;">Great Media Sells Faster.<br/>Book Your Shoot.</h2>
+      <p style="font-size:14px;color:rgba(255,255,255,0.45);font-weight:300;line-height:1.65;margin-bottom:2.5rem;">Same-week availability for most shoots across Montreal and the surrounding region. 15-min call to confirm scope, date, and pricing. No commitment required.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:2rem;">
+        <a href="https://calendly.com/edelink7/15min" target="_blank" class="btn-primary">
+          Book a Free 15-Min Call
+        </a>
+        <a href="mailto:edelink7@gmail.com" class="btn-outline">
+          edelink7@gmail.com
+        </a>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.07);">
+        <a href="https://instagram.com/clairo_studios" target="_blank" rel="noopener" style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.35);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#E0D4BC'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">&#64;clairo_studios</a>
+        <a href="https://wa.me/14388370703" target="_blank" rel="noopener" style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.35);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#E0D4BC'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">WhatsApp &#8594;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="padding:2rem;border-top:1px solid rgba(255,255,255,0.07);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;">
+    <div style="display:flex;align-items:center;gap:0.75rem;">
+      <img src="White_Icon.png" alt="" style="height:18px;width:auto;opacity:0.35;" />
+      <span style="font-family:'Pathway Gothic One',sans-serif;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.3);">Clairo Studios</span>
+    </div>
+    <p style="font-size:10px;color:rgba(255,255,255,0.2);letter-spacing:0.12em;">&copy; 2025 Clairo Studios</p>
+    <div style="display:flex;gap:1.5rem;">
+      <a href="index.html" style="font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.25);text-decoration:none;">Home</a>
+      <a href="real-estate.html" style="font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.25);text-decoration:none;">Full RE Gallery</a>
+      <a href="contact.html" style="font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.25);text-decoration:none;">Contact</a>
+    </div>
+  </footer>
+  <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:1.5rem;padding:1rem 2rem;border-top:1px solid rgba(255,255,255,0.05);">
+    <a href="https://instagram.com/clairo_studios" target="_blank" rel="noopener" style="font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.25);text-decoration:none;">Instagram — @clairo_studios</a>
+    <a href="https://tiktok.com/@clairostudios" target="_blank" rel="noopener" style="font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.25);text-decoration:none;">TikTok — @clairostudios</a>
+    <a href="mailto:edelink7@gmail.com" style="font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.25);text-decoration:none;">edelink7@gmail.com</a>
+    <a href="tel:+14388370703" style="font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.25);text-decoration:none;">+1 438 837-0703</a>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div id="lb">
+    <button id="lb-close">&times;</button>
+    <button id="lb-prev"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3L5 8l5 5"/></svg></button>
+    <img id="lb-img" src="" alt="Property photo" />
+    <button id="lb-next"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3l5 5-5 5"/></svg></button>
+    <div id="lb-count"></div>
+  </div>
+
+  <script>
+    // Hero slideshow
+    const slides = document.querySelectorAll('.slide');
+    const dotsEl = document.getElementById('dots');
+    let cur = 0, timer;
+    slides.forEach((_, i) => {
+      const d = document.createElement('button');
+      d.setAttribute('aria-label', 'Slide ' + (i + 1));
+      d.addEventListener('click', () => go(i));
+      dotsEl.appendChild(d);
+    });
+    function updateDots() {
+      dotsEl.querySelectorAll('button').forEach((d, i) => {
+        d.style.cssText = i === cur
+          ? 'width:18px;height:3px;border-radius:2px;background:rgba(224,212,188,0.7);border:none;cursor:pointer;transition:all 0.3s;'
+          : 'width:4px;height:3px;border-radius:2px;background:rgba(255,255,255,0.22);border:none;cursor:pointer;transition:all 0.3s;';
+      });
+    }
+    function go(n) {
+      slides[cur].classList.remove('active');
+      cur = n;
+      slides[cur].classList.add('active');
+      updateDots();
+      clearInterval(timer);
+      timer = setInterval(() => go((cur + 1) % slides.length), 6000);
+    }
+    updateDots();
+    timer = setInterval(() => go((cur + 1) % slides.length), 6000);
+
+    // Lightbox
+    const photoItems = Array.from(document.querySelectorAll('.photo-item'));
+    const lb = document.getElementById('lb');
+    const lbImg = document.getElementById('lb-img');
+    const lbCount = document.getElementById('lb-count');
+    let lbIdx = 0;
+    photoItems.forEach((item, i) => {
+      item.addEventListener('click', () => { lbIdx = i; openLb(); });
+    });
+    function openLb() {
+      lbImg.src = photoItems[lbIdx].dataset.src;
+      lbCount.textContent = (lbIdx + 1) + ' / ' + photoItems.length;
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLb() { lb.classList.remove('open'); document.body.style.overflow = ''; }
+    function nextLb() { lbIdx = (lbIdx + 1) % photoItems.length; openLb(); }
+    function prevLb() { lbIdx = (lbIdx - 1 + photoItems.length) % photoItems.length; openLb(); }
+    document.getElementById('lb-close').addEventListener('click', closeLb);
+    document.getElementById('lb-next').addEventListener('click', nextLb);
+    document.getElementById('lb-prev').addEventListener('click', prevLb);
+    lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+    document.addEventListener('keydown', e => {
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLb();
+      if (e.key === 'ArrowRight') nextLb();
+      if (e.key === 'ArrowLeft') prevLb();
+    });
+
+    // Reveal
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>
