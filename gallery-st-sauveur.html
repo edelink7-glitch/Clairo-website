@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-ink">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jawad REALTOR — St-Sauveur | Clairo Studios</title>
+  <meta name="description" content="Full gallery — Jawad REALTOR listing photography, St-Sauveur, QC. Real estate photography by Clairo Studios." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { bone: '#E0D4BC', charcoal: '#1A1A1A', ink: '#0B0B0B' },
+          fontFamily: { display: ['"Pathway Gothic One"', 'sans-serif'], body: ['"DM Sans"', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    * { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    .divider { height: 1px; background: linear-gradient(to right, transparent, rgba(255,255,255,0.08), transparent); }
+    .nav-link { position: relative; }
+    .nav-link::after { content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 1px; background: #E0D4BC; transition: width 0.3s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .nav-link:hover::after { width: 100%; }
+    .btn { position: relative; overflow: hidden; }
+    .btn::before { content: ''; position: absolute; inset: 0; background: rgba(255,255,255,0.07); opacity: 0; transition: opacity 0.22s ease; }
+    .btn:hover::before { opacity: 1; }
+    .btn:active { transform: scale(0.975); }
+    #mobile-menu { transition: opacity 0.2s, transform 0.2s; }
+    #mobile-menu.closed { opacity: 0; pointer-events: none; transform: translateY(-8px); }
+    #mobile-menu.open { opacity: 1; pointer-events: all; transform: translateY(0); }
+
+    /* Masonry */
+    .masonry-grid { column-count: 3; column-gap: 4px; }
+    @media (max-width: 900px) { .masonry-grid { column-count: 2; } }
+    @media (max-width: 540px) { .masonry-grid { column-count: 1; } }
+    .masonry-item { break-inside: avoid; margin-bottom: 4px; display: block; position: relative; overflow: hidden; cursor: pointer; }
+    .masonry-item img { display: block; width: 100%; height: auto; transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .masonry-item:hover img { transform: scale(1.04); }
+
+    /* Lightbox */
+    #lightbox { position: fixed; inset: 0; z-index: 100; background: rgba(11,11,11,0.97); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+    #lightbox.open { opacity: 1; pointer-events: all; }
+    #lightbox img { max-width: 90vw; max-height: 88vh; object-fit: contain; display: block; }
+    #lb-close { position: absolute; top: 1.5rem; right: 2rem; background: none; border: none; color: rgba(255,255,255,0.5); cursor: pointer; font-size: 2rem; line-height: 1; transition: color 0.2s; }
+    #lb-close:hover { color: white; }
+    #lb-prev, #lb-next { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.6); width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s, color 0.2s; }
+    #lb-prev:hover, #lb-next:hover { background: rgba(255,255,255,0.14); color: white; }
+    #lb-prev { left: 1.5rem; }
+    #lb-next { right: 1.5rem; }
+    #lb-counter { position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%); font-family: 'DM Sans', sans-serif; font-size: 10px; letter-spacing: 0.2em; color: rgba(255,255,255,0.35); }
+  </style>
+</head>
+<body class="bg-ink text-white font-body">
+
+  <!-- NAV -->
+  <nav class="fixed top-0 left-0 right-0 z-50" style="background: linear-gradient(to bottom, rgba(11,11,11,0.95) 0%, rgba(11,11,11,0) 100%); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);">
+    <div class="flex items-center justify-between px-8 md:px-14 lg:px-20 py-6">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <img src="White_Icon.png" alt="Clairo Studios" class="h-7 w-auto" />
+        <span class="font-display text-[15px] tracking-[0.10em] uppercase text-white hidden sm:block">Clairo Studios</span>
+      </a>
+      <ul class="hidden md:flex items-center gap-10">
+        <li><a href="work.html" class="nav-link font-body text-xs tracking-[0.2em] uppercase text-white/50 hover:text-white transition-colors duration-200">Work</a></li>
+        <li><a href="services.html" class="nav-link font-body text-xs tracking-[0.2em] uppercase text-white/50 hover:text-white transition-colors duration-200">Services</a></li>
+        <li><a href="real-estate.html" class="nav-link font-body text-xs tracking-[0.2em] uppercase text-white hover:text-white transition-colors duration-200" style="color:white;">Real Estate</a></li>
+        <li><a href="about.html" class="nav-link font-body text-xs tracking-[0.2em] uppercase text-white/50 hover:text-white transition-colors duration-200">About</a></li>
+        <li><a href="https://calendly.com/edelink7/15min" target="_blank" class="btn inline-flex items-center gap-2 px-5 py-2 border border-bone/30 text-bone text-xs tracking-[0.18em] uppercase hover:border-bone/70 transition-colors duration-300">Book a Call</a></li>
+      </ul>
+      <button id="menu-toggle" class="md:hidden text-white/50 hover:text-white transition-colors p-1" aria-label="Open menu">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.4"><line x1="2" y1="6" x2="20" y2="6" stroke-linecap="round"/><line x1="2" y1="11" x2="20" y2="11" stroke-linecap="round"/><line x1="2" y1="16" x2="14" y2="16" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="closed md:hidden absolute top-full left-0 right-0 bg-ink border-t border-white/[0.07] px-8 py-6">
+      <ul class="flex flex-col gap-5">
+        <li><a href="work.html" class="font-body text-sm tracking-[0.2em] uppercase text-white/60 hover:text-white transition-colors">Work</a></li>
+        <li><a href="services.html" class="font-body text-sm tracking-[0.2em] uppercase text-white/60 hover:text-white transition-colors">Services</a></li>
+        <li><a href="real-estate.html" class="font-body text-sm tracking-[0.2em] uppercase text-white transition-colors">Real Estate</a></li>
+        <li><a href="about.html" class="font-body text-sm tracking-[0.2em] uppercase text-white/60 hover:text-white transition-colors">About</a></li>
+        <li><a href="https://calendly.com/edelink7/15min" target="_blank" class="font-body text-sm tracking-[0.2em] uppercase text-bone/70">Book a Call &#8594;</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="pt-36 pb-14 px-8 md:px-14 lg:px-20">
+    <a href="real-estate.html" class="inline-flex items-center gap-2 font-body text-[10px] tracking-[0.22em] uppercase text-white/30 hover:text-white/60 transition-colors duration-200 mb-10">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M9 2L4 7l5 5"/></svg>
+      Real Estate
+    </a>
+    <div class="max-w-2xl">
+      <p class="font-body text-[10px] tracking-[0.3em] uppercase text-bone/40 mb-4">01 &mdash; St-Sauveur, Qu&eacute;bec</p>
+      <h1 class="font-display text-[clamp(2.5rem,5vw,5rem)] leading-[0.92] tracking-[0.02em] uppercase text-white mb-5">Jawad REALTOR&reg;<br/>St-Sauveur</h1>
+      <p class="font-body text-xs text-white/30 tracking-wide">12 images &middot; Listing photography &middot; Interiors &middot; Exteriors</p>
+    </div>
+  </header>
+
+  <div class="divider mx-8 md:mx-14 lg:mx-20 mb-10"></div>
+
+  <!-- GALLERY -->
+  <section class="pb-24" id="gallery-wrapper">
+    <div class="masonry-grid px-4 md:px-6">
+      <!-- 1. Exterior wide (garage + porch) -->
+      <div class="masonry-item" data-src="portfolio/house/A-6.jpg"><img src="portfolio/house/A-6.jpg" alt="Exterior — Jawad REALTOR, St-Sauveur" loading="lazy" /></div>
+      <!-- 2. Exterior hero (full front) -->
+      <div class="masonry-item" data-src="portfolio/house/A-7.jpg"><img src="portfolio/house/A-7.jpg" alt="Exterior hero — Jawad REALTOR, St-Sauveur" loading="lazy" /></div>
+      <!-- 3. Living room (depth, fireplace, dining beyond) -->
+      <div class="masonry-item" data-src="portfolio/house/A-8.jpg"><img src="portfolio/house/A-8.jpg" alt="Living room — Jawad REALTOR, St-Sauveur" loading="lazy" /></div>
+      <!-- 4. Living room (fireplace centered, both seating areas) -->
+      <div class="masonry-item" data-src="portfolio/house/A-9.jpg"><img src="portfolio/house/A-9.jpg" alt="Living room — Jawad REALTOR, St-Sauveur" loading="lazy" /></div>
+      <!-- 5. Dining (chandelier, sunlit, kitchen visible) -->
+      <div class="masonry-item" data-src="portfolio/house/A-11.jpg"><img src="portfolio/house/A-11.jpg" alt="Dining room — Jawad REALTOR, St-Sauveur" loading="lazy" /></div>
+      <!-- 6. Dining (French door light, plants, open to living) -->
+      <div class="masonry-item" data-src="portfolio/house/A-12.jpg"><img src="portfolio/house/A-12.jpg" alt="Dining room — Jawad REALTOR, St-Sauveur" loading="lazy" /></div>
+      <!-- 7. Kitchen (island, butcher block, hanging pots) -->
+      <div class="masonry-item" data-src="portfolio/house/A-14.jpg"><img src="portfolio/house/A-14.jpg" alt="Kitchen — Jawad REALTOR, St-Sauveur" loading="lazy" /></div>
+      <!-- 8. Kitchen (from other end, natural window light, into dining) -->
+      <div class="masonry-item" data-src="portfolio/house/A-15.jpg"><img src="portfolio/house/A-15.jpg" alt="Kitchen — Jawad REALTOR, St-Sauveur" loading="lazy" /></div>
+      <!-- 9. Staircase (architectural detail, warm wood railing) -->
+      <div class="masonry-item" data-src="portfolio/house/A-19.jpg"><img src="portfolio/house/A-19.jpg" alt="Staircase — Jawad REALTOR, St-Sauveur" loading="lazy" /></div>
+      <!-- 10. Bedroom (arched window, architectural light) -->
+      <div class="masonry-item" data-src="portfolio/house/A-34.jpg"><img src="portfolio/house/A-34.jpg" alt="Bedroom — Jawad REALTOR, St-Sauveur" loading="lazy" /></div>
+      <!-- 11. Bedroom (large arched window, full natural light) -->
+      <div class="masonry-item" data-src="portfolio/house/A-36.jpg"><img src="portfolio/house/A-36.jpg" alt="Bedroom — Jawad REALTOR, St-Sauveur" loading="lazy" /></div>
+      <!-- 12. Master bathroom (soaking tub, separate shower, double vanity) -->
+      <div class="masonry-item" data-src="portfolio/house/A-28.jpg"><img src="portfolio/house/A-28.jpg" alt="Master bathroom — Jawad REALTOR, St-Sauveur" loading="lazy" /></div>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Image lightbox">
+    <button id="lb-close" aria-label="Close">&times;</button>
+    <button id="lb-prev" aria-label="Previous">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3L5 8l5 5"/></svg>
+    </button>
+    <img id="lb-img" src="" alt="Real estate photo" />
+    <button id="lb-next" aria-label="Next">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3l5 5-5 5"/></svg>
+    </button>
+    <div id="lb-counter"></div>
+  </div>
+
+  <!-- CTA STRIP -->
+  <section class="px-8 md:px-14 lg:px-20 py-16 border-t border-white/[0.07]">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+      <div>
+        <p class="font-body text-xs text-white/40 tracking-wide mb-1">Ready to elevate your listings?</p>
+        <p class="font-display text-2xl tracking-[0.04em] uppercase text-white">Book a Shoot</p>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="real-estate.html" class="btn inline-flex items-center gap-2 px-6 py-3 border border-white/20 text-white/50 font-body text-xs tracking-[0.18em] uppercase hover:border-white/50 hover:text-white transition-colors duration-300">
+          ← Portfolio
+        </a>
+        <a href="https://calendly.com/edelink7/15min" target="_blank" class="btn inline-flex items-center gap-2.5 px-7 py-3 bg-bone text-ink font-body text-xs tracking-[0.2em] uppercase font-medium hover:bg-white transition-colors duration-300">
+          Book a Call
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="px-8 md:px-14 lg:px-20 py-9 border-t border-white/[0.07]">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <img src="White_Icon.png" alt="" class="h-5 w-auto opacity-40" />
+        <span class="font-display text-[11px] tracking-[0.14em] uppercase text-white/35">Clairo Studios</span>
+      </div>
+      <p class="font-body text-[10px] text-white/22 tracking-wide order-last md:order-none">&copy; 2025 Clairo Studios. All rights reserved.</p>
+      <nav aria-label="Footer links">
+        <ul class="flex items-center gap-8">
+          <li><a href="work.html" class="font-body text-[10px] tracking-[0.18em] uppercase text-white/28 hover:text-white/60 transition-colors duration-200">Work</a></li>
+          <li><a href="services.html" class="font-body text-[10px] tracking-[0.18em] uppercase text-white/28 hover:text-white/60 transition-colors duration-200">Services</a></li>
+          <li><a href="about.html" class="font-body text-[10px] tracking-[0.18em] uppercase text-white/28 hover:text-white/60 transition-colors duration-200">About</a></li>
+          <li><a href="contact.html" class="font-body text-[10px] tracking-[0.18em] uppercase text-white/28 hover:text-white/60 transition-colors duration-200">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('menu-toggle');
+    const mMenu = document.getElementById('mobile-menu');
+    if (toggle && mMenu) {
+      toggle.addEventListener('click', () => { mMenu.classList.toggle('open'); mMenu.classList.toggle('closed'); });
+    }
+
+    const galleryItems = Array.from(document.querySelectorAll('#gallery-wrapper .masonry-item'));
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lb-img');
+    const lbCounter = document.getElementById('lb-counter');
+    let lbIndex = 0;
+
+    galleryItems.forEach((item, i) => {
+      item.addEventListener('click', () => { lbIndex = i; openLb(); });
+    });
+
+    function openLb() {
+      lbImg.src = galleryItems[lbIndex].dataset.src;
+      lbCounter.textContent = (lbIndex + 1) + ' / ' + galleryItems.length;
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLb() { lb.classList.remove('open'); document.body.style.overflow = ''; }
+    function nextLb() { lbIndex = (lbIndex + 1) % galleryItems.length; openLb(); }
+    function prevLb() { lbIndex = (lbIndex - 1 + galleryItems.length) % galleryItems.length; openLb(); }
+
+    document.getElementById('lb-close').addEventListener('click', closeLb);
+    document.getElementById('lb-next').addEventListener('click', nextLb);
+    document.getElementById('lb-prev').addEventListener('click', prevLb);
+    lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+    document.addEventListener('keydown', e => {
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLb();
+      if (e.key === 'ArrowRight') nextLb();
+      if (e.key === 'ArrowLeft') prevLb();
+    });
+  </script>
+</body>
+</html>

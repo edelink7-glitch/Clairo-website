@@ -4,3 +4,5 @@
 ._*
 **/._*
 Thumbs.db
+.vercel
+.env*
